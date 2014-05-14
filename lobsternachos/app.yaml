@@ -1,0 +1,28 @@
+application: lobster-nachos
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: main.application
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+- name: django
+  version: latest
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: 'Django_AppEngine.settings'
