@@ -1,11 +1,11 @@
 # Django settings for Django_AppEngine project.
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-     ('Lobster Nachos', 'admin@lobsternachos.com'),
+     ('Lobster Nachos', 'martinez.jose.armando@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -114,7 +114,7 @@ INSTALLED_APPS = (
     #'django.contrib.admindocs',
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
