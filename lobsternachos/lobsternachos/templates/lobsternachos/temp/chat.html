@@ -1,0 +1,410 @@
+{%extends 'lobsternachos/blank.html'%}
+{%block viewport%}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+   
+ {%endblock%}
+
+
+{% block nav %}
+						<li>
+							<a href="index.html">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i> 
+								</span>
+								<span class="text">
+									Dashboard
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="active openable open">
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-file-text fa-lg"></i> 
+								</span>
+								<span class="text">
+									Page
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="submenu">
+							
+								<li><a href="login.html"><span class="submenu-label">Sign in</span></a></li>
+								<li><a href="register.html"><span class="submenu-label">Sign up</span></a></li>
+								<li><a href="lock_screen.html"><span class="submenu-label">Lock Screen</span></a></li>
+								<li><a href="profile.html"><span class="submenu-label">Profile</span></a></li>
+								<li><a href="blog.html"><span class="submenu-label">Blog</span></a></li>
+								<li><a href="single_post.html"><span class="submenu-label">Single Post</span></a></li>
+								<li><a href="landing.html"><span class="submenu-label">Landing</span></a></li>
+								<li><a href="search_result.html"><span class="submenu-label">Search Result</span></a></li>
+								<li class="active"><a href="chat.html"><span class="submenu-label">Chat Room</span></a></li>
+								<li><a href="movie.html"><span class="submenu-label">Movie Gallery</span></a></li>
+								<li><a href="pricing.html"><span class="submenu-label">Pricing</span></a></li>
+								<li><a href="invoice.html"><span class="submenu-label">Invoice</span></a></li>
+								<li><a href="faq.html"><span class="submenu-label">FAQ</span></a></li>
+								<li><a href="contact.html"><span class="submenu-label">Contact</span></a></li>
+								<li><a href="error404.html"><span class="submenu-label">Error404</span></a></li>
+								<li><a href="error500.html"><span class="submenu-label">Error500</span></a></li>
+								<li><a href="blank.html"><span class="submenu-label">Blank</span></a></li>
+							</ul>
+						</li>
+						<li class="openable">
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-tag fa-lg"></i> 
+								</span>
+								<span class="text">
+									Component
+								</span>
+								<span class="badge badge-success bounceIn animation-delay5">9</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="submenu">
+								<li><a href="ui_element.html"><span class="submenu-label">UI Features</span></a></li>
+								<li><a href="button.html"><span class="submenu-label">Button & Icons</span></a></li>
+								<li><a href="tab.html"><span class="submenu-label">Tab</span></a></li>
+								<li><a href="nestable_list.html"><span class="submenu-label">Nestable List</span></a></li>
+								<li><a href="calendar.html"><span class="submenu-label">Calendar</span></a></li>
+								<li><a href="table.html"><span class="submenu-label">Table</span></a></li>
+								<li><a href="widget.html"><span class="submenu-label">Widget</span></a></li>
+								<li><a href="form_element.html"><span class="submenu-label">Form Element</span></a></li>
+								<li><a href="form_wizard.html"><span class="submenu-label">Form Wizard</span></a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="timeline.html">
+								<span class="menu-icon">
+									<i class="fa fa-clock-o fa-lg"></i> 
+								</span>
+								<span class="text">
+									Timeline
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="gallery.html">
+								<span class="menu-icon">
+									<i class="fa fa-picture-o fa-lg"></i> 
+								</span>
+								<span class="text">
+									Gallery
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="inbox.html">
+								<span class="menu-icon">
+									<i class="fa fa-envelope fa-lg"></i> 
+								</span>
+								<span class="text">
+									Inbox
+								</span>
+								<span class="badge badge-danger bounceIn animation-delay6">4</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="email_selection.html">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i> 
+								</span>
+								<span class="text">
+									Email Template
+								</span>
+								<small class="badge badge-warning bounceIn animation-delay7">New</small>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="openable">
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-magic fa-lg"></i> 
+								</span>
+								<span class="text">
+									Multi-Level menu
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="submenu">
+								<li class="openable">
+									<a href="#">
+										<span class="submenu-label">menu 2.1</span>
+										<span class="badge badge-danger bounceIn animation-delay1 pull-right">3</span>
+									</a>
+									<ul class="submenu third-level">
+										<li><a href="#"><span class="submenu-label">menu 3.1</span></a></li>
+										<li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
+										<li class="openable">
+											<a href="#">
+												<span class="submenu-label">menu 3.3</span>
+												<span class="badge badge-danger bounceIn animation-delay1 pull-right">2</span>
+											</a>
+											<ul class="submenu fourth-level">
+												<li><a href="#"><span class="submenu-label">menu 4.1</span></a></li>
+												<li><a href="#"><span class="submenu-label">menu 4.2</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li class="openable">
+									<a href="#">
+										<span class="submenu-label">menu 2.2</span>
+										<span class="badge badge-success bounceIn animation-delay2 pull-right">3</span>
+									</a>
+									<ul class="submenu third-level">
+										<li class="openable">
+											<a href="#">
+												<span class="submenu-label">menu 3.1</span>
+												<span class="badge badge-success bounceIn animation-delay1 pull-right">2</span>
+											</a>
+											<ul class="submenu fourth-level">
+												<li><a href="#"><span class="submenu-label">menu 4.1</span></a></li>
+												<li><a href="#"><span class="submenu-label">menu 4.2</span></a></li>
+											</ul>
+										</li>
+										<li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
+										<li><a href="#"><span class="submenu-label">menu 3.3</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+{% endblock %}	
+					</ul>
+					
+					<div class="alert alert-info">
+						Welcome to Endless Admin. Do not forget to check all my pages. 
+					</div>
+				</div><!-- /main-menu -->
+			</div><!-- /sidebar-inner scrollable-sidebar -->
+		</aside>
+
+		<div id="main-container">
+{% block breadcrumb %}{% endblock %}
+{%block content%}
+			<div class="chat-wrapper">
+				<div class="chat-sidebar border-right bg-white">
+					<div class="border-bottom padding-sm" style="height: 40px;">
+						Member
+					</div>
+					<ul class="friend-list">
+						<li class="active bounceInDown">
+							<a href="#" class="clearfix">
+								<img src="/static/img/user.jpg" alt="" class="img-circle">
+								<div class="friend-name">	
+									<strong>John Doe</strong>
+								</div>
+								<div class="last-message text-muted">Hello, Are you there?</div>
+								<small class="time text-muted">Just now</small>
+								<small class="chat-alert badge badge-danger">1</small>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="clearfix">
+								<img src="/static/img/user2.jpg" alt="" class="img-circle">
+								<div class="friend-name">	
+									<strong>Jane Doe</strong>
+								</div>
+								<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+								<small class="time text-muted">5 mins ago</small>
+							<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+							</a>
+						</li>
+						<li class="active">
+							<a href="#" class="clearfix">
+								<img src="/static/img/user3.jpg" alt="" class="img-circle">
+								<div class="friend-name">	
+									<strong>Sarah</strong>
+								</div>
+								<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+								<small class="time text-muted">12 mins ago</small>
+								<small class="chat-alert badge badge-danger">2</small>
+							</a>
+						</li>
+						<li class="active">
+							<a href="#" class="clearfix">
+								<img src="/static/img/user4.jpg" alt="" class="img-circle">
+								<div class="friend-name">	
+									<strong>Angelina</strong>
+								</div>
+								<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+								<small class="time text-muted">1 hr ago</small>
+								<small class="chat-alert badge badge-danger">1</small>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="clearfix">
+								<img src="/static/img/user5.jpg" alt="" class="img-circle">
+								<div class="friend-name">	
+									<strong>Kate</strong>
+								</div>
+								<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+								<small class="time text-muted">Yesterday</small>
+								<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+							</a>
+						</li>
+					</ul>
+				</div>
+			
+				<div class="chat-inner scrollable-div">
+					<div class="chat-header bg-white">
+						<button type="button" class="navbar-toggle" id="friendListToggle">
+							<i class="fa fa-comment fa-lg"></i>
+							<span class="notification-label bounceIn animation-delay4">7</span>
+						</button>
+						<div class="pull-right">
+							<a class="btn btn-xs btn-default">Add Friend</a>
+							<a class="btn btn-xs btn-default">Create Group</a>
+						</div>
+					</div>
+					
+					<div class="chat-message">
+						<ul class="chat">
+							<li class="left clearfix">
+								<span class="chat-img pull-left">
+									<img src="/static/img/user.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">John Doe</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>
+							</li>
+							<li class="right clearfix">
+								<span class="chat-img pull-right">
+									<img src="/static/img/user3.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">Sarah</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
+									</p>
+								</div>
+							</li>
+							<li class="left clearfix">
+								<span class="chat-img pull-left">
+									<img src="/static/img/user4.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">Angelina</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 20 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+									</p>
+								</div>
+							</li>
+							<li class="right clearfix">
+								<span class="chat-img pull-right">
+									<img src="/static/img/user2.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">Jane Doe</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 25 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
+									</p>
+								</div>
+							</li>
+							<li class="left clearfix">
+								<span class="chat-img pull-left">
+									<img src="/static/img/user5.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">Kate</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>
+							</li>
+							<li class="right clearfix">
+								<span class="chat-img pull-right">
+									<img src="/static/img/user3.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">Sarah</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
+									</p>
+								</div>
+							</li>
+							<li class="left clearfix">
+								<span class="chat-img pull-left">
+									<img src="/static/img/user.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">John Doe</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 20 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+									</p>
+								</div>
+							</li>
+							<li class="right clearfix">
+								<span class="chat-img pull-right">
+									<img src="/static/img/user2.jpg" alt="User Avatar">
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">Jane Doe</strong>
+										<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 25 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>				
+					<div class="chat-box bg-white">
+						<div class="input-group">
+							<input class="form-control border no-shadow no-rounded" placeholder="Type your message here">
+							<span class="input-group-btn">
+								<button class="btn btn-success no-rounded" type="button">Send</button>
+							</span>
+						</div><!-- /input-group -->	
+					</div>
+				</div>
+				
+			</div><!-- /chat-wrapper -->{%endblock%}
+	{%block extrajs%}
+	<script>
+		$(function()	{
+			$('#friendListToggle').click(function()	{
+				$('.chat-wrapper').toggleClass('sidebar-display');
+			});
+			
+			$('.scrollable-div').slimScroll({
+				height: '100%',
+				size: '3px'
+			});
+			
+			document.ontouchmove = function(e){
+			   if(disableScroll){
+				 e.preventDefault();
+			   } 
+			}
+		});
+	</script>
+	{%endblock%}

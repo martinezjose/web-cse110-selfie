@@ -68,7 +68,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '=pj_02uvwr-rle)z783ng4zsj(um@cduhla2z(ha28ui)hb1g%'
+SECRET_KEY = '=pj_02uvwr-rle)z713ng2zsx(um@cduhla2z(ha28ui)hb1g%'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -109,9 +109,9 @@ INSTALLED_APPS = (
 
     'lobsternachos',
     # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
+    #'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
+    #'django.contrib.admindocs',
 )
 
 ALLOWED_HOSTS = []

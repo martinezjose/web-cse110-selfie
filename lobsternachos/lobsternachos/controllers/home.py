@@ -70,3 +70,100 @@ def sign_post(request):
 
     return HttpResponseRedirect('/?' + urllib.urlencode({'guestbook_name': guestbook_name}))
   return HttpResponseRedirect('/')
+
+# Base
+def blank(request):
+    return render(request, 'lobsternachos/blank.html')
+
+# UI
+def widget(request):
+    return render(request, 'lobsternachos/uidemos/widget.html')
+def ui_element(request):
+    return render(request, 'lobsternachos/uidemos/ui_element.html')
+def table(request):
+    return render(request, 'lobsternachos/uidemos/table.html')
+def tab(request):
+    return render(request, 'lobsternachos/uidemos/tab.html')
+def nestable_list(request):
+    return render(request, 'lobsternachos/uidemos/nestable_list.html')
+def button(request):
+    return render(request, 'lobsternachos/uidemos/button.html')
+def form_wizard(request):
+    return render(request, 'lobsternachos/uidemos/form_wizard.html')
+def form_element(request):
+    return render(request, 'lobsternachos/uidemos/form_element.html')
+
+
+# Home
+def search_result(request):
+    return render(request, 'lobsternachos/home/search_result.html')
+def landing(request):
+  return render(request, 'lobsternachos/home/landing.html')
+def index(request):
+  return render(request, 'lobsternachos/home/index.html')
+def contact(request):
+  return render(request, 'lobsternachos/home/contact.html')
+def faq(request):
+    return render(request, 'lobsternachos/home/faq.html')
+
+
+
+
+# Accounts
+def register(request):
+    return render(request, 'lobsternachos/accounts/register.html')
+def profile(request):
+    return render(request, 'lobsternachos/accounts/profile.html')
+def login(request):
+    return render(request, 'lobsternachos/accounts/login.html')
+def lock_screen(request):
+    return render(request, 'lobsternachos/accounts/lock_screen.html')
+
+# Emails
+def email_template_red(request):
+    return render(request, 'lobsternachos/email/email_template_red.html')
+def email_template_purple(request):
+    return render(request, 'lobsternachos/email/email_template_purple.html')
+def email_template_orange(request):
+    return render(request, 'lobsternachos/email/email_template_orange.html')
+def email_template_green(request):
+    return render(request, 'lobsternachos/email/email_template_green.html')
+def email_template_dark(request):
+    return render(request, 'lobsternachos/email/email_template_dark.html')
+def email_template_blue(request):
+    return render(request, 'lobsternachos/email/email_template_blue.html')
+def email_selection(request):
+    return render(request, 'lobsternachos/email/email_selection.html')
+
+# Temp
+def blog(request):
+    return render(request, 'lobsternachos/temp/blog.html')
+def timeline(request):
+    return render(request, 'lobsternachos/temp/timeline.html')
+def single_post(request):
+    return render(request, 'lobsternachos/temp/single_post.html')
+def pricing(request):
+    return render(request, 'lobsternachos/temp/pricing.html')
+def movie(request):
+    return render(request, 'lobsternachos/temp/movie.html')
+def chat(request):
+    return render(request, 'lobsternachos/temp/chat.html')
+def calendar(request):
+    return render(request, 'lobsternachos/temp/calendar.html')
+def inbox(request):
+    return render(request, 'lobsternachos/temp/inbox.html')
+def gallery(request):
+    return render(request, 'lobsternachos/temp/gallery.html')
+
+
+
+# Orders
+def invoice(request):
+    return render(request, 'lobsternachos/orders/invoice.html')
+
+
+# Errors
+def error500(request):
+    return render(request, 'customErrors/error500.html')
+def error404(request):
+    return render(request, 'customErrors/error404.html')

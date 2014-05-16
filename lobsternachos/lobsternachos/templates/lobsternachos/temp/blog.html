@@ -1,0 +1,382 @@
+{% extends "lobsternachos/blank.html" %}
+
+
+
+								
+					{% block nav %}
+		<li>
+							<a href="index.html">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i> 
+								</span>
+								<span class="text">
+									Dashboard
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="active openable open">
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-file-text fa-lg"></i> 
+								</span>
+								<span class="text">
+									Page
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="submenu">
+							
+								<li><a href="login.html"><span class="submenu-label">Sign in</span></a></li>
+								<li><a href="register.html"><span class="submenu-label">Sign up</span></a></li>
+								<li><a href="lock_screen.html"><span class="submenu-label">Lock Screen</span></a></li>
+								<li><a href="profile.html"><span class="submenu-label">Profile</span></a></li>
+								<li class="active"><a href="blog.html"><span class="submenu-label">Blog</span></a></li>
+								<li><a href="single_post.html"><span class="submenu-label">Single Post</span></a></li>
+								<li><a href="landing.html"><span class="submenu-label">Landing</span></a></li>
+								<li><a href="search_result.html"><span class="submenu-label">Search Result</span></a></li>
+								<li><a href="chat.html"><span class="submenu-label">Chat Room</span></a></li>
+								<li><a href="movie.html"><span class="submenu-label">Movie Gallery</span></a></li>
+								<li><a href="pricing.html"><span class="submenu-label">Pricing</span></a></li>
+								<li><a href="invoice.html"><span class="submenu-label">Invoice</span></a></li>
+								<li><a href="faq.html"><span class="submenu-label">FAQ</span></a></li>
+								<li><a href="contact.html"><span class="submenu-label">Contact</span></a></li>
+								<li><a href="error404.html"><span class="submenu-label">Error404</span></a></li>
+								<li><a href="error500.html"><span class="submenu-label">Error500</span></a></li>
+								<li><a href="blank.html"><span class="submenu-label">Blank</span></a></li>
+	
+						</ul>
+						</li>
+						<li class="openable">
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-tag fa-lg"></i> 
+								</span>
+								<span class="text">
+									Component
+								</span>
+								<span class="badge badge-success bounceIn animation-delay5">9</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="submenu">
+								<li><a href="ui_element.html"><span class="submenu-label">UI Features</span></a></li>
+								<li><a href="button.html"><span class="submenu-label">Button & Icons</span></a></li>
+								<li><a href="tab.html"><span class="submenu-label">Tab</span></a></li>
+								<li><a href="nestable_list.html"><span class="submenu-label">Nestable List</span></a></li>
+								<li><a href="calendar.html"><span class="submenu-label">Calendar</span></a></li>
+								<li><a href="table.html"><span class="submenu-label">Table</span></a></li>
+								<li><a href="widget.html"><span class="submenu-label">Widget</span></a></li>
+								<li><a href="form_element.html"><span class="submenu-label">Form Element</span></a></li>
+								<li><a href="form_wizard.html"><span class="submenu-label">Form Wizard</span></a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="timeline.html">
+								<span class="menu-icon">
+									<i class="fa fa-clock-o fa-lg"></i> 
+								</span>
+								<span class="text">
+									Timeline
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="gallery.html">
+								<span class="menu-icon">
+									<i class="fa fa-picture-o fa-lg"></i> 
+								</span>
+								<span class="text">
+									Gallery
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="inbox.html">
+								<span class="menu-icon">
+									<i class="fa fa-envelope fa-lg"></i> 
+								</span>
+								<span class="text">
+									Inbox
+								</span>
+								<span class="badge badge-danger bounceIn animation-delay6">4</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="email_selection.html">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i> 
+								</span>
+								<span class="text">
+									Email Template
+								</span>
+								<small class="badge badge-warning bounceIn animation-delay7">New</small>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="openable">
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-magic fa-lg"></i> 
+								</span>
+								<span class="text">
+									Multi-Level menu
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="submenu">
+								<li class="openable">
+									<a href="#">
+										<span class="submenu-label">menu 2.1</span>
+										<span class="badge badge-danger bounceIn animation-delay1 pull-right">3</span>
+									</a>
+									<ul class="submenu third-level">
+										<li><a href="#"><span class="submenu-label">menu 3.1</span></a></li>
+										<li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
+										<li class="openable">
+											<a href="#">
+												<span class="submenu-label">menu 3.3</span>
+												<span class="badge badge-danger bounceIn animation-delay1 pull-right">2</span>
+											</a>
+											<ul class="submenu fourth-level">
+												<li><a href="#"><span class="submenu-label">menu 4.1</span></a></li>
+												<li><a href="#"><span class="submenu-label">menu 4.2</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li class="openable">
+									<a href="#">
+										<span class="submenu-label">menu 2.2</span>
+										<span class="badge badge-success bounceIn animation-delay2 pull-right">3</span>
+									</a>
+									<ul class="submenu third-level">
+										<li class="openable">
+											<a href="#">
+												<span class="submenu-label">menu 3.1</span>
+												<span class="badge badge-success bounceIn animation-delay1 pull-right">2</span>
+											</a>
+											<ul class="submenu fourth-level">
+												<li><a href="#"><span class="submenu-label">menu 4.1</span></a></li>
+												<li><a href="#"><span class="submenu-label">menu 4.2</span></a></li>
+											</ul>
+										</li>
+										<li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
+										<li><a href="#"><span class="submenu-label">menu 3.3</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+{% endblock %}			
+
+{%block breadcrumb%}{%endblock%}
+{%block content%}
+			<div class="padding-md">
+				<div class="row">
+					<div class="col-md-11">	
+						<h3 class="headline m-top-md">
+							Welcome To Our Blog
+							<span class="line"></span>
+						</h3>
+						<div class="row">	
+							<div class="col-md-8">
+								<div class="panel blog-container">
+									<div class="panel-body">
+										<a class="image-wrapper image-zoom" href="/static/img/movie/preview1.jpg">
+											<img src="/static/img/movie/preview1.jpg" alt="Photo of Blog">
+											<div class="image-overlay"></div>	
+										</a>
+																		
+										<h4>Responsive Design</h4>
+										<small class="text-muted">By <a href="#"><strong> John Doe</strong></a> |  Post on Aug 15, 2013  | 3 comments</small>
+										<p class="m-top-sm m-bottom-sm">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+										</p>
+										<a href="single_post.html"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+										<span class="post-like text-muted tooltip-test" data-toggle="tooltip" data-original-title="I like this post!">
+											<i class="fa fa-heart"></i> <span class="like-count">8</span>
+										</span>
+									</div>
+								</div>
+								
+								<div class="panel blog-container">
+									<div class="panel-body">
+										<div class="image-wrapper">
+											<a class="image-wrapper image-zoom" href="/static/img/movie/preview4.jpg">
+												<img src="/static/img/movie/preview4.jpg" alt="Photo of Blog">
+												<div class="image-overlay"></div>	
+											</a>
+										</div>
+										
+										<h4>Flat Design</h4>
+										<small class="text-muted">By <a href="#"><strong> Admin</strong></a> |  Post on Feb 21, 2013  | 46 comments</small>
+										
+										<p class="m-top-sm m-bottom-sm">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+										</p>
+										<a href="single_post.html"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+										<span class="post-like text-muted tooltip-test" data-toggle="tooltip" data-original-title="I like this post!">
+											<i class="fa fa-heart"></i> <span class="like-count">12</span>
+										</span>
+									</div>
+								</div>
+								
+								<div class="panel blog-container">
+									<div class="panel-body">
+										<div class="image-wrapper">
+											<a class="image-wrapper image-zoom" href="/static/img/gallery9.jpg">
+												<img src="/static/img/gallery9.jpg" alt="Photo of Blog">
+												<div class="image-overlay"></div>	
+											</a>
+										</div>
+										
+										<h4>Bootstrap 3.0</h4>
+										<small class="text-muted">By <a href="#"><strong> John Doe</strong></a> |  Post on Jan 8, 2013  | 58 comments</small>
+										
+										<p class="m-top-sm m-bottom-sm">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+										</p>
+										<a href="single_post.html"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+										<span class="post-like text-muted tooltip-test" data-toggle="tooltip" data-original-title="I like this post!">
+											<i class="fa fa-heart"></i> <span class="like-count">25</span>
+										</span>
+									</div>
+								</div>
+								<ul class="pagination pagination-split m-bottom-md">
+									<li><a href="#">Previous</a></li>
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#">6</a></li>
+									<li><a href="#">7</a></li>
+									<li><a href="#">8</a></li>
+									<li><a href="#">9</a></li>
+									<li><a href="#">Next</a></li>
+								</ul>
+							</div><!-- /.col -->
+							<div class="col-md-4">
+								<form>
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" class="form-control input-sm" placeholder="Search In Blog...">
+											<span class="input-group-btn">
+												<button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+											</span>
+										</div><!-- /input-group -->
+									</div>
+								</form>
+								<h4 class="headline">
+									POPULAR POST
+									<span class="line"></span>
+								</h4>
+								<div class="media popular-post">
+									<a class="pull-left" href="single_post.html">
+										<img src="/static/img/gallery1.jpg" alt="Popular Post">
+									</a>
+									<div class="media-body">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+									</div>
+								</div>
+								<div class="media popular-post">
+									<a class="pull-left" href="single_post.html">
+										<img src="/static/img/gallery2.jpg" alt="Popular Post">
+									</a>
+									<div class="media-body">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</div>
+								</div>
+								<div class="media popular-post">
+									<a class="pull-left" href="single_post.html">
+										<img src="/static/img/gallery3.jpg" alt="Popular Post">
+									</a>
+									<div class="media-body">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</div>
+								</div>
+								<h4 class="headline">
+									CATEGORY
+									<span class="line"></span>
+								</h4>
+								<ul class="category">
+									<li><a href="#"><i class="fa fa-chevron-right"></i> Music</a></li>
+									<li><a href="#"><i class="fa fa-chevron-right"></i> Videos</a></li>
+									<li><a href="#"><i class="fa fa-chevron-right"></i> Photography</a></li>
+									<li><a href="#"><i class="fa fa-chevron-right"></i> Food</a></li>
+									<li><a href="#"><i class="fa fa-chevron-right"></i> Uncategorized</a></li>
+								</ul>
+								<h4 class="headline">
+									TAG CLOUD
+									<span class="line"></span>
+								</h4>
+								<div class="tag-wrapper">
+									<a class="blog-tag" href="#">Business</a> 
+									<a class="blog-tag" href="#">Blog</a> 
+									<a class="blog-tag" href="#">Vacation</a>
+									<a class="blog-tag" href="#">Nature</a>
+									<a class="blog-tag" href="#">Animals</a>
+									<a class="blog-tag" href="#">Sport</a>
+									<a class="blog-tag" href="#">Food</a>
+								</div>
+								<h4 class="headline">
+									ABOUT THE BLOG
+									<span class="line"></span>
+								</h4>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+								</p>
+								<h4 class="headline">
+									PHOTO STREAM
+									<span class="line"></span>
+								</h4>
+								<ul class="photo-stream">
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery1.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery2.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery3.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery4.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery5.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery6.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery7.jpg" alt="Photo Stream">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="/static/img/gallery8.jpg" alt="Photo Stream">
+										</a>
+									</li>
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.padding-md -->
+{%endblock%}

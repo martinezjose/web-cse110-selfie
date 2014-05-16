@@ -59,7 +59,7 @@
 								"<input type='checkbox' class='bootstrap-wysihtml5-insert-link-target' checked>" +
 								"<span class='custom-checkbox'></span>" +
 								locale.link.target +
-						  "</label>" + 
+						  "</label>" +
 						"</div>" +
 						"<div class='modal-footer'>" +
 						  "<a href='#' class='btn btn-default' data-dismiss='modal'>" + locale.link.cancel + "</a>" +
@@ -159,7 +159,7 @@
 
         createEditor: function(options) {
             options = options || {};
-            
+
             // Add the toolbar to a clone of the options object so multiple instances
             // of the WYISYWG don't break because "toolbar" is already defined
             options = $.extend(true, {}, options);
@@ -391,7 +391,7 @@
             return methods.init.apply( this, arguments );
         } else {
             $.error( 'Method ' +  method + ' does not exist on jQuery.wysihtml5' );
-        }    
+        }
     };
 
     $.fn.wysihtml5.Constructor = Wysihtml5;
@@ -462,7 +462,7 @@
                 "pre": 1
             }
         },
-        stylesheets: ["css/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
+        stylesheets: ["/static/css/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
         locale: "en"
     };
 
