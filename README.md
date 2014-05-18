@@ -1,5 +1,29 @@
+#Current version is 2 in AppEngine
+
 #Django Framework for Google App Engine
 This project will hold the web pages and web apis for our interactive menu project.
+
+#Downloading source code, 
+
+```cappcfg.py download_app -A lobster-nachos -V \<your_app_version\> \<output-dir\>```c
+
+#Deploy, current version is 2
+
+```cappcfg.py update \<name\>```
+
+\<name\> = where app.yaml is 
+
+Note: Use version number with -V
+
+#Run
+
+```cdev_appserver.py \<name\>```c
+
+(just use . when in direcotry)
+
+#Tests
+
+python manage.py test
 
 ##Install the App Engine Python SDK
 ###Linux/MacOS
@@ -51,23 +75,3 @@ https://www.djangoproject.com/download/1.6.4/tarball/
 4. Run the following command `setup.py install`
 5. Add the `Scripts` folder that was just created at the root folder where Python is installed to the `PATH` environment variable.
 6. Check that everything works by checking the usage of the following command gets printed: `django-admin.py`.
-
-## Run Locally
-
-`cd appengine-django-skeleton`
-
-Run this project locally from the command line:
-`./manage.py runserver`
-See the output in your browser at http://localhost:8000
-
-This project uses manage.py to call the development server. See the other management commands for other options.
-
-#Deploy
-
-###To deploy the application:
-
-Deploy the application with: `appcfg.py --oauth2 update [projectDirectory]` or use the App Engine Launcher.
-
-#Next Steps
-
-Right now, we have a very simple Django application. I will be adding the basic template and classes shortly.
