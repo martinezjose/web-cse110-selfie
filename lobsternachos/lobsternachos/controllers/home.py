@@ -115,11 +115,6 @@ def landing(request):
 
 def index(request):
 
-  guestbook_name = request.GET.get('guestbook_name', DEFAULT_GUESTBOOK_NAME)
-
-  greetings_query = Greeting.query(
-          ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-  greetings = greetings_query.fetch(10)
 
   if users.get_current_user():
       url = users.create_logout_url(request.get_full_path())
@@ -130,7 +125,6 @@ def index(request):
 
   template_values = {
       'user': users.get_current_user(),
-      'guestbook_name': urllib.quote_plus(guestbook_name),
       'url': url,
       'url_linktext': url_linktext,
   }
