@@ -5,11 +5,11 @@ This project will hold the web pages and web apis for our interactive menu proje
 
 #Downloading source code, 
 
-```cappcfg.py download_app -A lobster-nachos -V \<your_app_version\> \<output-dir\>```c
+```appcfg.py download_app -A lobster-nachos -V \<your_app_version\> \<output-dir\>```
 
 #Deploy, current version is 2
 
-```cappcfg.py update \<name\>```
+```appcfg.py update \<name\>```
 
 \<name\> = where app.yaml is 
 
@@ -17,13 +17,13 @@ Note: Use version number with -V
 
 #Run
 
-```cdev_appserver.py \<name\>```c
+```dev_appserver.py \<name\>```
 
-(just use . when in direcotry)
+(just use . when in directory)
 
 #Tests
 
-python manage.py test
+```python manage.py test```
 
 ##Install the App Engine Python SDK
 ###Linux/MacOS
