@@ -244,7 +244,7 @@
 				</li>
 				<li class="profile dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<strong>John Doe</strong>
+						<strong>{{ user.nickname }}</strong>
 						<span><i class="fa fa-chevron-down"></i></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -252,8 +252,8 @@
 							<a class="clearfix" href="#">
 								<img src="/static/img/user.jpg" alt="User Avatar">
 								<div class="detail">
-									<strong>John Doe</strong>
-									<p class="grey">John_Doe@email.com</p>
+									<strong>{{ user.nickname }}</strong>
+									<p class="grey">{{ user.email }}</p>
 								</div>
 							</a>
 						</li>
@@ -282,7 +282,7 @@
 				<div class="user-block clearfix">
 					<img src="/static/img/user.jpg" alt="User Avatar">
 					<div class="detail">
-						<strong>John Doe</strong><span class="badge badge-danger m-left-xs bounceIn animation-delay4">4</span>
+						<strong>{{user.nickname|truncatechars:12}}</strong><span class="badge badge-danger m-left-xs bounceIn animation-delay4">4</span>
 						<ul class="list-inline">
 							<li><a href="profile.html">Profile</a></li>
 							<li><a href="inbox.html" class="no-margin">Inbox</a></li>
