@@ -4,7 +4,6 @@ import sys
 from google.appengine.api import users
 
 from lobsternachos.models import *
-from lobsternachos.models import *
 
 
 import urllib

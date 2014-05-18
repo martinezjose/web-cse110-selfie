@@ -1,11 +1,16 @@
 from django.conf.urls.defaults import *
 from lobsternachos.controllers.home import *
+from lobsternachos.controllers.items import *
+
 
 urlpatterns = patterns('',
 
     # Default
     (r'^sign$', sign_post),
     (r'^$', main_page),
+
+    # Items
+    (r'^items/index$', index),
 
     # Accounts
     (r'^lock_screen.html$', lock_screen),
