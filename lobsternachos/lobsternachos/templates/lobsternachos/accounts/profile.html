@@ -1,302 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Endless Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Bootstrap core CSS -->
-    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	
-	<!-- Font Awesome -->
-	<link href="/static/css/font-awesome.min.css" rel="stylesheet">
-
-	<!-- Pace -->
-	<link href="/static/css/pace.css" rel="stylesheet">
-	
-	<!-- Endless -->
-	<link href="/static/css/endless.min.css" rel="stylesheet">
-	<link href="/static/css/endless-skin.css" rel="stylesheet">
-	
-  </head>
-
-  <body class="overflow-hidden">
-	<!-- Overlay Div -->
-	<div id="overlay" class="transparent"></div>
-	
-	<a href="" id="theme-setting-icon"><i class="fa fa-cog fa-lg"></i></a>
-	<div id="theme-setting">
-		<div class="title">
-			<strong class="no-margin">Skin Color</strong>
-		</div>
-		<div class="theme-box">
-			<a class="theme-color" style="background:#323447" id="default"></a>
-			<a class="theme-color" style="background:#efefef" id="skin-1"></a>
-			<a class="theme-color" style="background:#a93922" id="skin-2"></a>
-			<a class="theme-color" style="background:#3e6b96" id="skin-3"></a>
-			<a class="theme-color" style="background:#635247" id="skin-4"></a>
-			<a class="theme-color" style="background:#3a3a3a" id="skin-5"></a>
-			<a class="theme-color" style="background:#495B6C" id="skin-6"></a>
-		</div>
-		<div class="title">
-			<strong class="no-margin">Sidebar Menu</strong>
-		</div>
-		<div class="theme-box">
-			<label class="label-checkbox">
-				<input type="checkbox" checked id="fixedSidebar">
-				<span class="custom-checkbox"></span>
-				Fixed Sidebar
-			</label>
-		</div>
-	</div><!-- /theme-setting -->
-
-	<div id="wrapper" class="preload">
-		<div id="top-nav" class="skin-6 fixed">
-			<div class="brand">
-				<span>Endless</span>
-				<span class="text-toggle"> Admin</span>
-			</div><!-- /brand -->
-			<button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<ul class="nav-notification clearfix">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="fa fa-envelope fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay4">7</span>
-					</a>
-					<ul class="dropdown-menu message dropdown-1">
-						<li><a>You have 4 new unread messages</a></li>					  
-						<li>
-							<a class="clearfix" href="#">
-								<img src="/static/img/user.jpg" alt="User Avatar">
-								<div class="detail">
-									<strong>John Doe</strong>
-									<p class="no-margin">
-										Lorem ipsum dolor sit amet...
-									</p>
-									<small class="text-muted"><i class="fa fa-check text-success"></i> 27m ago</small>
-								</div>
-							</a>	
-						</li>
-						<li>
-							<a class="clearfix" href="#">
-								<img src="/static/img/user2.jpg" alt="User Avatar">
-								<div class="detail">
-									<strong>Jane Doe</strong>
-									<p class="no-margin">
-										Lorem ipsum dolor sit amet...
-									</p>
-									<small class="text-muted"><i class="fa fa-check text-success"></i> 5hr ago</small>
-								</div>
-							</a>	
-						</li>
-						<li>
-							<a class="clearfix" href="#">
-								<img src="/static/img/user.jpg" alt="User Avatar">
-								<div class="detail">
-									<strong>Bill Doe</strong>
-									<p class="no-margin">
-										Lorem ipsum dolor sit amet...
-									</p>
-									<small class="text-muted"><i class="fa fa-reply"></i> Yesterday</small>
-								</div>
-							</a>	
-						</li>
-						<li>
-							<a class="clearfix" href="#">
-								<img src="/static/img/user2.jpg" alt="User Avatar">
-								<div class="detail">
-									<strong>Baby Doe</strong>
-									<p class="no-margin">
-										Lorem ipsum dolor sit amet...
-									</p>
-									<small class="text-muted"><i class="fa fa-reply"></i> 9 Feb 2013</small>
-								</div>
-							</a>	
-						</li>
-						<li><a href="#">View all messages</a></li>					  
-					</ul>
-				</li>
-				<li class="dropdown hidden-xs">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-tasks fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay5">4</span>
-					</a>
-					<ul class="dropdown-menu task dropdown-2">
-						<li><a href="#">You have 4 tasks to complete</a></li>					  
-						<li>
-							<a href="#">
-								<div class="clearfix">
-									<span class="pull-left">Bug Fixes</span>
-									<small class="pull-right text-muted">78%</small>
-								</div>
-								<div class="progress">
-									<div class="progress-bar" style="width:78%"></div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="clearfix">
-									<span class="pull-left">Software Updating</span>
-									<small class="pull-right text-muted">54%</small>
-								</div>
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-success" style="width:54%"></div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="clearfix">
-									<span class="pull-left">Database Migration</span>
-									<small class="pull-right text-muted">23%</small>
-								</div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-warning" style="width:23%"></div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="clearfix">
-									<span class="pull-left">Unit Testing</span>
-									<small class="pull-right text-muted">92%</small>
-								</div>
-								<div class="progress progress-striped active">
-									<div class="progress-bar progress-bar-danger " style="width:92%"></div>
-								</div>
-							</a>
-						</li>
-						<li><a href="#">View all tasks</a></li>					  
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="fa fa-bell fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay6">5</span>
-					</a>
-					<ul class="dropdown-menu notification dropdown-3">
-						<li><a href="#">You have 5 new notifications</a></li>					  
-						<li>
-							<a href="#">
-								<span class="notification-icon bg-warning">
-									<i class="fa fa-warning"></i>
-								</span>
-								<span class="m-left-xs">Server #2 not responding.</span>
-								<span class="time text-muted">Just now</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="notification-icon bg-success">
-									<i class="fa fa-plus"></i>
-								</span>
-								<span class="m-left-xs">New user registration.</span>
-								<span class="time text-muted">2m ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="notification-icon bg-danger">
-									<i class="fa fa-bolt"></i>
-								</span>
-								<span class="m-left-xs">Application error.</span>
-								<span class="time text-muted">5m ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="notification-icon bg-success">
-									<i class="fa fa-usd"></i>
-								</span>
-								<span class="m-left-xs">2 items sold.</span>
-								<span class="time text-muted">1hr ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="notification-icon bg-success">
-									<i class="fa fa-plus"></i>
-								</span>
-								<span class="m-left-xs">New user registration.</span>
-								<span class="time text-muted">1hr ago</span>
-							</a>
-						</li>
-						<li><a href="#">View all notifications</a></li>					  
-					</ul>
-				</li>
-				<li class="profile dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<strong>John Doe</strong>
-						<span><i class="fa fa-chevron-down"></i></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a class="clearfix" href="#">
-								<img src="/static/img/user.jpg" alt="User Avatar">
-								<div class="detail">
-									<strong>John Doe</strong>
-									<p class="grey">John_Doe@email.com</p> 
-								</div>
-							</a>
-						</li>
-						<li><a tabindex="-1" href="profile.html" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
-						<li><a tabindex="-1" href="gallery.html" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Photo Gallery</a></li>
-						<li><a tabindex="-1" href="#" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Setting</a></li>
-						<li class="divider"></li>
-						<li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div><!-- /top-nav-->
-		
-		<aside class="fixed skin-6">
-			<div class="sidebar-inner scrollable-sidebar">
-				<div class="size-toggle">
-					<a class="btn btn-sm" id="sizeToggle">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
-						<i class="fa fa-power-off"></i>
-					</a>
-				</div><!-- /size-toggle -->	
-				<div class="user-block clearfix">
-					<img src="/static/img/user.jpg" alt="User Avatar">
-					<div class="detail">
-						<strong>John Doe</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
-						<ul class="list-inline">
-							<li><a href="profile.html">Profile</a></li>
-							<li><a href="inbox.html" class="no-margin">Inbox</a></li>
-						</ul>
-					</div>
-				</div><!-- /user-block -->
-				<div class="search-block">
-					<div class="input-group">
-						<input type="text" class="form-control input-sm" placeholder="search here...">
-						<span class="input-group-btn">
-							<button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
-						</span>
-					</div><!-- /input-group -->
-				</div><!-- /search-block -->
-				<div class="main-menu">
-					<ul>
+{%extends 'lobsternachos/blank.html'%}
+{%block nav%}
 						<li>
 							<a href="index.html">
 								<span class="menu-icon">
-									<i class="fa fa-desktop fa-lg"></i> 
+									<i class="fa fa-desktop fa-lg"></i>
 								</span>
 								<span class="text">
 									Dashboard
@@ -307,7 +14,7 @@
 						<li class="active openable open">
 							<a href="#">
 								<span class="menu-icon">
-									<i class="fa fa-file-text fa-lg"></i> 
+									<i class="fa fa-file-text fa-lg"></i>
 								</span>
 								<span class="text">
 									Page
@@ -337,7 +44,7 @@
 						<li class="openable">
 							<a href="#">
 								<span class="menu-icon">
-									<i class="fa fa-tag fa-lg"></i> 
+									<i class="fa fa-tag fa-lg"></i>
 								</span>
 								<span class="text">
 									Component
@@ -360,7 +67,7 @@
 						<li>
 							<a href="timeline.html">
 								<span class="menu-icon">
-									<i class="fa fa-clock-o fa-lg"></i> 
+									<i class="fa fa-clock-o fa-lg"></i>
 								</span>
 								<span class="text">
 									Timeline
@@ -371,7 +78,7 @@
 						<li>
 							<a href="gallery.html">
 								<span class="menu-icon">
-									<i class="fa fa-picture-o fa-lg"></i> 
+									<i class="fa fa-picture-o fa-lg"></i>
 								</span>
 								<span class="text">
 									Gallery
@@ -382,7 +89,7 @@
 						<li>
 							<a href="inbox.html">
 								<span class="menu-icon">
-									<i class="fa fa-envelope fa-lg"></i> 
+									<i class="fa fa-envelope fa-lg"></i>
 								</span>
 								<span class="text">
 									Inbox
@@ -394,7 +101,7 @@
 						<li>
 							<a href="email_selection.html">
 								<span class="menu-icon">
-									<i class="fa fa-tasks fa-lg"></i> 
+									<i class="fa fa-tasks fa-lg"></i>
 								</span>
 								<span class="text">
 									Email Template
@@ -406,7 +113,7 @@
 						<li class="openable">
 							<a href="#">
 								<span class="menu-icon">
-									<i class="fa fa-magic fa-lg"></i> 
+									<i class="fa fa-magic fa-lg"></i>
 								</span>
 								<span class="text">
 									Multi-Level menu
@@ -454,30 +161,19 @@
 										<li><a href="#"><span class="submenu-label">menu 3.3</span></a></li>
 									</ul>
 								</li>
-							</ul>
-						</li>
-					</ul>
-					
-					<div class="alert alert-info">
-						Welcome to Endless Admin. Do not forget to check all my pages. 
-					</div>
-				</div><!-- /main-menu -->
-			</div><!-- /sidebar-inner scrollable-sidebar -->
-		</aside>
 
-		<div id="main-container">
-			<div id="breadcrumb">
-				<ul class="breadcrumb">
-					 <li><i class="fa fa-home"></i><a href="index.html"> Home</a></li>
-					 <li>Page</li>	 
-					 <li class="active">Profile</li>	 
-				</ul>
-			</div><!--breadcrumb-->
-			<ul class="tab-bar grey-tab">
+                {%endblock%}
+
+		  {%block breadcrumb%}
+	         <li>Page</li>
+					 <li class="active">Profile</li>
+      {%endblock%}
+			{%block content%}
+      <ul class="tab-bar grey-tab">
 				<li class="active">
 					<a href="#overview" data-toggle="tab">
 						<span class="block text-center">
-							<i class="fa fa-home fa-2x"></i> 
+							<i class="fa fa-home fa-2x"></i>
 						</span>
 						Overview
 					</a>
@@ -485,7 +181,7 @@
 				<li>
 					<a href="#edit" data-toggle="tab">
 						<span class="block text-center">
-							<i class="fa fa-edit fa-2x"></i> 
+							<i class="fa fa-edit fa-2x"></i>
 						</span>
 						Edit Profile
 					</a>
@@ -493,13 +189,13 @@
 				<li>
 					<a href="#message" data-toggle="tab">
 						<span class="block text-center">
-							<i class="fa fa-envelope fa-2x"></i> 
-						</span>	
+							<i class="fa fa-envelope fa-2x"></i>
+						</span>
 						Messages
 					</a>
 				</li>
 			</ul>
-			
+
 			<div class="padding-md">
 				<div class="row">
 					<div class="col-md-3 col-sm-3">
@@ -515,7 +211,7 @@
 								<strong class="font-14">John Doe</strong>
 								<small class="block text-muted">
 									John_Doe@email.com
-								</small> 
+								</small>
 								<div class="seperator"></div>
 								<a class="btn btn-success btn-xs m-bottom-sm">Follow</a>
 								<div class="seperator"></div>
@@ -544,7 +240,7 @@
 								</div><!-- /.row -->
 							</div>
 						</div><!-- /panel -->
-						
+
 						<h5 class="headline">
 							My Skill
 							<span class="line"></span>
@@ -589,34 +285,34 @@
 												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.</p>
 											</div>
 										</div><!-- /panel -->
-											
+
 										<div class="panel panel-default fadeInDown animation-delay3">
 											<div class="panel-heading">
 												<i class="fa fa-twitter"></i> Latest Tweets
 											</div>
-											<ul class="list-group"> 
-												<li class="list-group-item"> 
-													<p>Welcome <a href="#" class="text-info">@John Doe</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> 
+											<ul class="list-group">
+												<li class="list-group-item">
+													<p>Welcome <a href="#" class="text-info">@John Doe</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 													<small class="block text-muted">
 														<i class="fa fa-clock-o"></i> 6 minutes ago
 													</small>
-												</li> 
-												<li class="list-group-item"> 
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="text-info">@Jand Doe</a></p> 
+												</li>
+												<li class="list-group-item">
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="text-info">@Jand Doe</a></p>
 													<small class="block text-muted">
 														<i class="fa fa-clock-o"></i> 41 minutes ago
-													</small> 
-												</li> 
-												<li class="list-group-item"> <p><a href="#" class="text-info">@Bill Doe</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit.</p> 
+													</small>
+												</li>
+												<li class="list-group-item"> <p><a href="#" class="text-info">@Bill Doe</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit.</p>
 													<small class="block text-muted">
 														<i class="fa fa-clock-o"></i> 1 hour ago
-													</small> 
-												</li> 
-												<li class="list-group-item"> <p><a href="#" class="text-info">@John Doe</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> 
+													</small>
+												</li>
+												<li class="list-group-item"> <p><a href="#" class="text-info">@John Doe</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 													<small class="block text-muted">
 														<i class="fa fa-clock-o"></i> 2 hours ago
-													</small> 
-												</li> 
+													</small>
+												</li>
 											</ul><!-- /list-group -->
 										</div><!-- /panel -->
 									</div><!-- /.col -->
@@ -662,7 +358,7 @@
 														</div>
 													</div>
 												</a>
-											</div><!-- /list-group -->	
+											</div><!-- /list-group -->
 										</div><!-- /panel -->
 										<div class="panel panel-overview fadeInUp animation-delay5">
 											<div class="overview-icon bg-success">
@@ -756,7 +452,7 @@
 								</div><!-- /panel -->
 							</div><!-- /tab1 -->
 							<div class="tab-pane fade" id="edit">
-								
+
 								<div class="row">
 									<div class="panel panel-info pull-right">
 										<div class="panel-body">
@@ -764,7 +460,7 @@
 										</div>
 									</div><!-- /panel -->
 								</div><!-- /.row -->
-								
+
 								<div class="panel panel-default">
 									<form class="form-horizontal form-border">
 										<div class="panel-heading">
@@ -772,7 +468,7 @@
 										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<label class="control-label col-md-2">Username</label>												
+												<label class="control-label col-md-2">Username</label>
 												<div class="col-md-10">
 													<input type="text" class="form-control input-sm" placeholder="Username" value="John Doe">
 												</div><!-- /.col -->
@@ -825,7 +521,7 @@
 										</div>
 									</form>
 								</div><!-- /panel -->
-							
+
 								<div class="panel panel-default">
 									<div class="panel-body padding-xs">
 										<textarea class="form-control no-border no-shadow" rows="2" placeholder="What's on your mind?"></textarea>
@@ -845,7 +541,7 @@
 										<a class="btn btn-xs btn-success pull-right">Save</a>
 									</div>
 								</div><!-- /panel -->
-									
+
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										Products
@@ -937,9 +633,9 @@
 										</label>
 										<a class="btn btn-sm btn-danger"><i class="fa fa-plus"></i> Write Mail</a>
 										<a class="btn btn-sm btn-default"><i class="fa fa-trash-o"></i> Delete</a>
-								
+
 										<div class="pull-right">
-											<a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-refresh"></i></a>			
+											<a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-refresh"></i></a>
 											<div class="btn-group" id="inboxFilter">
 												<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 													All
@@ -961,15 +657,15 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="starred"><i class="fa fa-star fa-lg"></i></span>
-											<span class="from">John Doe</span>		
-										
+											<span class="from">John Doe</span>
+
 											<span class="detail">
-												<span class="label label-danger">Important</span>		
+												<span class="label label-danger">Important</span>
 												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
 											</span>
 											<span class="inline-block pull-right">
-												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>							
-												<span class="time">2:32 Am</span>		
+												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
+												<span class="time">2:32 Am</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -978,14 +674,14 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="starred"><i class="fa fa-star fa-lg"></i></span>
-											<span class="from">Jane Doe</span>		
+											<span class="from">Jane Doe</span>
 											<span class="detail">
-												<span class="label label-info">Work</span>		
+												<span class="label label-info">Work</span>
 												Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.
-											</span>		
+											</span>
 											<span class="inline-block pull-right">
-												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>							
-												<span class="time">1:17 Am</span>		
+												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
+												<span class="time">1:17 Am</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -994,10 +690,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">My business</span>		
-											<span class="detail">Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>		
+											<span class="from">My business</span>
+											<span class="detail">Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
 											<span class="inline-block pull-right">
-												<span class="time">Yesterday</span>		
+												<span class="time">Yesterday</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1006,10 +702,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">John Doe</span>		
-											<span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>		
+											<span class="from">John Doe</span>
+											<span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>
 											<span class="inline-block pull-right">
-												<span class="time">Oct 10</span>		
+												<span class="time">Oct 10</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1018,13 +714,13 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">Bill Doe</span>	
+											<span class="from">Bill Doe</span>
 											<span class="detail">
-												<span class="label label-danger">Important</span>												
+												<span class="label label-danger">Important</span>
 												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
-											</span>		
+											</span>
 											<span class="inline-block pull-right">
-												<span class="time">Oct 9</span>		
+												<span class="time">Oct 9</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1033,13 +729,13 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">My friend</span>		
+											<span class="from">My friend</span>
 											<span class="detail">
-												<span class="label label-warning">Private</span>												
+												<span class="label label-warning">Private</span>
 												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
-											</span>		
+											</span>
 											<span class="inline-block pull-right">
-												<span class="time">Oct 9</span>			
+												<span class="time">Oct 9</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1048,12 +744,12 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">John Doe</span>		
+											<span class="from">John Doe</span>
 											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
 											<span class="inline-block pull-right">
-												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>							
-												<span class="time">Sep 27</span>		
-											</span>							
+												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
+												<span class="time">Sep 27</span>
+											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
 											<label class="label-checkbox inline">
@@ -1061,10 +757,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="starred"><i class="fa fa-star fa-lg"></i></span>
-											<span class="from">Jane Doe</span>		
-											<span class="detail">Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.</span>		
+											<span class="from">Jane Doe</span>
+											<span class="detail">Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.</span>
 											<span class="inline-block pull-right">
-												<span class="time">Sep 25</span>		
+												<span class="time">Sep 25</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1073,13 +769,13 @@
 												 <span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">My business</span>		
+											<span class="from">My business</span>
 											<span class="detail">
-												<span class="label label-info">Work</span>		
+												<span class="label label-info">Work</span>
 												Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-											</span>		
+											</span>
 											<span class="inline-block pull-right">
-												<span class="time">Sep 1</span>		
+												<span class="time">Sep 1</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1088,10 +784,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">John Doe</span>		
+											<span class="from">John Doe</span>
 											<span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>
-											<span class="inline-block pull-right">								
-												<span class="time">Aug 30</span>		
+											<span class="inline-block pull-right">
+												<span class="time">Aug 30</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1100,10 +796,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="starred"><i class="fa fa-star fa-lg"></i></span>
-											<span class="from">Bill Doe</span>		
-											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>		
+											<span class="from">Bill Doe</span>
+											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
 											<span class="inline-block pull-right">
-												<span class="time">Aug 18</span>		
+												<span class="time">Aug 18</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1112,10 +808,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">My friend</span>		
-											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>		
+											<span class="from">My friend</span>
+											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
 											<span class="inline-block pull-right">
-												<span class="time">Aug 17</span>		
+												<span class="time">Aug 17</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1124,10 +820,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="starred"><i class="fa fa-star fa-lg"></i></span>
-											<span class="from">Jane Doe</span>		
-											<span class="detail">Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.</span>		
+											<span class="from">Jane Doe</span>
+											<span class="detail">Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.</span>
 											<span class="inline-block pull-right">
-												<span class="time">July 13</span>		
+												<span class="time">July 13</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1136,10 +832,10 @@
 												 <span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">My business</span>		
-											<span class="detail">Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>		
+											<span class="from">My business</span>
+											<span class="detail">Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
 											<span class="inline-block pull-right">
-												<span class="time">July 13</span>		
+												<span class="time">July 13</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1148,10 +844,10 @@
 												 <span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">John Doe</span>		
-											<span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>		
+											<span class="from">John Doe</span>
+											<span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>
 											<span class="inline-block pull-right">
-												<span class="time">July 11</span>		
+												<span class="time">July 11</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1160,10 +856,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">Bill Doe</span>		
-											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>		
+											<span class="from">Bill Doe</span>
+											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
 											<span class="inline-block pull-right">
-												<span class="time">July 8</span>		
+												<span class="time">July 8</span>
 											</span>
 										</li>
 										<li class="list-group-item clearfix inbox-item">
@@ -1172,10 +868,10 @@
 												<span class="custom-checkbox"></span>
 											</label>
 											<span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-											<span class="from">My friend</span>		
-											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>		
+											<span class="from">My friend</span>
+											<span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
 											<span class="inline-block pull-right">
-												<span class="time">July 4</span>		
+												<span class="time">July 4</span>
 											</span>
 										</li>
 									</ul><!-- /list-group -->
@@ -1195,55 +891,11 @@
 							</div><!-- /tab3 -->
 						</div><!-- /tab-content -->
 					</div><!-- /.col -->
-				</div><!-- /.row -->			
+				</div><!-- /.row -->
 			</div><!-- /.padding-md -->
-		</div><!-- /main-container -->
-	</div><!-- /wrapper -->
+      {% endblock %}
 
-	<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
-	
-	<!-- Logout confirmation -->
-	<div class="custom-popup width-100" id="logoutConfirm">
-		<div class="padding-md">
-			<h4 class="m-top-none"> Do you want to logout?</h4>
-		</div>
-
-		<div class="text-center">
-			<a class="btn btn-success m-right-sm" href="login.html">Logout</a>
-			<a class="btn btn-danger logoutConfirm_close">Cancel</a>
-		</div>
-	</div>
-	
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-	
-	<!-- Jquery -->
-	<script src="/static/js/jquery-1.10.2.min.js"></script>
-	
-	<!-- Bootstrap -->
-    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-   
+      {%block javascript%}
 	<!-- holder -->
 	<script src='/static/js/uncompressed/holder.js'></script>
-	
-	<!-- Modernizr -->
-	<script src='/static/js/modernizr.min.js'></script>
-	
-	<!-- Pace -->
-	<script src='/static/js/pace.min.js'></script>
-	
-	<!-- Popup Overlay -->
-	<script src='/static/js/jquery.popupoverlay.min.js'></script>
-	
-	<!-- Slimscroll -->
-	<script src='/static/js/jquery.slimscroll.min.js'></script>
-	
-	<!-- Cookie -->
-	<script src='/static/js/jquery.cookie.min.js'></script>
-	
-	<!-- Endless -->
-	<script src="/static/js/endless/endless.js"></script>
-	
-  </body>
-</html>
+{%endblock%}
