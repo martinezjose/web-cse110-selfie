@@ -187,37 +187,24 @@
     <ul class="tab-bar grey-tab">
 
 			{% for category in category_list %}
-				{% if }
-
+				{% if forloop.counter == 0 %}
 					<li class="active">
-						<a href="#overview" data-toggle="tab">
+    		{% else %}
+					<li>
+				{%endif%}
+
+						<a href="#{{category.CategoryName}}" data-toggle="tab">
 							<span class="block text-center">
 								<i class="fa fa-home fa-2x"></i>
 							</span>
-							Antipasti
+							{{category.CategoryName}}
 						</a>
 					</li>
 
+		{%endfor%}
 
 
-
-					<li>
-						<a href="#edit" data-toggle="tab">
-							<span class="block text-center">
-								<i class="fa fa-edit fa-2x"></i>
-							</span>
-							Pastas
-						</a>
-					</li>
-					<li>
-						<a href="#message" data-toggle="tab">
-							<span class="block text-center">
-								<i class="fa fa-envelope fa-2x"></i>
-							</span>
-							Meat
-						</a>
-					</li>
-						<a style="margin-top:14px;margin-left:14px" href="#formModal" role="button" data-toggle="modal" class="btn btn-primary btn-small"><i class="fa fa-plus-circle"></i>
+						<a style="margin-top:13px;margin-left:13px;margin-bottom:13px" href="#formModal" role="button" data-toggle="modal" class="btn btn-primary btn-small"><i class="fa fa-plus-circle"></i>
 							New category</a>
 		</ul>
 
@@ -232,7 +219,10 @@
 
 						<div class="col-md-9 col-sm-9">
 							<div class="tab-content">
-								<div class="tab-pane fade" id="edit">
+
+{% for category in category_list %}
+
+								<div class="tab-pane fade in active" id="{{category.CategoryName}}">
 
 									<div class="panel panel-default table-responsive">
 										<div class="panel-heading">
@@ -250,15 +240,21 @@
 												</tr>
 											</thead>
 											<tbody>
+
+												{% for item in items_list %}
+
 												<tr>
+
+
+
 													<td class="text-center hidden-xs">
 														<img data-src="holder.js/60x60" alt="Product Image" src=".">
 													</td>
 													<td class="text-center">
-														Leather Bag
+														items_list[forloop.counter].ItemName
 													</td>
 													<td class="text-center">
-														$50
+														$items_list[forloop.counter].Price
 													</td>
 													<td class="text-center">
 														102
@@ -267,40 +263,8 @@
 														<a class="btn btn-sm btn-success">Edit</a>
 													</td>
 												</tr>
-												<tr>
-													<td class="text-center hidden-xs">
-														<img data-src="holder.js/60x60" alt="Product Image" src=".">
-													</td>
-													<td class="text-center">
-														Brown Sunglasses
-													</td>
-													<td class="text-center">
-														$80
-													</td>
-													<td class="text-center">
-														310
-													</td>
-													<td class="text-center">
-														<a class="btn btn-sm btn-success">Edit</a>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center hidden-xs">
-														<img data-src="holder.js/60x60" alt="Product Image" src=".">
-													</td>
-													<td class="text-center">
-														Summer Dress
-													</td>
-													<td class="text-center">
-														$35
-													</td>
-													<td class="text-center">
-														89
-													</td>
-													<td class="text-center">
-														<a class="btn btn-sm btn-success">Edit</a>
-													</td>
-												</tr>
+												{%endfor%}
+
 											</tbody>
 										</table>
 										<div class="panel-footer text-right">
@@ -309,212 +273,39 @@
 										</div>
 									</div><!-- /panel -->
 								</div><!-- /tab1 -->
-								<div class="tab-pane fade in active" id="overview">
+				{%endfor%}
 
-									<div class="panel panel-default table-responsive">
-										<div class="panel-heading">
-											Products
-											<span class="label label-danger pull-right">3 Items</span>
-										</div>
-										<table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
-											<thead>
-												<tr>
-													<th></th>
-													<th class="text-center">Name</th>
-													<th class="text-center">Price</th>
-													<th class="text-center">Total Sales</th>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td class="text-center hidden-xs">
-														<img data-src="holder.js/60x60" alt="Product Image" src=".">
-													</td>
-													<td class="text-center">
-														Leather Bag
-													</td>
-													<td class="text-center">
-														$50
-													</td>
-													<td class="text-center">
-														102
-													</td>
-													<td class="text-center">
-														<a class="btn btn-sm btn-success">Edit</a>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center hidden-xs">
-														<img data-src="holder.js/60x60" alt="Product Image" src=".">
-													</td>
-													<td class="text-center">
-														Brown Sunglasses
-													</td>
-													<td class="text-center">
-														$80
-													</td>
-													<td class="text-center">
-														310
-													</td>
-													<td class="text-center">
-														<a class="btn btn-sm btn-success">Edit</a>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center hidden-xs">
-														<img data-src="holder.js/60x60" alt="Product Image" src=".">
-													</td>
-													<td class="text-center">
-														Summer Dress
-													</td>
-													<td class="text-center">
-														$35
-													</td>
-													<td class="text-center">
-														89
-													</td>
-													<td class="text-center">
-														<a class="btn btn-sm btn-success">Edit</a>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<div class="panel-footer text-right">
-											<a class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Product</a>
-											<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-										</div>
-									</div><!-- /panel -->
-								</div><!-- /tab1 -->
-<div class="tab-pane fade" id="message">
-
-	<div class="panel panel-default table-responsive">
-		<div class="panel-heading">
-			Products
-			<span class="label label-danger pull-right">3 Items</span>
-		</div>
-		<table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
-			<thead>
-				<tr>
-					<th></th>
-					<th class="text-center">Name</th>
-					<th class="text-center">Price</th>
-					<th class="text-center">Total Sales</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="text-center hidden-xs">
-						<img data-src="holder.js/60x60" alt="Product Image" src=".">
-					</td>
-					<td class="text-center">
-						Leather Bag
-					</td>
-					<td class="text-center">
-						$50
-					</td>
-					<td class="text-center">
-						102
-					</td>
-					<td class="text-center">
-						<a class="btn btn-sm btn-success">Edit</a>
-					</td>
-				</tr>
-				<tr>
-					<td class="text-center hidden-xs">
-						<img data-src="holder.js/60x60" alt="Product Image" src=".">
-					</td>
-					<td class="text-center">
-						Brown Sunglasses
-					</td>
-					<td class="text-center">
-						$80
-					</td>
-					<td class="text-center">
-						310
-					</td>
-					<td class="text-center">
-						<a class="btn btn-sm btn-success">Edit</a>
-					</td>
-				</tr>
-				<tr>
-					<td class="text-center hidden-xs">
-						<img data-src="holder.js/60x60" alt="Product Image" src=".">
-					</td>
-					<td class="text-center">
-						Summer Dress
-					</td>
-					<td class="text-center">
-						$35
-					</td>
-					<td class="text-center">
-						89
-					</td>
-					<td class="text-center">
-						<a class="btn btn-sm btn-success">Edit</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="panel-footer text-right">
-			<a class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Product</a>
-			<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-		</div>
-	</div><!-- /panel -->
-</div><!-- /tab1 -->
 							</div><!-- /tab-content -->
 						</div><!-- /.col -->
 					</div><!-- /.row -->
 				</div><!-- /.padding-md -->
 
 
-			<div class="modal fade" id="formModal">
+			<div class="modal fade" id="formModal"
+			>
   			<div class="modal-dialog">
     			<div class="modal-content">
       				<div class="modal-header">
         				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h4>Register Form</h4>
+						<h4>New Category</h4>
       				</div>
 				    <div class="modal-body">
-						<form>
-							<div class="form-group">
-								<label>Username</label>
-								<input type="text" class="form-control input-sm" placeholder="Username">
-							</div><!-- /form-group -->
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Password</label>
-										<input type="password" class="form-control input-sm" placeholder="Password">
-									</div>
-								</div><!-- /.col -->
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Confirm Password</label>
-										<input type="password" class="form-control input-sm" placeholder="Password">
-									</div>
-								</div><!-- /.col -->
-							</div><!-- /.row -->
-
+						<form action="/categories/new" method="post" id="basic-constraint" data-validate="parsley" novalidate>
+							{% csrf_token %}
 
 							<div class="form-group">
-								<label>Email</label>
-								<input type="text" class="form-control input-sm" placeholder="test@example.com">
+								<label>Name</label>
+								<input type="text" data-required="true" name="CategoryName" class="form-control input-sm" placeholder="Type the category name">
 							</div><!-- /form-group -->
-							<div class="form-group">
-								 <label class="label-checkbox">
-								 <input type="checkbox" class="regular-checkbox">
-								 <span class="custom-checkbox"></span>
-									 I accept the user agreement.
-								</label>
-							</div><!-- /form-group -->
+
+
+							<div class="modal-footer">
+									<button class="btn btn-success btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+							<input type="submit"  value="Submit" class="btn btn-danger btn-sm"></input>
+							</div>
 						</form>
 				    </div>
-				    <div class="modal-footer">
-				        <button class="btn btn-success btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
-						<a href="#" class="btn btn-danger btn-sm">Submit</a>
-				    </div>
+
 			  	</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div>
@@ -531,6 +322,8 @@
 
 <!-- Google Code Prettify -->
 <script src='/static/js/uncompressed/run_prettify.js'></script>
+
+
 
 
 {%endblock%}

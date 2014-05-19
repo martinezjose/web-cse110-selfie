@@ -8,7 +8,11 @@ from google.appengine.ext import ndb
 
 
 def index(request):
-    return render(request, 'lobsternachos/items/index.html')
+    category_list = Category.query().fetch()
+    template_values = {
+        'category_list': category_list,
+    }
+    return render(request, 'lobsternachos/items/index.html',template_values)
 
 def show(request):
     return render(request, 'lobsternachos/items/show.html')

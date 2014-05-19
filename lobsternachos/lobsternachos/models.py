@@ -7,6 +7,10 @@ class Category(ndb.Model):
     LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
 
 class Item(ndb.Model):
+
+    """Properties in creation template:
+    ItemName. Description. Calories. Price. DailySpecial. Active.
+    """
     ItemName = ndb.StringProperty(required=True)
     Price = ndb.FloatProperty(required=True)
     Likes = ndb.IntegerProperty(required=True)
@@ -28,6 +32,8 @@ class Item(ndb.Model):
     Thumbnail = ndb.BlobKeyProperty()
 
     CategoryID = ndb.KeyProperty(kind=Category,required=True)
+
+
 
 
 class Tablet(ndb.Model):

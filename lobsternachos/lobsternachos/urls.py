@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from lobsternachos.controllers.home import *
-from lobsternachos.controllers.items import *
+import lobsternachos.controllers.items  as items
+import lobsternachos.controllers.categories as categories
 
 
 urlpatterns = patterns('',
@@ -10,7 +11,10 @@ urlpatterns = patterns('',
     (r'^$', main_page),
 
     # Items
-    (r'^items/index$', index),
+    (r'^items$', items.index),
+
+    # Categories
+    (r'^categories/new$', categories.new),
 
     # Accounts
     (r'^lock_screen.html$', lock_screen),
