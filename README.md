@@ -1,4 +1,4 @@
-#Current version is 2 in AppEngine
+#Current version is 2 in AppEngine (raj test)
 
 #Django Framework for Google App Engine
 This project will hold the web pages and web apis for our interactive menu project.
