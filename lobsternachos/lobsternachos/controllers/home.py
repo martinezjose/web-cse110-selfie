@@ -19,9 +19,9 @@ DEFAULT_GUESTBOOK_NAME = 'default_guestbook'
 # entity group. Queries across the single entity group will be consistent.
 # However, the write rate should be limited to ~1/second.
 
-#def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
-#    """Constructs a Datastore key for a Guestbook entity with guestbook_name."""
-#    return ndb.Key('Guestbook', guestbook_name)
+def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
+    """Constructs a Datastore key for a Guestbook entity with guestbook_name."""
+    return ndb.Key('Guestbook', guestbook_name)
 
 class Greeting(ndb.Model):
     """Models an individual Guestbook entry with author, content, and date."""
@@ -30,11 +30,11 @@ class Greeting(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
 
 def main_page(request):
-    #guestbook_name = request.GET.get('guestbook_name', DEFAULT_GUESTBOOK_NAME)
+    guestbook_name = request.GET.get('guestbook_name', DEFAULT_GUESTBOOK_NAME)
     cat = Category()
     greetings_query = Greeting.query(
-            #ancestor=guestbook_key(guestbook_name)
-            ).order(-Greeting.key)
+            ancestor=guestbook_key(guestbook_name)
+            ).order(-Greeting.date)
     greetings = greetings_query.fetch(100)
 
     if users.get_current_user():
@@ -46,7 +46,7 @@ def main_page(request):
 
     template_values = {
         'greetings': greetings,
-         #'guestbook_name': urllib.quote_plus(guestbook_name),
+         'guestbook_name': urllib.quote_plus(guestbook_name),
         'url': url,
         'url_linktext': url_linktext,
 
@@ -61,26 +61,18 @@ def sign_post(request):
 # should be limited to ~1/second.
 
   if request.method == 'POST':
-    #guestbook_name = request.GET.get('guestbook_name', DEFAULT_GUESTBOOK_NAME)
+    guestbook_name = request.GET.get('guestbook_name', DEFAULT_GUESTBOOK_NAME)
 
-    greeting = Greeting()#parent=guestbook_key(guestbook_name))
+    greeting = Greeting(parent=guestbook_key(guestbook_name))
 
     if users.get_current_user():
       greeting.author = users.get_current_user()
 
+
     greeting.content = request.POST.get('content')
-    for x in range(0,10000):
-      greeting = Greeting()
-      greeting.author = users.get_current_user()
-      greeting.content = request.POST.get('content')
-      greeting.put()
+    greeting.put()
 
-      greetings_query = Greeting.query(
-              #ancestor=guestbook_key(guestbook_name)
-              ).order(-Greeting.key)
-      greetings = greetings_query.fetch(100)
-
-    return HttpResponseRedirect('/')#?' + urllib.urlencode({'guestbook_name': guestbook_name}))
+    return HttpResponseRedirect('/?' + urllib.urlencode({'guestbook_name': guestbook_name}))
   return HttpResponseRedirect('/')
 
 # Base

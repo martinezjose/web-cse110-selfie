@@ -8,9 +8,9 @@ from google.appengine.ext import ndb
 
 
 def index(request):
-    category_list = Category.query().fetch()
+    categories_list = Category.query(ancestor=GlobalAncestor()).fetch()
     template_values = {
-        'category_list': category_list,
+        'categories_list': categories_list,
     }
     return render(request, 'lobsternachos/items/index.html',template_values)
 

@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     (r'^items$', items.index),
 
     # Categories
-    (r'^categories/new$', categories.new),
+    (r'^categories/create$', categories.create),
 
     # Accounts
     (r'^lock_screen.html$', lock_screen),

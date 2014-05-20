@@ -1,6 +1,12 @@
 from google.appengine.ext import ndb
 from random import randint
 
+DEFAULT_CATALOG_NAME = 'default_catalog'
+
+def GlobalAncestor():
+    """Constructs a Datastore key for a LobsterNachos entity with default_catalog."""
+    return ndb.Key('Catalog', DEFAULT_CATALOG_NAME)
+
 class Category(ndb.Model):
     CategoryName = ndb.StringProperty(required=True)
     Created = ndb.DateTimeProperty(auto_now_add=True,required=True)

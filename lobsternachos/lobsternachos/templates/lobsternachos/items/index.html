@@ -1,7 +1,11 @@
 {%extends 'lobsternachos/blank.html'%}
-{% block title %} - Menu{% endblock %}
-
+{%block title%} - Menu{%endblock%}
 {%block css%}
+
+<!-- Datatable -->
+<link href="/static/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+
+
 <!-- Gritter -->
 <link href="/static/css/gritter/jquery.gritter.css" rel="stylesheet">
 
@@ -171,161 +175,370 @@
 									</ul>
 								</li>
 
-                {%endblock%}
+								{%endblock%}
 
-		  {%block breadcrumb%}
-	         <li>Page</li>
-					 <li class="active">Profile</li>
-      {%endblock%}
-
-
-
-
-
-
+			{%block breadcrumb%}
+					<li class="active">Items</li>
+			{%endblock%}
 			{%block content%}
-    <ul class="tab-bar grey-tab">
+			<ul class="tab-bar grey-tab">
 
-			{% for category in category_list %}
-				{% if forloop.counter == 0 %}
-					<li class="active">
-    		{% else %}
-					<li>
-				{%endif%}
+				{% for category in categories_list %}
 
-						<a href="#{{category.CategoryName}}" data-toggle="tab">
+					{% if forloop.first %}
+						<li class="active">
+					{% else %}
+						<li>
+					{%endif%}
+
+					<a href="#{{category.CategoryName}}" data-toggle="tab">
+						<span class="block text-center">
+							<i class="fa fa-home fa-2x"></i>
+						</span>
+						{{category.CategoryName}}
+					</a>
+				</li>
+				{%endfor%}
+
+		{% if not categories_list %}
+		<li class="active">
+
+						<a href="#noCategories" data-toggle="tab">
 							<span class="block text-center">
 								<i class="fa fa-home fa-2x"></i>
 							</span>
-							{{category.CategoryName}}
+							Items
 						</a>
 					</li>
+		{%endif%}
+				<a style="margin-top:13px;margin-left:13px;margin-bottom:13px" href="#formNewCategory" role="button" data-toggle="modal" class="btn btn-primary btn-small"><i class="fa fa-plus-circle"></i>
+					New category</a>
+			</ul>
 
-		{%endfor%}
+			<div class="padding-md">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="tab-content">
 
+					{% if not categories_list %}
+							<div class="tab-pane fade in active" id="noCategories">
 
-						<a style="margin-top:13px;margin-left:13px;margin-bottom:13px" href="#formModal" role="button" data-toggle="modal" class="btn btn-primary btn-small"><i class="fa fa-plus-circle"></i>
-							New category</a>
-		</ul>
+								<h3 class="headline m-top-md">
+									No categories
+									<span class="line"></span>
+														</h3>
 
-				<div class="padding-md">
-		<!--	<h5 class="headline">
-				My Skill
-				<span class="line"></span>
-			</h5> -->
-
-					<div class="row">
-
-
-						<div class="col-md-9 col-sm-9">
-							<div class="tab-content">
-
-{% for category in category_list %}
-
-								<div class="tab-pane fade in active" id="{{category.CategoryName}}">
-
-									<div class="panel panel-default table-responsive">
-										<div class="panel-heading">
-											Products
-											<span class="label label-danger pull-right">3 Items</span>
+												<p>
+													There doesn't exist categories yet, to create a category, press the  "New category" button.
+												</p>
 										</div>
-										<table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+
+							{%endif%}
+
+
+							{% for category in categories_list %}
+
+							{% if forloop.first %}
+									<div class="tab-pane fade in active" id="{{category.CategoryName}}">
+								{% else %}
+									<div class="tab-pane fade" id="{{category.CategoryName}}">
+							{%endif%}
+
+								<div class="panel panel-default table-responsive">
+									<div class="panel-heading">
+										Data Table
+										<span class="label label-info pull-right">790 Items</span>
+									</div>
+									<div class="padding-md clearfix">
+										<table class="table table-striped" id="dataTable">
 											<thead>
 												<tr>
-													<th></th>
-													<th class="text-center">Name</th>
-													<th class="text-center">Price</th>
-													<th class="text-center">Total Sales</th>
-													<th></th>
+													<th class="no-sort">
+									<label class="label-checkbox">
+										<input type="checkbox" id="chk-all">
+										<span class="custom-checkbox"></span>
+									</label>
+								</th>
+													<th>No</th>
+													<th>Product</th>
+													<th>Price</th>
+													<th>Quantity</th>
+													<th>Sales</th>
+													<th>Last Updated</th>
+													<th>Status</th>
 												</tr>
 											</thead>
 											<tbody>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1001</td>
 
-												{% for item in items_list %}
-
-												<tr>
-
-
-
-													<td class="text-center hidden-xs">
-														<img data-src="holder.js/60x60" alt="Product Image" src=".">
-													</td>
-													<td class="text-center">
-														items_list[forloop.counter].ItemName
-													</td>
-													<td class="text-center">
-														$items_list[forloop.counter].Price
-													</td>
-													<td class="text-center">
-														102
-													</td>
-													<td class="text-center">
-														<a class="btn btn-sm btn-success">Edit</a>
-													</td>
+													<td>Leather Bag</td>
+													<td>$89</td>
+													<td>30</td>
+													<td>187</td>
+													<td>Oct 08,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
 												</tr>
-												{%endfor%}
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1002</td>
 
+													<td>Brown Sunglasses <span class="label label-success m-left-xs">Best Seller</span> </td>
+													<td>$120</td>
+													<td>0</td>
+													<td>861</td>
+													<td>Oct 07,2013</td>
+													<td><span class="label label-danger">Sold Out</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1003</td>
+
+													<td>Casual Boots</td>
+													<td>$99</td>
+													<td>100</td>
+													<td>12</td>
+													<td>Oct 06,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1004</td>
+
+													<td>Lambskin Sport Coat</td>
+													<td>$4000</td>
+													<td>7</td>
+													<td>41</td>
+													<td>Oct 06,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1005</td>
+
+													<td>Summer Dress</td>
+													<td>$310</td>
+													<td>25</td>
+													<td>39</td>
+													<td>Oct 05,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1006</td>
+
+													<td>Duffle Coat</td>
+													<td>$80</td>
+													<td>0</td>
+													<td>20</td>
+													<td>Sep 30,2013</td>
+													<td><span class="label label-danger">Sold out</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1007</td>
+
+													<td>Universal Camera Case</td>
+													<td>$35</td>
+													<td>30</td>
+													<td>3</td>
+													<td>Sep 29,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1008</td>
+
+													<td>Leopard Rose Dress</td>
+													<td>$1500</td>
+													<td>10</td>
+													<td>1</td>
+													<td>Sep 27,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1009</td>
+
+													<td>Casual stripe</td>
+													<td>$50</td>
+													<td>30</td>
+													<td>25</td>
+													<td>Sep 27,2013</td>
+													<td><span class="label label-success">Sold out</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1010</td>
+
+													<td>Italian shirt</td>
+													<td>$70</td>
+													<td>40</td>
+													<td>4</td>
+													<td>Sep 27,2013</td>
+													<td><span class="label label-info">Promotion</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1011</td>
+
+													<td>Iphone 5</td>
+													<td>$400</td>
+													<td>300</td>
+													<td>152</td>
+													<td>Sep 27,2013</td>
+													<td><span class="label label-danger">In stock</span></td>
+												</tr>
+												<tr><td>
+									<label class="label-checkbox">
+										<input type="checkbox" class="chk-row">
+										<span class="custom-checkbox"></span>
+									</label>
+								</td>
+													<td>#1012</td>
+
+													<td>Ipad</td>
+													<td>$350</td>
+													<td>46</td>
+													<td>103</td>
+													<td>Sep 25,2013</td>
+													<td><span class="label label-success">In Stock</span></td>
+												</tr>
 											</tbody>
 										</table>
-										<div class="panel-footer text-right">
-											<a class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Product</a>
-											<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-										</div>
-									</div><!-- /panel -->
-								</div><!-- /tab1 -->
-				{%endfor%}
 
-							</div><!-- /tab-content -->
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.padding-md -->
-
-
-			<div class="modal fade" id="formModal"
-			>
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-      				<div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h4>New Category</h4>
-      				</div>
-				    <div class="modal-body">
-						<form action="/categories/new" method="post" id="basic-constraint" data-validate="parsley" novalidate>
-							{% csrf_token %}
-
-							<div class="form-group">
-								<label>Name</label>
-								<input type="text" data-required="true" name="CategoryName" class="form-control input-sm" placeholder="Type the category name">
-							</div><!-- /form-group -->
-
-
-							<div class="modal-footer">
-									<button class="btn btn-success btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
-							<input type="submit"  value="Submit" class="btn btn-danger btn-sm"></input>
-							</div>
-						</form>
-				    </div>
-
-			  	</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div>
-      {% endblock %}
-
-
-      {%block javascript%}
-
-<!-- holder -->
-<script src='/static/js/uncompressed/holder.js'></script>
-
-<!-- Gritter -->
-<script src="/static/js/jquery.gritter.min.js"></script>
-
-<!-- Google Code Prettify -->
-<script src='/static/js/uncompressed/run_prettify.js'></script>
+									</div><!-- /.padding-md -->
+									<div class="panel-footer text-right">
+										<a class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Product</a>
+										<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+									</div>
+								</div><!-- /panel -->
+							</div><!-- /tab1 -->
+							{%endfor%}
+						</div><!-- /tab-content -->
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.padding-md -->
 
 
 
 
+
+			{% endblock %}
+{%block modal%}
+<div class="modal fade" id="formNewCategory">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4>New Category</h4>
+					</div>
+				<div class="modal-body">
+				<form action="/categories/create" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label>Name</label>
+						<input name="CategoryName" type="text" class="form-control input-sm" placeholder="Name">
+					</div><!-- /form-group -->
+
+					<div class="modal-footer">
+							<button class="btn btn-success btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+					<input type="submit" value="Create" class="btn btn-danger btn-sm"/>
+					</div>
+				</form>
+				</div>
+
+			</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {%endblock%}
-{%block extrajs%}
+			{%block javascript%}
+
+			<!-- Datatable -->
+			<script src='/static/js/jquery.dataTables.min.js'></script>
+
+	<!-- holder -->
+	<script src='/static/js/uncompressed/holder.js'></script>
+
+	<!-- Gritter -->
+	<script src="/static/js/jquery.gritter.min.js"></script>
+
+	<!-- Google Code Prettify -->
+	<script src='/static/js/uncompressed/run_prettify.js'></script>
 {%endblock%}
+
+{%block extrajs%}<script>
+	$(function	()	{
+		$('#dataTable').dataTable( {
+				"bSortClasses" : false,
+
+			"bJQueryUI": true,
+			"sPaginationType": "full_numbers"
+			,"aoColumnDefs" : [ {
+			"bSortable" : false,
+			"aTargets" : [ "no-sort" ]
+	} ]
+		});
+
+
+		$('#chk-all').click(function()	{
+			if($(this).is(':checked'))	{
+				$('#dataTable').find('.chk-row').each(function()	{
+					$(this).prop('checked', true);
+					$(this).parent().parent().parent().addClass('selected');
+				});
+			}
+			else	{
+				$('#dataTable').find('.chk-row').each(function()	{
+					$(this).prop('checked' , false);
+					$(this).parent().parent().parent().removeClass('selected');
+				});
+			}
+		});
+	});
+</script>{%endblock%}

@@ -18,5 +18,11 @@ indexes:
 - kind: Greeting
   ancestor: yes
   properties:
+  - name: __key__
+    direction: desc
+
+- kind: Greeting
+  ancestor: yes
+  properties:
   - name: date
     direction: desc

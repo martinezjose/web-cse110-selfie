@@ -12,14 +12,14 @@ import os
 
 from google.appengine.ext import ndb
 
-def new(request):
+def create(request):
 
   if request.method == 'POST':
 
-    category = Category()
+    category = Category(parent=GlobalAncestor())
     category.CategoryName=request.POST.get('CategoryName')
     if category.CategoryName:
-      category.put()
-
-    return HttpResponseRedirect('/items?')
+      catID = category.put().integer_id()
+      return HttpResponseRedirect('/items?' + urllib.urlencode({'catID': catID}))
+    return HttpResponseRedirect('/items')
   return HttpResponseRedirect('/items')
