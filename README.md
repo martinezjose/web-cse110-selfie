@@ -6,24 +6,31 @@ our interactive menu project.
 
 ## How To's
 
-Downloading source code: 
+####Downloading source code: 
+
 ```appcfg.py download_app -A lobster-nachos -V \<your_app_version\> \<output-dir\>```
-V is version number (current one right above, update this often!)
 
-Deploy app to app engine:
+Note: V is version number (look above to see current version number)
+
+####Deploy app to app engine:
+
 ```appcfg.py update \<name\>```
-\<name\> = where app.yaml is 
 
-Note: Use version number with -V
+Note: \<name\> = where app.yaml is. 
 
-Run:
+Use version number with -V, update as seems sensible.
+
+####Run:
+
 ```dev_appserver.py \<name\>```
+
 (just use . when in directory)
 
-Tests:
+####Tests:
+
 ```python manage.py test```
 
-Tips for Installing:
+####Tips for Installing:
 
 There are many turoials online to install google app engine (google it!). 
 Make sure you instal python first (and django, which is easily 
