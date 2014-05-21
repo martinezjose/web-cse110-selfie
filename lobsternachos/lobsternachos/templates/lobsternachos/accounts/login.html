@@ -35,7 +35,8 @@
 
 				</div>
 				<div class="panel-body">
-					<form class="form-login">
+					<form class="form-login" action="/accounts/login" method="post">
+            {% csrf_token %}
 						<div class="form-group">
 							<label>Username</label>
 							<input type="text" placeholder="Username" class="form-control input-sm bounceIn animation-delay2" >
@@ -60,7 +61,7 @@
 
 						<hr/>
 
-						<a class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" href="index.html"><i class="fa fa-sign-in"></i> Sign in</a>
+						<input type="submit" class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" ><i class="fa fa-sign-in"></i> Sign in</a>
 					</form>
 				</div>
 			</div><!-- /panel -->

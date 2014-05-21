@@ -20,6 +20,6 @@ def create(request):
     category.CategoryName=request.POST.get('CategoryName')
     if category.CategoryName:
       catID = category.put().integer_id()
-      return HttpResponseRedirect('/items?' + urllib.urlencode({'catID': catID}))
-    return HttpResponseRedirect('/items')
-  return HttpResponseRedirect('/items')
+      return HttpResponseRedirect('/menu?' + urllib.urlencode({'catID': catID}))
+    return HttpResponseRedirect('/menu')
+  return HttpResponseRedirect('/menu')

@@ -1,0 +1,383 @@
+{%extends 'lobsternachos/blank.html'%}
+{%block css%}
+
+<!-- Chosen -->
+<link href="/static/css/chosen/chosen.min.css" rel="stylesheet"/>
+
+<!-- Datepicker -->
+<link href="/static/css/datepicker.css" rel="stylesheet"/>
+
+<!-- Timepicker -->
+<link href="/static/css/bootstrap-timepicker.css" rel="stylesheet"/>
+
+<!-- Slider -->
+<link href="/static/css/slider.css" rel="stylesheet"/>
+
+<!-- Tag input -->
+<link href="/static/css/jquery.tagsinput.css" rel="stylesheet"/>
+
+<!-- WYSIHTML5 -->
+<link href="/static/css/bootstrap-wysihtml5.css" rel="stylesheet"/>
+
+<!-- Dropzone -->
+<link href='/static/css/dropzone/dropzone.css' rel="stylesheet"/>
+{%endblock%}
+
+
+{%block breadcrumb%}
+		<li class="active"><a href="/menu">Menu</a></li>
+		<li >New Menu Item</li>
+{%endblock%}
+
+
+
+
+{% block nav %}
+	<li >
+		<a href="/">
+			<span class="menu-icon">
+				<i class="fa fa-desktop fa-lg"></i>
+			</span>
+			<span class="text">
+				Dashboard
+			</span>
+			<span class="menu-hover"></span>
+		</a>
+	</li>
+
+	<li class="active openable open">
+		<a href="#">
+			<span class="menu-icon">
+				<i class="fa fa-cog fa-lg"></i>
+			</span>
+			<span class="text">
+				Options
+			</span>
+			<span class="menu-hover"></span>
+		</a>
+		<ul class="submenu">
+
+			<li class="active" ><a href="/menu">
+
+				<span class=" submenu-label">Menu</span>
+<span style="float:right" class="menu-icon">
+<i class="fa fa-cutlery fa-lg"></i>
+</span>
+
+	</a>
+
+
+</li>
+			<li><a href="/pings">
+
+<span class=" submenu-label">Pings
+<span class="badge badge-danger bounceIn animation-delay1">6</span>
+
+</span>
+
+<span style="float:right" class="menu-icon">
+<i class="fa fa-bell fa-lg"></i>
+</span>
+
+</a>
+
+
+</li><li><a href="/orders">
+
+<span class=" submenu-label">Orders
+<span class="badge badge-danger bounceIn animation-delay1">4</span>
+
+</span>
+
+<span style="float:right" class="menu-icon">
+<i class="fa fa-shopping-cart fa-lg"></i>
+</span>
+
+</a>
+
+
+</li><li><a href="/tables">
+
+<span class=" submenu-label">Tables</span>
+<span style="float:right" class="menu-icon">
+<i class="fa fa-tablet fa-lg"></i>
+</span>
+
+</a>
+
+
+</li><li><a href="/guide">
+
+<span class=" submenu-label">Guide</span>
+<span style="float:right" class="menu-icon">
+<i class="fa fa-question-circle fa-lg"></i>
+</span>
+
+</a>
+
+
+</li>
+
+	</ul>
+	</li>
+
+{% endblock %}
+
+{%block content%}
+
+
+<div class="padding-md">
+				<div class="row">
+					<div class="col-md-12">
+
+
+<div class="panel panel-default">
+
+
+	<form action="/menu/create" class="form-horizontal no-margin " id="formWizard1" novalidate>
+
+
+		<div class="panel-heading">
+			New Menu Item
+		</div>
+		<div class="panel-tab">
+			<ul class="wizard-steps wizard-demo" id="wizardDemo1">
+				<li class="active">
+					<a href="#wizardContent1" data-toggle="tab">Information</a>
+				</li>
+				<li>
+					<a href="#wizardContent2" data-toggle="tab">Images</a>
+				</li>
+				<li>
+					<a href="#wizardContent3" data-toggle="tab">Recommendations</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="panel-body">
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="wizardContent1">
+
+
+
+
+
+					<div class="form-group">
+						<label class="control-label col-lg-2">Name</label>
+						<div class="col-lg-10">
+							<input type="text" placeholder="Menu Item Name" class="form-control input-sm" data-required="true">
+						</div><!-- /.col -->
+					</div><!-- /form-group -->
+
+
+
+
+
+
+
+					<div class="form-group">
+						<label class="control-label col-lg-2">Description</label>
+						<div class="col-lg-10">
+							<textarea class="form-control input-sm" rows="3" data-required="true" placeholder="Description"></textarea>
+
+						</div><!-- /.col -->
+					</div><!-- /form-group -->
+
+
+																				<div class="form-group">
+<label class="control-label col-lg-2">Calories</label>
+																					<div class="col-lg-10">
+<input type="text" class="form-control input-sm" placeholder="Calories" data-required="true">
+																					</div><!-- /.col -->
+
+
+
+</div>
+	<div class="form-group">
+<label class="control-label col-lg-2">Price</label>
+		<div class="col-lg-10">
+<input type="text" class="form-control input-sm" placeholder="$0.00" data-required="true">
+		</div><!-- /.col -->
+
+
+																			</div><!-- /form-group -->
+																			<div class="form-group">
+																				<div class="col-lg-offset-2 col-lg-10">
+																					<label class="label-checkbox">
+																						<input name="Daily Special" type="checkbox" >
+																						<span class="custom-checkbox"></span>
+																						Daily Special
+																					</label>
+																				</div><!-- /.col -->
+																			</div><!-- /form-group -->
+
+
+
+
+
+
+
+
+																			<div class="form-group">
+																				<div class="col-lg-offset-2 col-lg-10">
+																					<label class="label-checkbox">
+																						<input name="Active" type="checkbox">
+																						<span class="custom-checkbox"></span>
+																						Active
+																					</label>
+																				</div><!-- /.col -->
+																			</div><!-- /form-group -->
+
+
+
+</div>
+
+
+
+
+				<div class="tab-pane fade" id="wizardContent2">
+
+
+
+
+
+
+
+
+		<fieldset class="form-horizontal form-border">
+
+			<div class="form-group">
+				<label class="control-label col-lg-2">Dropzone</label>
+				<div class="col-lg-10">
+					<div class="alert">
+						<i class="fa fa-warning"></i><span class="m-left-xs">This is just a demo dropzone. Uploaded files are not stored.</span>
+					</div>
+<div id="imgUpload" class="dropzone">
+							<div class="fallback">
+							<input name="file" type="file" multiple />
+							</div>
+</div>
+				</div><!-- /.col -->
+			</div><!-- /form-group -->
+		</fieldset>
+</div>
+
+
+				<div class="tab-pane fade padding-md" id="wizardContent3">
+
+
+<div class="form-group">
+	<label class="control-label col-lg-2">Select the recommended items for this menu item</label>
+	<div class="col-lg-10">
+
+
+
+
+
+
+		<select multiple="multiple" id="selectedBox1" class="select-box pull-left form-control">
+			<option value="1">Apple</option>
+			<option value="2">Banana</option>
+			<option value="3">Cola</option>
+			<option value="4">Dog</option>
+			<option value="5">Elephant</option>
+		</select>
+
+		<div class="select-box-option">
+			<a class="btn btn-sm btn-default" id="btnRemove">
+				<i class="fa fa-angle-left"></i>
+			</a>
+			<a class="btn btn-sm btn-default" id="btnSelect">
+				<i class="fa fa-angle-right"></i>
+			</a>
+			<div class="seperator"></div>
+			<a class="btn btn-sm btn-default" id="btnRemoveAll">
+				<i class="fa fa-angle-double-left"></i>
+			</a>
+			<a class="btn btn-sm btn-default" id="btnSelectAll">
+				<i class="fa fa-angle-double-right"></i>
+			</a>
+		</div>
+
+		<select multiple="multiple" id="selectedBox2" class="select-box pull-right form-control">
+			<option>Alabama</option>
+			<option>Montana</option>
+			<option>New Jersey</option>
+			<option>New York</option>
+			<option>Texas</option>
+		</select>
+	</div><!-- /.col -->
+
+</div><!-- /form-group -->
+
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer clearfix">
+			<div class="pull-left">
+				<button class="btn btn-success btn-sm disabled" id="prevStep1" disabled>Previous</button>
+				<button type="submit" class="btn btn-sm btn-success" id="nextStep1">Next</button>
+			</div>
+
+			<div class="pull-right" style="width:30%">
+				<div class="progress progress-striped active m-top-sm m-bottom-none">
+					<div class="progress-bar progress-bar-success" id="wizardProgress" style="width:33%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div><!-- /panel -->
+
+
+          </div>
+
+        </div>
+      </div>
+{%endblock%}
+
+
+{%block javascript%}
+<!-- Chosen -->
+<script src='/static/js/chosen.jquery.min.js'></script>
+
+<!-- Mask-input -->
+<script src='/static/js/jquery.maskedinput.min.js'></script>
+
+<!-- Datepicker -->
+<script src='/static/js/bootstrap-datepicker.min.js'></script>
+
+<!-- Timepicker -->
+<script src='/static/js/bootstrap-timepicker.min.js'></script>
+
+<!-- Slider -->
+<script src='/static/js/bootstrap-slider.min.js'></script>
+
+<!-- Tag input -->
+<script src='/static/js/jquery.tagsinput.min.js'></script>
+
+<!-- WYSIHTML5 -->
+<script src='/static/js/wysihtml5-0.3.0.min.js'></script>
+<script src='/static/js/uncompressed/bootstrap-wysihtml5.js'></script>
+
+<!-- Dropzone -->
+<script src='/static/js/dropzone.min.js'></script>
+
+<!-- Parsley -->
+<script src="/static/js/parsley.min.js"></script>
+
+{%endblock%}
+
+{%block extrajs%}
+<!-- Endless -->
+<script src="/static/js/endless/endless_wizard.js"></script>
+
+<!-- Endless -->
+<script src="/static/js/endless/endless_form.js"></script>
+
+<script type="text/javascript">
+		var myDropzone = new Dropzone("div#imgUpload", { url: "/menu/create"}) //according to your forms action
+</script>
+
+
+{%endblock%}

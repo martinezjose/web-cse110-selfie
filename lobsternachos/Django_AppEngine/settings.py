@@ -1,6 +1,7 @@
 # Django settings for Django_AppEngine project.
 import os
 
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -77,14 +78,24 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = ('django.contrib.sessions.middleware.SessionMiddleware',
+
+'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
+
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+from userbackend import *
+
+AUTHENTICATION_BACKENDS = (
+    #'django.contrib.auth.backends.RemoteUserBackend',
+    'CustomRemoteUserBackend',
 )
 
 ROOT_URLCONF = 'Django_AppEngine.urls'

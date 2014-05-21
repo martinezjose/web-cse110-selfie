@@ -39,17 +39,7 @@ class Item(ndb.Model):
 
     CategoryID = ndb.KeyProperty(kind=Category,required=True)
 
-
-
-
-class Tablet(ndb.Model):
-  MacAdress =  ndb.StringProperty(required=True)
-  TabletName = ndb.StringProperty(required=True)
-  Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
-  LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
-
 class Table(ndb.Model):
-  TabletID =  ndb.KeyProperty(kind=Tablet)
   TableName = ndb.StringProperty(required=True)
   PairingCode = ndb.ComputedProperty(lambda self: self.get_unique_pairing_code)
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
@@ -70,7 +60,6 @@ class Ping(ndb.Model):
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
   LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
 
-
 class Recommendation(ndb.Model):
     ItemID =  ndb.KeyProperty(kind=Item,required=True)
     RecommendedItemID =  ndb.KeyProperty(kind=Item,required=True)
@@ -79,18 +68,14 @@ class Recommendation(ndb.Model):
 
 class Order(ndb.Model):
   TableID =  ndb.KeyProperty(kind=Table,required=True)
-  Rating = ndb.IntegerProperty(required=True)
   StatusID = ndb.IntegerProperty(required=True)
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
   LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
   DateClosed = ndb.DateTimeProperty()
 
-
 class OrderDetail(ndb.Model):
-
   OrderID =  ndb.KeyProperty(kind=Order,required=True)
   ItemID =  ndb.KeyProperty(kind=Item,required=True)
-
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
   LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
   Quantity = ndb.IntegerProperty(required=True)
