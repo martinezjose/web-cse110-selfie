@@ -1,15 +1,25 @@
 from django.conf.urls.defaults import *
 from lobsternachos.controllers.home import *
+
 import lobsternachos.controllers.menu  as menu
-import lobsternachos.controllers.categories as categories
 import lobsternachos.controllers.accounts as accounts
+import lobsternachos.controllers.categories as categories
+
 import lobsternachos.controllers.webapi.categories as categoriesWebAPI
+import lobsternachos.controllers.webapi.items as itemsWebAPI
 
 
 urlpatterns = patterns('',
 
     # WebAPI
-    (r'^webapi$',categoriesWebAPI.get_all),
+    (r'^webapi/categories$',categoriesWebAPI.get_all),
+    (r'^webapi/items$',itemsWebAPI.get_all),
+
+    (r'^webapi/recommendations$',categoriesWebAPI.get_all),
+    (r'^webapi/orders$',categoriesWebAPI.get_all),
+    (r'^webapi/pings$',categoriesWebAPI.get_all),
+    (r'^webapi/tables$',categoriesWebAPI.get_all),
+
 
     # Dashboard
     (r'^$', index),
