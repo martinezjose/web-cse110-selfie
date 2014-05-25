@@ -3,9 +3,14 @@ from lobsternachos.controllers.home import *
 import lobsternachos.controllers.menu  as menu
 import lobsternachos.controllers.categories as categories
 import lobsternachos.controllers.accounts as accounts
+import lobsternachos.controllers.webapi.categories as categoriesWebAPI
 
 
 urlpatterns = patterns('',
+
+    # WebAPI
+    (r'^webapi$',categoriesWebAPI.get_all),
+
     # Dashboard
     (r'^$', index),
 

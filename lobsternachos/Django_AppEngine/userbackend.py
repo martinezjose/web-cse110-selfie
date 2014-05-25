@@ -1,5 +1,31 @@
 from django.contrib.auth.models import User
 
+from django.contrib.auth.backends import RemoteUserBackend
+
+class CustomRemoteUserBackend (RemoteUserBackend):
+
+    # Create a User object if not already in the database?
+    create_unknown_user = False
+
+    def get_user (self, user_id):
+        user = self.create_user (CustomUser, user_id)
+        return user
+
+    def authenticate (self, **credentials):
+        #self.check_credentials()
+        user = self.create_user (CustomUser, credentials)
+        return user
+
+
+    def create_user(self,CustomUser,credentials):
+      user = CustomUser()
+      user.username = 'Admin'
+      password = 'Passoword'
+      is_staff = True
+      is_active = True
+      is_superuser = True
+      return user
+
 class CustomUser (User):
 
     def save (self):
@@ -20,23 +46,3 @@ class CustomUser (User):
     def get_and_delete_messages (self):
         """Messages are stored in the DB. Darn!"""
         return []
-
-from django.contrib.auth.backends import RemoteUserBackend
-
-class CustomRemoteUserBackend (RemoteUserBackend):
-    # Create a User object if not already in the database?
-    create_unknown_user = False
-
-    def createUser (self, myUser, user_id):
-        user = CustomUser();
-        user.username = user_id
-        return user
-
-    def get_user (self, user_id):
-        user = self.createUser (CustomUser, user_id)
-        return user
-
-    def authenticate (self, **credentials):
-        #check_credentials ()
-        user = self.createUser (CustomUser, credentials)
-        return user

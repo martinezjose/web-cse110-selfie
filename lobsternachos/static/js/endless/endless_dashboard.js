@@ -1,14 +1,14 @@
 $(function	()	{
 
 	//Flot Chart
-	//Website traffic chart				
+	//Website traffic chart
 	var init = { data: [[0, 5], [1, 8], [2, 5], [3, 8], [4, 7], [5,9], [6, 8], [7, 8], [8, 10], [9, 12], [10, 10]],
 			 label: "Visitor"
 		},
-		options = {	
+		options = {
 			series: {
 				lines: {
-					show: true, 
+					show: true,
 					fill: true,
 					fillColor: 'rgba(55,180,148,0.2)'
 				},
@@ -24,9 +24,9 @@ $(function	()	{
 			colors: ["#37b494"]
 		},
 		plot;
-			
+
 	plot = $.plot($('#placeholder'), [init], options);
-			
+
 	$("<div id='tooltip'></div>").css({
 		position: "absolute",
 		display: "none",
@@ -42,11 +42,11 @@ $(function	()	{
 
 		var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
 		$("#hoverdata").text(str);
-	
+
 		if (item) {
 			var x = item.datapoint[0],
 				y = item.datapoint[1];
-			
+
 				$("#tooltip").html("Visitor : " + y)
 				.css({top: item.pageY+5, left: item.pageX+5})
 				.fadeIn(200);
@@ -61,7 +61,7 @@ $(function	()	{
 			plot.highlight(item.series, item.datapoint);
 		}
 	});
-			
+
 	var animate = function () {
 	   $('#placeholder').animate( {tabIndex: 0}, {
 		   duration: 3000,
@@ -73,23 +73,23 @@ $(function	()	{
 
 				 plot.setData( [{ data: r }] );
 			 plot.draw();
-			}	
+			}
 		});
 	}
-		
+
 	animate();
 
 	//Morris Chart
 	var donutChart = Morris.Donut({
 	  element: 'donutChart',
 	  data: [
-		{label: "Download Sales", value: 1236},
-		{label: "In-Store Sales", value: 3091},
-		{label: "Mail-Order Sales", value: 2781}
+		{label: "Sea Food Orders", value: 1236},
+		{label: "Drinks Orders", value: 3091},
+		{label: "Appetizers Orders", value: 2781}
 	  ],
 	  colors: ['#ffc545','#9ad268' ,'#fe402b']
 	});
-	
+
 	var lineChart = Morris.Line({
 		element: 'lineChart',
 		data: [
@@ -107,7 +107,7 @@ $(function	()	{
 		lineColors: ['#7ee1ff', '#1bc8fc'],
 		gridTextColor : '#fff'
 	});
-	
+
 	var barChart = Morris.Bar({
 	  element: 'barChart',
 	  data: [
@@ -128,18 +128,18 @@ $(function	()	{
 
 	//Sparkline
 	$('#visits').sparkline([15,19,20,22,33,27,31,27,19,30,21,10,15,18,25,9], {
-		type: 'bar', 
-		barColor: '#fa4c38',	
+		type: 'bar',
+		barColor: '#fa4c38',
 		height:'35px',
 		weight:'96px'
 	});
 	$('#balances').sparkline([220,160,189,156,201,220,104,242,221,111,164,242,183,165], {
-		type: 'bar', 
-		barColor: '#92cf5c',	
+		type: 'bar',
+		barColor: '#92cf5c',
 		height:'35px',
 		weight:'96px'
 	});
-	
+
 	//Timeline color box
 	$('.timeline-img').colorbox({
 		rel:'group1',
@@ -152,20 +152,20 @@ $(function	()	{
 		setTimeout(function() {
 			donutChart.redraw();
 			lineChart.redraw();
-			barChart.redraw();			
-			
+			barChart.redraw();
+
 			$.plot($('#placeholder'), [init], options);
-		},500);	
+		},500);
 	});
-	
+
 	$('.size-toggle').click(function()	{
 		//resize morris chart
 		setTimeout(function() {
 			donutChart.redraw();
 			lineChart.redraw();
-			barChart.redraw();	
+			barChart.redraw();
 
-			$.plot($('#placeholder'), [init], options);			
+			$.plot($('#placeholder'), [init], options);
 		},500);
 	});
 
@@ -173,26 +173,26 @@ $(function	()	{
 	$('.refresh-button').click(function() {
 		var _overlayDiv = $(this).parent().children('.loading-overlay');
 		_overlayDiv.addClass('active');
-		
+
 		setTimeout(function() {
 			_overlayDiv.removeClass('active');
 		}, 2000);
-		
+
 		return false;
 	});
-	
+
 	$(window).resize(function(e)	{
-		
+
 		//Sparkline
 		$('#visits').sparkline([15,19,20,22,33,27,31,27,19,30,21,10,15,18,25,9], {
-			type: 'bar', 
-			barColor: '#fa4c38',	
+			type: 'bar',
+			barColor: '#fa4c38',
 			height:'35px',
 			weight:'96px'
 		});
 		$('#balances').sparkline([220,160,189,156,201,220,104,242,221,111,164,242,183,165], {
-			type: 'bar', 
-			barColor: '#92cf5c',	
+			type: 'bar',
+			barColor: '#92cf5c',
 			height:'35px',
 			weight:'96px'
 		});
@@ -201,75 +201,75 @@ $(function	()	{
 		setTimeout(function() {
 			donutChart.redraw();
 			lineChart.redraw();
-			barChart.redraw();			
-			
+			barChart.redraw();
+
 			$.plot($('#placeholder'), [init], options);
 		},500);
 	});
-	
+
 	$(window).load(function(e)	{
-	
+
 		//Number Animation
 		var currentUser = $('#userCount').text();
 		$({numberValue: 0}).animate({numberValue: currentUser}, {
 			duration: 2500,
 			easing: 'linear',
-			step: function() { 
-				$('#userCount').text(Math.ceil(this.numberValue)); 
+			step: function() {
+				$('#userCount').text(Math.ceil(this.numberValue));
 			}
 		});
-				
+
 		var currentServerload = $('#serverloadCount').text();
 		$({numberValue: 0}).animate({numberValue: currentServerload}, {
 			duration: 2500,
 			easing: 'linear',
-			step: function() { 
-				$('#serverloadCount').text(Math.ceil(this.numberValue)); 
+			step: function() {
+				$('#serverloadCount').text(Math.ceil(this.numberValue));
 			}
 		});
-			
+
 		var currentOrder = $('#orderCount').text();
 		$({numberValue: 0}).animate({numberValue: currentOrder}, {
 			duration: 2500,
 			easing: 'linear',
-			step: function() { 
-				$('#orderCount').text(Math.ceil(this.numberValue)); 
+			step: function() {
+				$('#orderCount').text(Math.ceil(this.numberValue));
 			}
 		});
-			
+
 		var currentVisitor = $('#visitorCount').text();
 		$({numberValue: 0}).animate({numberValue: currentVisitor}, {
 			duration: 2500,
 			easing: 'linear',
-			step: function() { 
-				$('#visitorCount').text(Math.ceil(this.numberValue)); 
+			step: function() {
+				$('#visitorCount').text(Math.ceil(this.numberValue));
 			}
 		});
-	
+
 		setInterval(function() {
 			var currentNumber = $('#userCount').text();
 			var randomNumber = Math.floor(Math.random()*20) + 1;
-			var newNumber = parseInt(currentNumber, 10) + parseInt(randomNumber, 10); 
-		
+			var newNumber = parseInt(currentNumber, 10) + parseInt(randomNumber, 10);
+
 			$({numberValue: currentNumber}).animate({numberValue: newNumber}, {
 				duration: 500,
 				easing: 'linear',
-				step: function() { 
-					$('#userCount').text(Math.ceil(this.numberValue)); 
+				step: function() {
+					$('#userCount').text(Math.ceil(this.numberValue));
 				}
 			});
 		}, 3000);
-			
+
 		setInterval(function() {
 			var currentNumber = $('#visitorCount').text();
 			var randomNumber = Math.floor(Math.random()*50) + 1;
-			var newNumber = parseInt(currentNumber, 10) + parseInt(randomNumber, 10); 
-		
+			var newNumber = parseInt(currentNumber, 10) + parseInt(randomNumber, 10);
+
 			$({numberValue: currentNumber}).animate({numberValue: newNumber}, {
 				duration: 500,
 				easing: 'linear',
-				step: function() { 
-					$('#visitorCount').text(Math.ceil(this.numberValue)); 
+				step: function() {
+					$('#visitorCount').text(Math.ceil(this.numberValue));
 				}
 			});
 		}, 5000);

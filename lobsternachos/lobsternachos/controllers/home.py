@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 import sys
 from google.appengine.api import users
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from lobsternachos.models import *
 
@@ -88,6 +90,9 @@ def search_result(request):
 def landing(request):
   return render(request, 'lobsternachos/home/landing.html')
 
+
+
+#@login_required(login_url='/accounts/login')
 def index(request):
 
 

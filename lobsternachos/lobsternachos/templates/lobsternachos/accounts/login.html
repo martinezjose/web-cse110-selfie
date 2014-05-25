@@ -17,7 +17,6 @@
 	<link href="/static/css/endless.min.css" rel="stylesheet">
 
   </head>
-
   <body>
 	<div class="login-wrapper">
 		<div class="text-center">
@@ -35,7 +34,7 @@
 
 				</div>
 				<div class="panel-body">
-					<form class="form-login" action="/accounts/login" method="post">
+					<div class="form-login" action="" method="post">
             {% csrf_token %}
 						<div class="form-group">
 							<label>Username</label>
@@ -61,8 +60,9 @@
 
 						<hr/>
 
-						<input type="submit" class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" ><i class="fa fa-sign-in"></i> Sign in</a>
-					</form>
+					</div>
+          <a href="/" class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" ><i class="fa fa-sign-in"></i> Sign in</a>
+
 				</div>
 			</div><!-- /panel -->
 		</div><!-- /login-widget -->

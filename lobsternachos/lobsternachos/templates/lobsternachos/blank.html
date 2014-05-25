@@ -189,8 +189,11 @@
 				</div><!-- /search-block -->
 				<div class="main-menu">
 					<ul>
-{% block nav %}
-						<li class="active">
+
+            {% block nav %}
+
+						<li >
+            {% endblock %}
 							<a href="/">
 								<span class="menu-icon">
 									<i class="fa fa-desktop fa-lg"></i>
@@ -202,7 +205,12 @@
 							</a>
 						</li>
 
+{% block options_nav %}
+
 						<li class="openable open">
+              {% endblock %}
+
+
 							<a href="#">
 								<span class="menu-icon">
 									<i class="fa fa-cog fa-lg"></i>
@@ -214,7 +222,10 @@
 							</a>
 							<ul class="submenu">
 
-								<li><a href="/menu">
+{% block menu_nav %}
+<li>
+  {%endblock %}
+								<a href="/menu">
 
                   <span class=" submenu-label">Menu</span>
 <span style="float:right" class="menu-icon">
@@ -225,7 +236,9 @@
 
 
         </li>
-								<li><a href="/pings">
+        {% block pings_nav %}
+        <li>
+          {%endblock %}<a href="/pings">
 
           <span class=" submenu-label">Pings
         <span class="badge badge-danger bounceIn animation-delay1">6</span>
@@ -239,7 +252,10 @@
     </a>
 
 
-</li><li><a href="/orders">
+</li>
+{% block orders_nav %}
+<li>
+  {%endblock %}<a href="/orders">
 
   <span class=" submenu-label">Orders
 <span class="badge badge-danger bounceIn animation-delay1">4</span>
@@ -253,7 +269,10 @@
 </a>
 
 
-</li><li><a href="/tables">
+</li>
+{% block tables_nav %}
+<li>
+  {%endblock %}<a href="/tables">
 
   <span class=" submenu-label">Tables</span>
 <span style="float:right" class="menu-icon">
@@ -263,7 +282,10 @@
 </a>
 
 
-</li><li><a href="/guide">
+</li>
+{% block guide_nav %}
+<li>
+  {%endblock %}<a href="/guide">
 
   <span class=" submenu-label">Guide</span>
 <span style="float:right" class="menu-icon">
@@ -278,7 +300,6 @@
 						</ul>
 						</li>
 
-{% endblock %}
 					</ul>
 
 					<div class="alert alert-info">

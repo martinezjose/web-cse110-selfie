@@ -38,8 +38,10 @@ class ItemTestCase(unittest.TestCase):
         # Next, declare which service stubs you want to use.
         self.testbed.init_datastore_v3_stub()
         self.testbed.init_memcache_stub()
+
         keyAppetizer = Category(CategoryName='Appetizer').put()
         keyDish = Category(CategoryName='Dish').put()
+
         Item(ItemName='Lobster',
           Price=10.99,
           Likes=999,
@@ -48,6 +50,7 @@ class ItemTestCase(unittest.TestCase):
           Description='Very yummi, wow',
           DailySpecial=False,
           CategoryID=keyDish).put()
+
         Item(ItemName='Nachos',
           Price=4.99,
           Likes=123,

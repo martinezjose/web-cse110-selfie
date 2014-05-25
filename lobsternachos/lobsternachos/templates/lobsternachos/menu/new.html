@@ -25,103 +25,20 @@
 
 
 {%block breadcrumb%}
-		<li class="active"><a href="/menu">Menu</a></li>
-		<li >New Menu Item</li>
+		<li ><a href="/menu">Menu</a></li>
+		<li class="active">New Menu Item</li>
 {%endblock%}
 
 
 
 
-{% block nav %}
-	<li >
-		<a href="/">
-			<span class="menu-icon">
-				<i class="fa fa-desktop fa-lg"></i>
-			</span>
-			<span class="text">
-				Dashboard
-			</span>
-			<span class="menu-hover"></span>
-		</a>
-	</li>
-
+{% block options_nav %}
 	<li class="active openable open">
-		<a href="#">
-			<span class="menu-icon">
-				<i class="fa fa-cog fa-lg"></i>
-			</span>
-			<span class="text">
-				Options
-			</span>
-			<span class="menu-hover"></span>
-		</a>
-		<ul class="submenu">
-
-			<li class="active" ><a href="/menu">
-
-				<span class=" submenu-label">Menu</span>
-<span style="float:right" class="menu-icon">
-<i class="fa fa-cutlery fa-lg"></i>
-</span>
-
-	</a>
-
-
-</li>
-			<li><a href="/pings">
-
-<span class=" submenu-label">Pings
-<span class="badge badge-danger bounceIn animation-delay1">6</span>
-
-</span>
-
-<span style="float:right" class="menu-icon">
-<i class="fa fa-bell fa-lg"></i>
-</span>
-
-</a>
-
-
-</li><li><a href="/orders">
-
-<span class=" submenu-label">Orders
-<span class="badge badge-danger bounceIn animation-delay1">4</span>
-
-</span>
-
-<span style="float:right" class="menu-icon">
-<i class="fa fa-shopping-cart fa-lg"></i>
-</span>
-
-</a>
-
-
-</li><li><a href="/tables">
-
-<span class=" submenu-label">Tables</span>
-<span style="float:right" class="menu-icon">
-<i class="fa fa-tablet fa-lg"></i>
-</span>
-
-</a>
-
-
-</li><li><a href="/guide">
-
-<span class=" submenu-label">Guide</span>
-<span style="float:right" class="menu-icon">
-<i class="fa fa-question-circle fa-lg"></i>
-</span>
-
-</a>
-
-
-</li>
-
-	</ul>
-	</li>
-
 {% endblock %}
+
+{% block menu_nav %}
+<li class="active" >
+{%endblock %}
 
 {%block content%}
 
