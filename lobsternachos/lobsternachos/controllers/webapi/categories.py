@@ -20,34 +20,23 @@ from time import mktime
 
 from django.http import HttpResponse
 
-
-
 class MyEncoder(json.JSONEncoder):
 
-    def default(self, obj):
-        if isinstance(obj, datetime.datetime):
+  def default(self, obj):
+    if isinstance(obj, datetime.datetime):
+      #yyyy-MM-dd HH:mm:ss
+      return obj.strftime('%Y-%m-%d %H:%M:%S')
 
-          #strftime('We are the %d, %b %Y')
-#'We are the 22, Nov 2008'
-#All the letter after a "%" represent a format for something :
+    return json.JSONEncoder.default(self, obj)
 
-#%d is the day number
-#%m is the month number
-#%b is the month abbreviation
-#%y is the year last two digits
-#%Y is the all year
-#yyyy-MM-dd HH:mm:ss
-            return obj.strftime('%Y-%m-%d %H:%M:%s')
-
-        return json.JSONEncoder.default(self, obj)
-
-
+# Get all items from database, and return the list as a json string
 def get_all(request):
 
-  #data = json.dumps()
-
-  data = json.dumps([p.to_dict() for p in Category.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
-
+  data = json.dumps([{'CategoryID':p.key.integer_id(),
+    'CategoryName':p.CategoryName,
+    'Created':p.Created,
+    'LastUpdated':p.LastUpdated} for p in Category.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
+	
 
   return HttpResponse(data, content_type="application/json")
-      # Get all items from database, and return the list as a json string
+  
