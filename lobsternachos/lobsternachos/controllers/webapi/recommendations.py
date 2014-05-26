@@ -29,19 +29,14 @@ class MyEncoder(json.JSONEncoder):
 
     return json.JSONEncoder.default(self, obj)
 
-# Get all items from database, and return the list as a json string
 def get_all(request):
 
 	data = json.dumps([{
-	'ItemID':p.key.integer_id(),
-	'ItemName':p.ItemName,
-	'Price':p.Price,
-	'Likes':p.Likes,
-	'Active':p.Active,
-	'Calories':p.Calories,
-	'Created':p.Created,
-	'LastUpdated':p.LastUpdated} 
-  for p in Item.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
+	'ItemID':p.ItemID,
+	'RecommendedItemID':p.RecommendedItemID,
+  'Created':p.Created,
+  'LastUpdated':p.LastUpdated} 
+   for p in Recommendation.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
 	
 	return HttpResponse(data, content_type="application/json")
   

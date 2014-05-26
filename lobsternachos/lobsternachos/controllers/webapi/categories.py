@@ -32,7 +32,8 @@ class MyEncoder(json.JSONEncoder):
 # Get all items from database, and return the list as a json string
 def get_all(request):
 
-  data = json.dumps([{'CategoryID':p.key.integer_id(),
+  data = json.dumps([{
+    'CategoryID':p.key.integer_id(),
     'CategoryName':p.CategoryName,
     'Created':p.Created,
     'LastUpdated':p.LastUpdated} for p in Category.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)

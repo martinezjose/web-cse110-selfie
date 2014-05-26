@@ -7,6 +7,7 @@ import lobsternachos.controllers.categories as categories
 
 import lobsternachos.controllers.webapi.categories as categoriesWebAPI
 import lobsternachos.controllers.webapi.items as itemsWebAPI
+import lobsternachos.controllers.webapi.recommendations as recommendationsWebAPI
 
 
 urlpatterns = patterns('',
@@ -14,11 +15,7 @@ urlpatterns = patterns('',
     # WebAPI
     (r'^webapi/categories$',categoriesWebAPI.get_all),
     (r'^webapi/items$',itemsWebAPI.get_all),
-
-    (r'^webapi/recommendations$',categoriesWebAPI.get_all),
-    (r'^webapi/orders$',categoriesWebAPI.get_all),
-    (r'^webapi/pings$',categoriesWebAPI.get_all),
-    (r'^webapi/tables$',categoriesWebAPI.get_all),
+    (r'^webapi/recommendations$',recommendationsWebAPI.get_all),
 
 
     # Dashboard
