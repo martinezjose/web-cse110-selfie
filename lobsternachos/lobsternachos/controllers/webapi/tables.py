@@ -29,13 +29,14 @@ class MyEncoder(json.JSONEncoder):
 
     return json.JSONEncoder.default(self, obj)
 
-# Get all items from database, and return the list as a json string
-def index(request):
 
-  data = json.dumps([{'CategoryID':p.key.integer_id(),
-    'CategoryName':p.CategoryName,
+def get_all(request):
+
+  data = json.dumps([{
+    'TableID':p.key.integer_id(),
+    'TableName':p.TableName,
     'Created':p.Created,
-    'LastUpdated':p.LastUpdated} for p in Category.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
-
+    'LastUpdated':p.LastUpdated
+  for p in Table.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
 
   return HttpResponse(data, content_type="application/json")

@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from lobsternachos.models import *
 
 # Home
 urlpatterns = patterns('lobsternachos.controllers.home',
