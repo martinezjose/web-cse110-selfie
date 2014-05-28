@@ -3,7 +3,7 @@ from random import randint
 
 DEFAULT_CATALOG_NAME = 'default_catalog'
 
-def GlobalAncestor():
+def GetAncestor():
     """Constructs a Datastore key for a LobsterNachos entity with default_catalog."""
     return ndb.Key('Catalog', DEFAULT_CATALOG_NAME)
 
@@ -79,3 +79,14 @@ class OrderDetail(ndb.Model):
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
   LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
   Quantity = ndb.IntegerProperty(required=True)
+
+class MessageType:
+  ADDED = 1
+  REMOVED = 2
+  UPDATED = 3
+  UNDEFINED = 0
+
+class Message():
+  def __init__(self, text = "", messageType = MessageType.UNDEFINED):
+    self.Text = x
+    self.MessageType = y

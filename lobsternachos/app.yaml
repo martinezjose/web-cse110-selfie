@@ -12,10 +12,6 @@ handlers:
 - url: /.*
   script: main.application
 
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
-
 libraries:
 - name: webapp2
   version: latest

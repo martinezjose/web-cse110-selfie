@@ -26,7 +26,7 @@
 
 {%block breadcrumb%}
 		<li ><a href="/menu">Menu</a></li>
-		<li class="active">New Menu Item</li>
+		<li class="active">Add Menu Item</li>
 {%endblock%}
 
 
@@ -48,14 +48,14 @@
 					<div class="col-md-12">
 
 
-<div class="panel panel-default">
+<div class="panel panel-default  fadeInDown animation-delay2">
 
 
 	<form action="/menu/create" class="form-horizontal no-margin " id="formWizard1" novalidate>
 
 
 		<div class="panel-heading">
-			New Menu Item
+			Add Menu Item
 		</div>
 		<div class="panel-tab">
 			<ul class="wizard-steps wizard-demo" id="wizardDemo1">
@@ -113,7 +113,11 @@
 	<div class="form-group">
 <label class="control-label col-lg-2">Price</label>
 		<div class="col-lg-10">
-<input type="text" class="form-control input-sm" placeholder="$0.00" data-required="true">
+			<div class="input-group">
+										<span class="input-group-addon">$</span>
+<input type="text" class="form-control input-sm" placeholder="0.00" data-required="true">
+									</div>
+
 		</div><!-- /.col -->
 
 

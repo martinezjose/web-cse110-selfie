@@ -15,377 +15,496 @@
 
 
 {% block options_nav %}
-	<li class="active openable open">
-{% endblock %}
+<li class="active openable open">
+	{% endblock %}
 
-{% block menu_nav %}
-<li class="active" >
-{%endblock %}
+	{% block menu_nav %}
+	<li class="active" >
+		{%endblock %}
 
-			{%block breadcrumb%}
-					<li class="active"><a href="/menu">Menu</a></li>
-			{%endblock%}
-			{%block content%}
-			<ul class="tab-bar grey-tab">
+		{%block breadcrumb%}
+		<li class="active">Menu</li>
+		{%endblock%}
 
-				{% for category in categories_list %}
+		{%block content%}
+		<ul class="tab-bar grey-tab">
 
-					{% if forloop.first %}
-						<li class="active">
-					{% else %}
-						<li>
+			{% for category in categoriesList %}
+
+			{%if categoryID %}
+
+			{%if categoryID == category.key.integer_id %}
+			<li class="active">
+				{% else %}
+				<li>
 					{%endif%}
 
-					<a href="#tab{{category.key.integer_id}}" data-toggle="tab">
-						<span class="block text-center">
-							<i class="fa fa-bars fa-2x"></i>
-						</span>
-						{{category.CategoryName}}
-					</a>
-				</li>
-				{%endfor%}
+					{%else%}
+					{% if forloop.first %}
+					<li class="active">
+						{% else %}
+						<li>
+							{%endif%}
+							{%endif%}
 
-		{% if not categories_list %}
-		<li class="active">
+							<a id="link{{category.key.integer_id}}" href="#tab{{category.key.integer_id}}" data-toggle="tab">
+								<span class="block text-center">
+									<i class="fa fa-cutlery fa-2x"></i>
+								</span>
+								{{category.CategoryName}}
+							</a>
+						</li>
+						{%endfor%}
 
-						<a href="#noCategories" data-toggle="tab">
-							<span class="block text-center">
-								<i class="fa fa-bars fa-2x"></i>
-							</span>
-							Items
-						</a>
-					</li>
-		{%endif%}
-				<a style="margin-top:13px;margin-left:13px;margin-bottom:13px" href="#formNewCategory" role="button" data-toggle="modal" class="btn btn-primary btn-small"><i class="fa fa-plus-circle"></i>
-					New category</a>
-			</ul>
 
-			<div class="padding-md">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="tab-content">
+						{% if not categoriesList %}
+						<li class="active">
+							<a href="#noCategories" data-toggle="tab">
+								<span class="block text-center">
+									<i class="fa fa-cutlery fa-2x"></i>
+								</span>
+								Menu
+							</a>
+						</li>
+						{%endif%}
 
-					{% if not categories_list %}
-							<div class="tab-pane fade in active" id="noCategories">
+					{%if categoriesList%}
 
-								<h3 class="headline m-top-md">
-									No categories
-									<span class="line"></span>
+							<form  id="deleteCategoryForm" action="/categories/delete" method="post">
+								{%else%}
+								<form>
+									{%endif%}
+									{% csrf_token %}
+
+									{%if categoryID%}
+									<input id="deleteCategoryInput" type="hidden" name="categoryID" value="{{categoryID}}"/>
+									{%else%}
+									<input id="deleteCategoryInput"  type="hidden" name="categoryID" value="{{categoriesList.0.key.integer_id}}"/>
+									{%endif%}
+									<div style="margin-top:13px;margin-left:13px;margin-bottom:13px" class=" btn-group">
+										<a  role="button"   data-toggle="modal" href="#formNewCategory" class="btn btn-success btn-small"><i class="fa fa-plus-circle"></i>
+											New Category
+										</a>
+
+										{% if categoriesList %}
+										<button class="btn btn-success btn-small dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu slidedown">
+											<li>
+
+												{%if categoryID%}
+												<a    data-toggle="modal" id="editCategoryLink" href="#formEditCategory{{categoryID}}">
+
+													{%else%}
+													<!--<a >submit</a>
+													<input type="submit" value="Sign Guestbook"/>-->
+													<a     data-toggle="modal" id="editCategoryLink" href="#formEditCategory{{categoriesList.0.key.integer_id}}">
+														{%endif%}
+														<i class="fa fa-edit"></i> Edit selected category
+													</a>
+													</li>
+
+													<li>
+
+														<a href="javascript:{}" onclick="document.getElementById('deleteCategoryForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete selected category</a>
+													</li>
+
+												</ul>
+												{% endif %}
+											</div>
+										</form>
+									</ul>
+
+									<div class="padding-md">
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<div class="tab-content">
+
+													{% if not categoriesList %}
+													<div class="tab-pane fade in active" id="noCategories">
+
+														<h3 class="headline m-top-md">
+															No categories
+															<span class="line"></span>
 														</h3>
 
-												<p>
-													There doesn't exist categories yet, to create a category, press the  "New category" button.
-												</p>
-										</div>
+														<p>
+															There doesn't exist categories yet. To create a category, press the "New Category" button.
+														</p>
+													</div>
 
-							{%endif%}
-
-
-							{% for category in categories_list %}
-
-							{% if forloop.first %}
-									<div class="tab-pane fade in active" id="tab{{category.key.integer_id}}">
-								{% else %}
-									<div class="tab-pane fade" id="tab{{category.key.integer_id}}">
-							{%endif%}
-
-								<div class="panel panel-default table-responsive">
-									<div class="panel-heading">
-										Menu Items
-										<span class="label label-info pull-right"><!--{{categories_list|length}}-->5 item{{ categories_list|length|pluralize:",s" }}</span>
-									</div>
-									<div class="padding-md clearfix">
-										<table class="table table-striped" id="dataTable{{category.key.integer_id}}">
-											<thead>
-												<tr>
-													<th class="no-sort">
-									<label class="label-checkbox">
-										<input type="checkbox" id="chk-all{{category.key.integer_id}}">
-										<span class="custom-checkbox"></span>
-									</label>
-								</th>
-								<th class="no-sort"></th>
-													<th>No</th>
-													<th>Product</th>
-													<th>Price</th>
-													<th>Quantity</th>
-													<th>Sales</th>
-													<th>Last Updated</th>
-													<th>Status</th>
-												</tr>
-											</thead>
-											<tbody>
+													{%endif%}
 
 
-{%load lists %}
-			{% for item in items_list|get_at_index:foorloop.counter %}
+													{% for category in categoriesList %}
 
-				<tr>
-
-
-					<td>
-	<label class="label-checkbox">
-		<input type="checkbox" class="chk-row">
-		<span class="custom-checkbox"></span>
-	</label>
-</td>
-
-<td class="text-center hidden-xs">
-								<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
-							</td>
-
-					<td>
-
-						#1001</td>
-
-					<td>Leather Bag</td>
-					<td>$89</td>
-					<td>30</td>
-					<td>187</td>
-					<td>Oct 08,2013</td>
-					<td><span class="label label-success">In Stock</span></td>
-				</tr>
-
-			{%endfor%}
-
-
-<tr>
-
-
-	<td>
-<label class="label-checkbox">
-<input type="checkbox" class="chk-row">
-<span class="custom-checkbox"></span>
-</label>
-</td>
-
-<td class="text-center hidden-xs">
-												<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
-											</td>
-
-	<td>
-
-		1001</td>
-
-	<td>Nachos</td>
-	<td>$7.50</td>
-	<td>30</td>
-	<td>712</td>
-	<td>May 04, 2014</td>
-	<td><span class="label label-success">In Stock</span></td>
-</tr>
-
-
-<tr>
-
-
-	<td>
-<label class="label-checkbox">
-<input type="checkbox" class="chk-row">
-<span class="custom-checkbox"></span>
-</label>
-</td>
-
-<td class="text-center hidden-xs">
-												<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
-											</td>
-
-	<td>
-
-		1002</td>
-
-	<td>Buffalo Wings</td>
-	<td>$6.99</td>
-	<td>76</td>
-	<td>625</td>
-	<td>April 08, 2014</td>
-	<td><span class="label label-success">In Stock</span></td>
-</tr>
-
-
-<tr>
-
-
-	<td>
-<label class="label-checkbox">
-<input type="checkbox" class="chk-row">
-<span class="custom-checkbox"></span>
-</label>
-</td>
-
-<td class="text-center hidden-xs">
-												<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
-											</td>
-	<td>
-
-		1003</td>
-
-	<td>Roasted Oysters with Pancetta and Breadcrumbs</td>
-	<td>$8.99</td>
-	<td>53</td>
-	<td>534</td>
-	<td>April 12, 2014</td>
-	<td><span class="label label-success">In Stock</span></td>
-</tr>
-
-
-<tr>
-
-
-	<td>
-<label class="label-checkbox">
-<input type="checkbox" class="chk-row">
-<span class="custom-checkbox"></span>
-</label>
-</td>
-
-
-<td class="text-center hidden-xs">
-												<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
-											</td>
-	<td>
-
-		1004</td>
-
-	<td>Grilled Stuffed Jalapeños</td>
-	<td>$6.99</td>
-	<td>83</td>
-	<td>487</td>
-	<td>May 15, 2014</td>
-	<td><span class="label label-success">In Stock</span></td>
-</tr>
-
-
-<tr>
-
-
-	<td>
-<label class="label-checkbox">
-<input type="checkbox" class="chk-row">
-<span class="custom-checkbox"></span>
-</label>
-</td>
-
-<td class="text-center hidden-xs">
-												<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAG0ElEQVR4Xu2caU8UXRCFCxUVWQRFRdDwiSiLIqhxQfG3uwHuBiPgEuICGo0LiwIqyOu5ye309DswYzn0UJVzvzE91Z46z626yyTWfPnyZV043DpQQ8Bu2YbECNg3XwJ2zpeACdi7A87z4xpMwM4dcJ4eK5iAnTvgPD1WMAE7d8B5eqxgAnbugPP0WMEE7NwB5+mxggnYuQPO02MFE7BzB5ynxwomYOcOOE+PFUzAzh1wnh4rmICdO+A8PVYwATt3wHl6rGACdu6A8/RYwQTs3AHn6bGCCdi5A87TYwUTsHMHnKfHCiZg5w44T48VTMDOHXCeHiuYgJ074Dw9VjABO3fAeXqsYAJ27oDz9FjBBOzcAefpsYIJ2LkDztOragWvrKzI7Oys/PlPyYPNO3fulJaWFjl+/Ljs2rWrqPXz8/Py4cMHWVpaCs9ra2ultbVVDh8+LDU1NRXDtZ21/U2SVQM8MzMjU1NTG2rt6+uTtra25Pn6+ro8evQomQzZQEyIixcvyt69e/8m/6Lf3c7a/ja5qgD+9OmTPH78uKTW8+fPy/79+8P3MBlg/GZj9+7dcuXKFdmxY0fJd2/0he2sTZNU7oDX1tbk5s2bsrq6muitq6sLLfbNmzeCSo3j4MGDMjAwIGiXt2/fLniGmD179sjc3FxB3j09PdLe3q7xQrazNlVCf4JyB5ytkHTVffv2TcbGxpJcsCZfu3ZN3r9/L5OTk8nnzc3Ncu7cufD369ev5cWLF8kzrOGYFF+/fk3W5N+/f0tjY2OYEHHgeZxM8fni4mJBZ9kKbWfPntWyUsXlDjjbagEKwOL4/v17qCSYjw3Uvn375MGDBwFYHP39/XLo0KHwJzrBjRs3BJAwsNG6dOmSjI6OFlQ81uahoaHwHBPm6dOn/6v8hYWFgmVgK7Rhwm60gVQRLBGUO2AYD4gYSHRwcDC0WVQvoDY1NYUWi+qNIx2Dz7DOpjdTqHrExwGQmBATExMF6Z84cUKOHTsm169fL1giYkfISxuWl7xG7oAjDGyEYtUVS/bUqVNy5MiR8CgNEBUIwOl2mwUcJ0C28jGhUPmo4DjwvuHh4dAt8tTmEvCvX7/k1q1boQWXM86cORPaNzZlMSbdauM7soDRouvr6+Xnz5/h39tsIvX29srRo0clb23l5F+J7+RawRsZjnUW4OKFR0wMn2EdHBkZSSCVAzh9hsZFSnqDljbtwIEDYYnAqIa2SgAs9Y6qA8atFdZGjI8fP8r4+HiBZlxe3L9/P1kz0VKxxm62BmfXaFyQfP78ueC9aNf4XtzwFAOch7ZSgP71ea6AsYlCNS4vLwfdWIex/qV3lXfv3hXsZuPAkQfHoOwmKr1R2WgNju/A+fr58+cFXqFrXL58OfmsWtr+FWCp+FwBQ0x6p1qs3WLn++7du0Q32u309HRy95yt4CwYBKLC4wTAJUm6xacN6erqks7OzuSjvLWVglOJ57kDfvLkSfixII64IcLfgIVN0Y8fP5LnaKOoPrTvONJrLAAiJg50g6tXrybHrHv37gl+oCg2spMlb22VAFjqHbkDzq6zaJXYSOHW6NWrV/Ly5ctEczzC4EybXptxpMHEQAw+T8PH0QpHLIy3b9/Ks2fPNvWgoaFBLly4EC5A8tRWCkylnucOGFWavWhAMoCGo0p6dHR0SHd3dzgi4baqnOMV1mzcYWOdR2tO321j04Rn2R86YqvOS1ul4JXzntwBQxSOQw8fPtxUH4CjPccbrc2OO/FF8dgDUHfu3CnYmKFC4zVh9mYMz7Bbx9l5q7WVA6WS36kKYCSAHx3QXotdQsQfDLI/+xXbDUczcEN1+vTp0GrR0nGLlR4nT54M15QY2KVjt54euOzApcdWa6skvHLeVTXAURw2QLibjqABF5W00cD3EIPNFSoVV5a4v0bFV3psZ23l5lp1wOUK5fd0DhCwzjczUQRsBpVOKAHrfDMTRcBmUOmEErDONzNRBGwGlU4oAet8MxNFwGZQ6YQSsM43M1EEbAaVTigB63wzE0XAZlDphBKwzjczUQRsBpVOKAHrfDMTRcBmUOmEErDONzNRBGwGlU4oAet8MxNFwGZQ6YQSsM43M1EEbAaVTigB63wzE0XAZlDphBKwzjczUQRsBpVOKAHrfDMTRcBmUOmEErDONzNRBGwGlU4oAet8MxNFwGZQ6YQSsM43M1EEbAaVTigB63wzE0XAZlDphBKwzjczUQRsBpVOKAHrfDMTRcBmUOmEErDONzNRBGwGlU4oAet8MxNFwGZQ6YQSsM43M1EEbAaVTigB63wzE0XAZlDphBKwzjczUQRsBpVO6H/JBJX8ivb+WgAAAABJRU5ErkJggg==" style="width: 60px; height: 60px;">
-											</td>
-
-	<td>
-
-		1005</td>
-
-	<td>Polenta-Sausage Triangles</td>
-	<td>$10.99</td>
-	<td>23</td>
-	<td>351</td>
-	<td>May 02, 2014</td>
-	<td><span class="label label-success">In Stock</span></td>
-</tr>
-
-
-
-											</tbody>
-										</table>
-
-									</div><!-- /.padding-md -->
-									<div class="panel-footer text-right">
-										<a href="/menu/new"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Menu Item</a>
-										<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-									</div>
-								</div><!-- /panel -->
-							</div><!-- /tab1 -->
-							{%endfor%}
-						</div><!-- /tab-content -->
-					</div><!-- /.col -->
-				</div><!-- /.row -->
-			</div><!-- /.padding-md -->
+													{% if forloop.first %}
+													<div class="tab-pane fade in active" id="tab{{category.key.integer_id}}">
+														{% else %}
+														<div class="tab-pane fade" id="tab{{category.key.integer_id}}">
+															{%endif%}
 
 
 
 
 
-			{% endblock %}
-{%block modal%}
-<div class="modal fade" id="formNewCategory">
-		<div class="modal-dialog">
-			<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4>New Category</h4>
-					</div>
-				<div class="modal-body">
-				<form action="/categories/create" method="post">
+															<div class="panel panel-default table-responsive fadeInDown animation-delay2">
+																<div class="panel-heading">
+																	Menu Items
+
+																	<span class="label label-info pull-right"><!--{{categoriesList|length}}-->5 item{{ categoriesList|length|pluralize:",s" }}</span>
+																</div>
+
+																<div class="padding-md clearfix">
+																	<table class="table table-striped" id="dataTable{{category.key.integer_id}}">
+																		<thead>
+																			<tr>
+																				<th class="no-sort">
+																					<label class="label-checkbox">
+																						<input type="checkbox" id="chk-all{{category.key.integer_id}}">
+																						<span class="custom-checkbox"></span>
+																					</label>
+																				</th>
+																				<th class="no-sort"></th>
+																				<th>No</th>
+																				<th>Product</th>
+																				<th>Price</th>
+																				<th>Quantity</th>
+																				<th>Sales</th>
+																				<th>Last Updated</th>
+																				<th>Status</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+
+
+																			{%load lists %}
+																			{% for item in items_list|get_at_index:foorloop.counter %}
+
+																			<tr>
+
+
+																				<td>
+																					<label class="label-checkbox">
+																						<input type="checkbox" class="chk-row">
+																						<span class="custom-checkbox"></span>
+																					</label>
+																				</td>
+
+																				<td class="text-center hidden-xs">
+																					<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
+																				</td>
+
+																				<td>
+
+																					#1001</td>
+
+																					<td>Leather Bag</td>
+																					<td>$89</td>
+																					<td>30</td>
+																					<td>187</td>
+																					<td>Oct 08,2013</td>
+																					<td><span class="label label-success">In Stock</span></td>
+																				</tr>
+
+																				{%endfor%}
+
+
+																				<tr>
+
+
+																					<td>
+																						<label class="label-checkbox">
+																							<input type="checkbox" class="chk-row">
+																							<span class="custom-checkbox"></span>
+																						</label>
+																					</td>
+
+																					<td class="text-center hidden-xs">
+																						<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
+																					</td>
+
+																					<td>
+
+																						1001</td>
+
+																						<td>Nachos</td>
+																						<td>$7.50</td>
+																						<td>30</td>
+																						<td>712</td>
+																						<td>May 04, 2014</td>
+																						<td><span class="label label-success">In Stock</span></td>
+																					</tr>
+
+
+																					<tr>
+
+
+																						<td>
+																							<label class="label-checkbox">
+																								<input type="checkbox" class="chk-row">
+																								<span class="custom-checkbox"></span>
+																							</label>
+																						</td>
+
+																						<td class="text-center hidden-xs">
+																							<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
+																						</td>
+
+																						<td>
+
+																							1002</td>
+
+																							<td>Buffalo Wings</td>
+																							<td>$6.99</td>
+																							<td>76</td>
+																							<td>625</td>
+																							<td>April 08, 2014</td>
+																							<td><span class="label label-success">In Stock</span></td>
+																						</tr>
+
+
+																						<tr>
+
+
+																							<td>
+																								<label class="label-checkbox">
+																									<input type="checkbox" class="chk-row">
+																									<span class="custom-checkbox"></span>
+																								</label>
+																							</td>
+
+																							<td class="text-center hidden-xs">
+																								<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
+																							</td>
+																							<td>
+
+																								1003</td>
+
+																								<td>Roasted Oysters with Pancetta and Breadcrumbs</td>
+																								<td>$8.99</td>
+																								<td>53</td>
+																								<td>534</td>
+																								<td>April 12, 2014</td>
+																								<td><span class="label label-success">In Stock</span></td>
+																							</tr>
+
+
+																							<tr>
+
+
+																								<td>
+																									<label class="label-checkbox">
+																										<input type="checkbox" class="chk-row">
+																										<span class="custom-checkbox"></span>
+																									</label>
+																								</td>
+
+
+																								<td class="text-center hidden-xs">
+																									<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
+																								</td>
+																								<td>
+
+																									1004</td>
+
+																									<td>Grilled Stuffed Jalapeños</td>
+																									<td>$6.99</td>
+																									<td>83</td>
+																									<td>487</td>
+																									<td>May 15, 2014</td>
+																									<td><span class="label label-success">In Stock</span></td>
+																								</tr>
+
+
+																								<tr>
+
+
+																									<td>
+																										<label class="label-checkbox">
+																											<input type="checkbox" class="chk-row">
+																											<span class="custom-checkbox"></span>
+																										</label>
+																									</td>
+
+																									<td class="text-center hidden-xs">
+																										<img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,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" style="width: 60px; height: 60px;">
+																									</td>
+
+																									<td>
+
+																										1005</td>
+
+																										<td>Polenta-Sausage Triangles</td>
+																										<td>$10.99</td>
+																										<td>23</td>
+																										<td>351</td>
+																										<td>May 02, 2014</td>
+																										<td><span class="label label-success">In Stock</span></td>
+																									</tr>
+
+
+
+																								</tbody>
+																							</table>
+
+																						</div><!-- /.padding-md -->
+
+
+
+
+
+
+																						<div class="panel-footer text-right">
+
+
+
+
+
+																							<a href="/menu/new"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Menu Item</a>
+																							<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+																						</div>
+																					</div><!-- /panel -->
+																				</div><!-- /tab1 -->
+																				{%endfor%}
+																			</div><!-- /tab-content -->
+																		</div><!-- /.col -->
+																	</div><!-- /.row -->
+																</div><!-- /.padding-md -->
+
+
+
+
+
+																{% endblock %}
+																{%block modal%}
+																<div class="modal fade" id="formNewCategory">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																				<h4>New Category</h4>
+																			</div>
+
+
+																			<div class="modal-body">
+																				<form action="/categories/create" method="post">
+																					{% csrf_token %}
+																					<div class="form-group">
+																						<label>Name</label>
+																						<input name="categoryName" type="text" class="form-control input-sm" placeholder="Name">
+																					</div><!-- /form-group -->
+
+																					<div class="modal-footer">
+																						<button type="submit" class="btn btn-success btn-sm">
+																				Create</button>
+
+																						<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+																					</div>
+																				</form>
+																			</div>
+
+																		</div><!-- /.modal-content -->
+																	</div><!-- /.modal-dialog -->
+																</div><!-- /.modal -->
+{%for category in categoriesList%}
+<div class="modal fade" id="formEditCategory{{category.key.integer_id}}">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4>Edit Category</h4>
+			</div>
+
+
+			<div class="modal-body">
+				<form action="/categories/update" method="post">
+					<input type="hidden" name="categoryID" value="{{category.key.integer_id}}"/>
+
 					{% csrf_token %}
 					<div class="form-group">
 						<label>Name</label>
-						<input name="CategoryName" type="text" class="form-control input-sm" placeholder="Name">
+
+						<input name="categoryName" value="{{category.CategoryName}}" type="text" class="form-control input-sm" placeholder="Name">
 					</div><!-- /form-group -->
 
 					<div class="modal-footer">
-							<button class="btn btn-success btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
-					<input type="submit" value="Create" class="btn btn-danger btn-sm"/>
+						<button type="submit" class="btn btn-info btn-sm">Save Changes</button>
+
+						<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
 					</div>
 				</form>
-				</div>
+			</div>
 
-			</div><!-- /.modal-content -->
+		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-{%endblock%}
-			{%block javascript%}
+		{%endfor%}
+																{%endblock%}
+																{%block javascript%}
 
-			<!-- Datatable -->
-			<script src='/static/js/jquery.dataTables.min.js'></script>
+																<!-- Datatable -->
+																<script src='/static/js/jquery.dataTables.min.js'></script>
 
-	<!-- holder -->
-	<script src='/static/js/uncompressed/holder.js'></script>
+																<!-- holder -->
+																<script src='/static/js/uncompressed/holder.js'></script>
 
-	<!-- Gritter -->
-	<script src="/static/js/jquery.gritter.min.js"></script>
+																<!-- Gritter -->
+																<script src="/static/js/jquery.gritter.min.js"></script>
 
-	<!-- Google Code Prettify -->
-	<script src='/static/js/uncompressed/run_prettify.js'></script>
-{%endblock%}
+																<!-- Google Code Prettify -->
+																<script src='/static/js/uncompressed/run_prettify.js'></script>
+																{%endblock%}
 
-{%block extrajs%}<script>
-	$(function	()	{
-
-
-
-
-		{% for category in categories_list %}
-
-
-		$('#dataTable{{category.key.integer_id}}').dataTable( {
-				"bSortClasses" : false,
-
-			"bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-			,"aoColumnDefs" : [ {
-			"bSortable" : false,
-			"aTargets" : [ "no-sort" ]
-	} ]
-		});
+																{%block extrajs%}<script>
+																$(function	()	{
 
 
 
-		$('#chk-all{{category.key.integer_id}}').click(function()	{
-			if($(this).is(':checked'))	{
-				$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
-					$(this).prop('checked', true);
-					$(this).parent().parent().parent().addClass('selected');
-				});
-			}
-			else	{
-				$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
-					$(this).prop('checked' , false);
-					$(this).parent().parent().parent().removeClass('selected');
-				});
-			}
-		});
+
+																	{% for category in categoriesList %}
 
 
-	{%endfor%}
-});
 
-</script>{%endblock%}
+
+																	$("#link{{category.key.integer_id}}").click(function(){
+
+
+																		$("#editCategoryLink").attr("href","#formEditCategory{{category.key.integer_id}}");
+																		$("#deleteCategoryInput").attr("value","{{category.key.integer_id}}");
+
+																	});
+
+
+																	$('#dataTable{{category.key.integer_id}}').dataTable( {
+																		"bSortClasses" : false,
+
+																		"bJQueryUI": true,
+																		"sPaginationType": "full_numbers"
+																		,"aoColumnDefs" : [ {
+																			"bSortable" : false,
+																			"aTargets" : [ "no-sort" ]
+																		} ]
+																	});
+
+
+
+																	$('#chk-all{{category.key.integer_id}}').click(function()	{
+																		if($(this).is(':checked'))	{
+																			$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
+																				$(this).prop('checked', true);
+																				$(this).parent().parent().parent().addClass('selected');
+																			});
+																		}
+																		else	{
+																			$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
+																				$(this).prop('checked' , false);
+																				$(this).parent().parent().parent().removeClass('selected');
+																			});
+																		}
+																	});
+
+
+																	{%endfor%}
+																});
+
+																</script>{%endblock%}

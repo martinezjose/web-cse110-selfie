@@ -1,18 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from google.appengine.api import users
 from lobsternachos.models import *
-import urllib
-import os
 from google.appengine.ext import ndb
-
-from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 def index(request):
-    categories_list = Category.query(ancestor=GlobalAncestor()).fetch()
+    categoryID=request.GET.get('categoryID')
+    categoriesList = Category.query(ancestor=GetAncestor()).fetch()
     template_values = {
-        'categories_list': categories_list,
+        'categoriesList': categoriesList,
     }
+
+    if categoryID is not None:
+      template_values.update({'categoryID':int(categoryID)})
+
     return render(request, 'lobsternachos/menu/index.html',template_values)
 
 def show(request):

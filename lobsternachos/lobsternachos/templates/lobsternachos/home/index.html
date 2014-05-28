@@ -4,6 +4,11 @@
 	<!-- Morris -->
 	<link href="/static/css/morris.css" rel="stylesheet"/>
 {%endblock%}
+
+{%block title%}
+ - Dashboard
+{%endblock%}
+
 {% block nav %}
 
 <li class="active">
@@ -38,13 +43,13 @@
 			</div><!-- /main-header -->
 
 			<div class="grey-container shortcut-wrapper">
-				<a href="#" class="shortcut-link">
+				<a href="/menu" class="shortcut-link">
 					<span class="shortcut-icon">
 						<i class="fa fa-cutlery"></i>
 					</span>
 					<span class="text">Menu</span>
 				</a>
-				<a href="#" class="shortcut-link">
+				<a href="/pings" class="shortcut-link">
 					<span class="shortcut-icon">
 						<i class="fa fa-bell-o"></i>
 						<span class="shortcut-alert">
@@ -53,7 +58,7 @@
 					</span>
 					<span class="text">Pings</span>
 				</a>
-				<a href="#" class="shortcut-link">
+				<a href="/orders" class="shortcut-link">
 					<span class="shortcut-icon">
 						<i class="fa fa-shopping-cart"></i>
             <span class="shortcut-alert">
@@ -62,14 +67,14 @@
 					</span>
 					<span class="text">Orders</span>
 				</a>
-				<a href="#" class="shortcut-link">
+				<a href="/tables" class="shortcut-link">
 					<span class="shortcut-icon">
 						<i class="fa fa-tablet"></i>
 
 					</span>
 					<span class="text">Tables</span>
 				</a>
-				<a href="#" class="shortcut-link">
+				<a href="/guide" class="shortcut-link">
 					<span class="shortcut-icon">
 						<i class="fa fa-question-circle"></i>
 					</span>
@@ -441,7 +446,7 @@
                 <strong class="text-danger">Lobsters</strong> & Nachos
               </span>
               <p class="no-margin">
-                &copy; 2013 <strong>Lobsters & Nachos Admin</strong>. ALL Rights Reserved.
+                &copy; 2013 <strong>Lobsters & Nachos Admin</strong>. All Rights Reserved.
               </p>
             </div><!-- /.col -->
           </div><!-- /.row-->
