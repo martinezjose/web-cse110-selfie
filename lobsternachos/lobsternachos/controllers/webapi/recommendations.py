@@ -37,6 +37,6 @@ def get_all(request):
 	'RecommendedItemID':p.RecommendedItemID,
   'Created':p.Created,
   'LastUpdated':p.LastUpdated}
-   for p in Recommendation.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
+   for p in Recommendation.query(ancestor=GetAncestor()).fetch()], cls = MyEncoder)
 
 	return HttpResponse(data, content_type="application/json")

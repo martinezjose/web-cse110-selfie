@@ -36,7 +36,7 @@ def get_all(request):
     'TableID':p.key.integer_id(),
     'TableName':p.TableName,
     'Created':p.Created,
-    'LastUpdated':p.LastUpdated
-  for p in Table.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
+    'LastUpdated':p.LastUpdated}
+    for p in Table.query(ancestor=GetAncestor()).fetch()], cls = MyEncoder)
 
   return HttpResponse(data, content_type="application/json")

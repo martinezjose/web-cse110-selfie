@@ -36,8 +36,7 @@ def get_all(request):
     'CategoryID':p.key.integer_id(),
     'CategoryName':p.CategoryName,
     'Created':p.Created,
-    'LastUpdated':p.LastUpdated} for p in Category.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
-	
+    'LastUpdated':p.LastUpdated} for p in Category.query(ancestor=GetAncestor()).fetch()], cls = MyEncoder)
+
 
   return HttpResponse(data, content_type="application/json")
-  

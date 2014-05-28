@@ -42,6 +42,6 @@ def get_all(request):
 	'Calories':p.Calories,
 	'Created':p.Created,
 	'LastUpdated':p.LastUpdated}
-  for p in Item.query(ancestor=GlobalAncestor()).fetch()], cls = MyEncoder)
+  for p in Item.query(ancestor=GetAncestor()).fetch()], cls = MyEncoder)
 
 	return HttpResponse(data, content_type="application/json")

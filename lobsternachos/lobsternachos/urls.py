@@ -58,17 +58,17 @@ urlpatterns += patterns('lobsternachos.controllers.webapi.categories',
     (r'^webapi/categories$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.items',
-    (r'^webapi/items$','index'),
+    (r'^webapi/items$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.recommendations',
-    (r'^webapi/recommendations$','index'),
+    (r'^webapi/recommendations$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.orders',
-    (r'^webapi/orders$','index'),
+    (r'^webapi/orders$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.pings',
-    (r'^webapi/pings$','index'),
+    (r'^webapi/pings$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.tables',
-    (r'^webapi/tables$','index'),
+    (r'^webapi/tables$','get_all'),
 )
