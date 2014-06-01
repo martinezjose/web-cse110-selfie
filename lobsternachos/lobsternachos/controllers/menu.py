@@ -9,6 +9,8 @@ import urllib
 from google.appengine.ext.blobstore import BlobKey
 
 def index(request):
+  if request.method == 'GET':
+
     # Get categories and add to template
     categoriesList = Category.query(ancestor=GetAncestor()).fetch()
     template_values = {
@@ -31,37 +33,39 @@ def index(request):
     if len(itemLists) <> 0:
       template_values.update({'itemLists': itemLists})
     return render(request, 'lobsternachos/menu/index.html',template_values)
+  return render(request, 'lobsternachos/menu/index.html')
 
 def new(request):
+  if request.method == "GET":
 
+    # Create upload url and add to template
     uploadUrl = blobstore.create_upload_url('/blobstore/upload')
     template_values = {
         'uploadUrl': uploadUrl,
     }
+
+    # Check if category id is valid, send to template too
     if isLong(request.GET.get('categoryID') ):
       template_values.update({'categoryID': long(request.GET.get('categoryID'))})
 
     return render(request, 'lobsternachos/menu/new.html', template_values)
-
-def uploadImage(request):
-    print(request)
-    return HttpResponse(request)
+  return HttpResponseRedirect('/menu')
 
 def create(request):
   if request.method == 'POST':
     # Create empty category
     item = Item(parent=GetAncestor())
 
-    # If there exist a name parameter
+    # If there exist the needed parameters
     if isLong(request.POST.get('categoryID')) \
     and request.POST.get('itemName') and request.POST.get('description') \
     and isLong(request.POST.get('calories')) and request.POST.get('price') and \
-    request.POST.get('image1') and request.POST.get('image2') :
+    request.POST.get('image1') and request.POST.get('image2'):
+      # Fill item data
       item.ItemName = request.POST.get('itemName')
       item.Calories = long(request.POST.get('calories'))
       item.Description = request.POST.get('description')
 
-      #ImagePath = ndb.BlobKeyProperty(repeated=True)
       #Thumbnail = ndb.BlobKeyProperty()
 
       item.CategoryID = ndb.Key(Category, long(request.POST.get('categoryID')),
@@ -82,7 +86,7 @@ def create(request):
 
       item.ImagePath = [BlobKey(request.POST.get('image1')) ,BlobKey(request.POST.get('image2'))]
 
-      itemID = item.put().integer_id()
+      item.put().integer_id()
 
       # Redirect with category id
       return HttpResponseRedirect('/menu?' +  urllib.urlencode({'categoryID':request.POST.get('categoryID')}))
@@ -91,5 +95,22 @@ def create(request):
 def edit(request):
     return render(request, 'lobsternachos/menu/edit.html')
 
-def destroy(request):
-    return render(request, 'lobsternachos/menu/destroy.html')
+def delete(request):
+
+  if request.method == 'POST':
+    if isLong(request.POST.get('categoryID')):
+      itemsList = request.POST.getlist('item')
+      for itemID in itemsList:
+        # Check if table id is long
+        if isLong( itemID):
+          # Try to get item
+          item = Item.get_by_id(long(itemID),
+          parent = GetAncestor())
+          # Check if exist
+          if item:
+            item.key.delete()
+      return HttpResponseRedirect('/menu?' +  urllib.urlencode({'categoryID':request.POST.get('categoryID')}))
+  return HttpResponseRedirect('/menu')
+
+
+  

@@ -143,27 +143,27 @@
 
 
 
-<div class="form-group">
+										<div class="form-group">
 
 
-	<label class="control-label col-lg-2">Dropzone</label>
-	<div class="col-lg-10">
-		<div class="alert alert-info">
-			<i class="fa fa-info"></i><span class="m-left-xs">This is just a demo dropzone. Uploaded files are not stored.</span>
-		</div>
-		<input id="image1" type="hidden" name="image1" />
-		<input id="image2" type="hidden" name="image2" data-required="true"  data-required-message="Two images are required"/>
+											<label class="control-label col-lg-2">Dropzone</label>
+											<div class="col-lg-10">
+												<div class="alert alert-info">
+													<i class="fa fa-info"></i><span class="m-left-xs">This is just a demo dropzone. Uploaded files are not stored.</span>
+												</div>
+												<input id="image1" type="hidden" name="image1" />
+												<input id="image2" type="hidden" name="image2" data-required="true"  data-required-message="Two images are required"/>
 
-		<div id="uploadDiv" class="dropzone">
-			<div class="fallback">
+												<div id="uploadDiv" class="dropzone">
+													<div class="fallback">
 
 
-				<input name="file" type="file" multiple />
-			</div>
-		</div>
-	</div><!-- /.col -->
+														<input name="file" type="file" />
+													</div>
+												</div>
+											</div><!-- /.col -->
 
-</div><!-- /form-group -->
+										</div><!-- /form-group -->
 
 									</div>
 
@@ -172,49 +172,33 @@
 
 
 										<div class="form-group">
-											<label class="control-label col-lg-2">Select the recommended items for this menu item</label>
+
+											{%if not categoriesList%}
+											<label class="col-lg-5 control-label">There doesn't exist menu items yet, please create one first.</label>
+
+{%else%}
+
+											<label class="col-lg-2 control-label">Choose the recommended items for this menu item</label>
 											<div class="col-lg-10">
+												<select multiple class="form-control chzn-select">
+{%load lists %}
+
+													{% for category in categoriesList %}
+													<optgroup label="{{category.CategoryName}}">
 
 
+														{% for item in itemLists|get_at_position:forloop.counter %}
 
 
+														<option>{{item.ItemName}}</option>
+{%endfor%}
+													</optgroup>
+													{%endfor%}
 
-
-												<select multiple="multiple" id="selectedBox1" class="select-box pull-left form-control">
-													<option value="1">Apple</option>
-													<option value="2">Banana</option>
-													<option value="3">Cola</option>
-													<option value="4">Dog</option>
-													<option value="5">Elephant</option>
-												</select>
-
-												<div class="select-box-option">
-													<a class="btn btn-sm btn-default" id="btnRemove">
-														<i class="fa fa-angle-left"></i>
-													</a>
-													<a class="btn btn-sm btn-default" id="btnSelect">
-														<i class="fa fa-angle-right"></i>
-													</a>
-													<div class="seperator"></div>
-													<a class="btn btn-sm btn-default" id="btnRemoveAll">
-														<i class="fa fa-angle-double-left"></i>
-													</a>
-													<a class="btn btn-sm btn-default" id="btnSelectAll">
-														<i class="fa fa-angle-double-right"></i>
-													</a>
-												</div>
-
-												<select multiple="multiple" id="selectedBox2" class="select-box pull-right form-control">
-													<option>Alabama</option>
-													<option>Montana</option>
-													<option>New Jersey</option>
-													<option>New York</option>
-													<option>Texas</option>
 												</select>
 											</div><!-- /.col -->
-
+											{%endif%}
 										</div><!-- /form-group -->
-
 
 									</div>
 								</div>
@@ -302,27 +286,21 @@
 
 					myDropzone.on("success", function(file,rep) {
 
-								if (myDropzone.files[2]!=null){
-        					myDropzone.removeFile(myDropzone.files[2]);
 
-									alert("Oops! The maximum number of files was reached.");
-      					}
-								else
-								{
 
-									file.serverId = rep;
+						file.serverId = rep;
 
-									if($('#image1')[0].value == "")
-										$('#image1')[0].value = rep;
-									else
-										$('#image2')[0].value = rep;
-								}
+						if($('#image1')[0].value == "")
+						$('#image1')[0].value = rep;
+						else
+						$('#image2')[0].value = rep;
+
 					});
 
 
-			    myDropzone.on("removedfile", function(file) {
-			      if (!file.serverId) { return; }
-			      $.post("/blobstore/delete/" + file.serverId);
+					myDropzone.on("removedfile", function(file) {
+						if (!file.serverId) { return; }
+						$.post("/blobstore/delete/" + file.serverId);
 
 						if($('#image1')[0].value == file.serverId){
 							$('#image1')[0].value = $('#image2')[0].value;
@@ -330,17 +308,25 @@
 
 						$('#image2').removeAttr('value');
 
-			    });
+					});
 
 					myDropzone.on("addedfile", function() {
 
-								$.get("/blobstore/", function(data) {
+						if (myDropzone.files[2]!=null){
+							myDropzone.removeFile(myDropzone.files[2]);
 
-										myDropzone.options.url = data.uploadUrl;
-										myDropzone.processQueue();
+							alert("Oops! The maximum number of files was reached.");
+						}
+						else
+						{
 
-								});
+							$.get("/blobstore/", function(data) {
 
+								myDropzone.options.url = data.uploadUrl;
+								myDropzone.processQueue();
+
+							});
+						}
 						// Show submit button here and/or inform user to click it.
 					});
 				}

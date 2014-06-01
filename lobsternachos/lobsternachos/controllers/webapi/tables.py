@@ -3,14 +3,32 @@ import json
 from google.appengine.ext import ndb
 from lobsternachos.helpers import Encoder
 from django.http import HttpResponse
+from lobsternachos.helpers import *
 
-def get_all(request):
+# Get tables from database that have a defined pairing code, and return the list as a json string
+def get_by_pairing_code(request):
+  if request.method == 'GET':
 
-  data = json.dumps([{
-    'TableID':p.key.integer_id(),
-    'TableName':p.TableName,
-    'Created':p.Created,
-    'LastUpdated':p.LastUpdated}
-    for p in Table.query(ancestor=GetAncestor()).fetch()], cls = Encoder)
+    if isLong( request.GET.get('pairingCode') ):
 
-  return HttpResponse(data, content_type="application/json")
+        # Try to get category
+        tableList = Table.query( Table.PairingCode==long(request.GET.get('pairingCode')),ancestor = GetAncestor()).fetch()
+        # If exist and category name is present
+        if len(tableList) == 1:
+
+          # Get table
+          table = tableList[0]
+
+
+          data = json.dumps({
+            'TableID':table.key.integer_id(),
+            'TableName':table.TableName,
+            'Created':table.Created,
+            'LastUpdated':table.LastUpdated,
+            'PairingCode':table.PairingCode
+            }
+            , cls = Encoder)
+
+          return HttpResponse(data, content_type="application/json")
+
+    return HttpResponse(json.dumps([]), content_type="application/json")

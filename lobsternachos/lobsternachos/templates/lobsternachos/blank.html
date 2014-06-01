@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Lobsters & Nachos{% block title %}{% endblock %}</title>
+<head>
+  <meta charset="utf-8">
+  <title>Lobsters & Nachos{% block title %}{% endblock %}</title>
 
-{%block viewport%}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%endblock%}
-<meta name="description" content="">
-    <meta name="author" content="">
+  {%block viewport%}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%endblock%}
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link rel="shortcut icon" href="/static/favicon.ico" />
+  <link rel="shortcut icon" href="/static/favicon.ico" />
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Font Awesome -->
-	<link href="/static/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="/static/css/font-awesome.min.css" rel="stylesheet">
 
-	<!-- Pace -->
-	<link href="/static/css/pace.css" rel="stylesheet">
+  <!-- Pace -->
+  <link href="/static/css/pace.css" rel="stylesheet">
 
-{% block css %}{% endblock %}
+  {% block css %}{% endblock %}
 
-	<!-- Endless -->
-	<link href="/static/css/endless.min.css" rel="stylesheet">
-	<link href="/static/css/endless-skin.css" rel="stylesheet">
-
-
-  </head>
-
-  <body class="overflow-hidden">
-	<!-- Overlay Div -->
-	<div id="overlay" class="transparent"></div>
-
-	<div id="wrapper" class="preload">
-		<div id="top-nav" class="skin-6 fixed">
-			<div class="brand">
-				<span>Lobsters </span>
-				<span class="text-toggle"> & Nachos</span>
-			</div><!-- /brand -->
-			<button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<ul class="nav-notification clearfix">
+  <!-- Endless -->
+  <link href="/static/css/endless.min.css" rel="stylesheet">
+  <link href="/static/css/endless-skin.css" rel="stylesheet">
 
 
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="fa fa-bell fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay6">6</span>
-					</a>
-					<ul class="dropdown-menu notification dropdown-3">
-						<li><a href="#">You have 6 new pings</a></li>
-						<li>
-							<a href="#">
+</head>
 
-								<span class="m-left-xs">Table #1</span>
-								<span class="time text-muted">3m ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
+<body class="overflow-hidden">
+  <!-- Overlay Div -->
+  <div id="overlay" class="transparent"></div>
 
-								<span class="m-left-xs">Table #4</span>
-								<span class="time text-muted">2m ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
+  <div id="wrapper" class="preload">
+    <div id="top-nav" class="skin-6 fixed">
+      <div class="brand">
+        <span>Lobsters </span>
+        <span class="text-toggle"> & Nachos</span>
+      </div><!-- /brand -->
+      <button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <ul class="nav-notification clearfix">
 
-								<span class="m-left-xs">Table #8</span>
-								<span class="time text-muted">2m ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
 
-								<span class="m-left-xs">Table #7</span>
-								<span class="time text-muted">1m ago</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-bell fa-lg"></i>
+            <span class="notification-label bounceIn animation-delay6">6</span>
+          </a>
+          <ul class="dropdown-menu notification dropdown-3">
+            <li><a href="#">You have 6 new pings</a></li>
+            <li>
+              <a href="#">
 
-								<span class="m-left-xs">Table #13</span>
-								<span class="time text-muted">1m ago</span>
-							</a>
-						</li>
+                <span class="m-left-xs">Table #1</span>
+                <span class="time text-muted">3m ago</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+
+                <span class="m-left-xs">Table #4</span>
+                <span class="time text-muted">2m ago</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+
+                <span class="m-left-xs">Table #8</span>
+                <span class="time text-muted">2m ago</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+
+                <span class="m-left-xs">Table #7</span>
+                <span class="time text-muted">1m ago</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+
+                <span class="m-left-xs">Table #13</span>
+                <span class="time text-muted">1m ago</span>
+              </a>
+            </li>
             <li>
               <a href="#">
 
@@ -102,9 +102,9 @@
                 <span class="time text-muted">Just now</span>
               </a>
             </li>
-						<li><a href="#">View all notifications</a></li>
-					</ul>
-				</li>
+            <li><a href="#">View all notifications</a></li>
+          </ul>
+        </li>
         <li class="dropdown hidden-xs">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-shopping-cart fa-lg"></i>
@@ -157,224 +157,224 @@
             <li><a href="#">View all tasks</a></li>
           </ul>
         </li>
-				<li class="profile dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <li class="profile dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <strong>{{user.nickname}}</strong>
-						<span><i class="fa fa-chevron-down"></i></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div><!-- /top-nav-->
+            <span><i class="fa fa-chevron-down"></i></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /top-nav-->
 
-		<aside class="fixed skin-6">
-			<div class="sidebar-inner scrollable-sidebar">
-				<div class="size-toggle">
-					<a class="btn btn-sm" id="sizeToggle">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
-						<i class="fa fa-power-off"></i>
-					</a>
-				</div><!-- /size-toggle -->
-				<div class="search-block">
-					<div class="input-group">
-						<input type="text" class="form-control input-sm" placeholder="search here...">
-						<span class="input-group-btn">
-							<button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
-						</span>
-					</div><!-- /input-group -->
-				</div><!-- /search-block -->
-				<div class="main-menu">
-					<ul>
+    <aside class="fixed skin-6">
+      <div class="sidebar-inner scrollable-sidebar">
+        <div class="size-toggle">
+          <a class="btn btn-sm" id="sizeToggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+            <i class="fa fa-power-off"></i>
+          </a>
+        </div><!-- /size-toggle -->
+        <div class="search-block">
+          <div class="input-group">
+            <input type="text" class="form-control input-sm" placeholder="search here...">
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /search-block -->
+        <div class="main-menu">
+          <ul>
 
             {% block nav %}
 
-						<li >
-            {% endblock %}
-							<a href="/">
-								<span class="menu-icon">
-									<i class="fa fa-desktop fa-lg"></i>
-								</span>
-								<span class="text">
-									Dashboard
-								</span>
-								<span class="menu-hover"></span>
-							</a>
-						</li>
+            <li >
+              {% endblock %}
+              <a href="/">
+                <span class="menu-icon">
+                  <i class="fa fa-desktop fa-lg"></i>
+                </span>
+                <span class="text">
+                  Dashboard
+                </span>
+                <span class="menu-hover"></span>
+              </a>
+            </li>
 
-{% block options_nav %}
+            {% block options_nav %}
 
-						<li class="openable open">
+            <li class="openable open">
               {% endblock %}
 
 
-							<a href="#">
-								<span class="menu-icon">
-									<i class="fa fa-cog fa-lg"></i>
-								</span>
-								<span class="text">
-									Options
-								</span>
-								<span class="menu-hover"></span>
-							</a>
-							<ul class="submenu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="fa fa-cog fa-lg"></i>
+                </span>
+                <span class="text">
+                  Options
+                </span>
+                <span class="menu-hover"></span>
+              </a>
+              <ul class="submenu">
 
-{% block menu_nav %}
-<li>
-  {%endblock %}
-								<a href="/menu">
+                {% block menu_nav %}
+                <li>
+                  {%endblock %}
+                  <a href="/menu">
 
-                  <span class=" submenu-label">Menu</span>
-<span  class="menu-icon pull-right">
-  <i class="fa fa-cutlery fa-lg"></i>
-</span>
+                    <span class=" submenu-label">Menu</span>
+                    <span  class="menu-icon pull-right">
+                      <i class="fa fa-cutlery fa-lg"></i>
+                    </span>
 
-            </a>
-
-
-        </li>
-        {% block pings_nav %}
-        <li>
-          {%endblock %}<a href="/pings">
-
-          <span class=" submenu-label">Pings
-        <span class="badge badge-danger bounceIn animation-delay1">6</span>
-
-        </span>
-
-<span  class="pull-right menu-icon">
-<i class="fa fa-bell fa-lg"></i>
-</span>
-
-    </a>
+                  </a>
 
 
-</li>
-{% block orders_nav %}
-<li>
-  {%endblock %}<a href="/orders">
+                </li>
+                {% block pings_nav %}
+                <li>
+                  {%endblock %}<a href="/pings">
 
-  <span class="submenu-label">Orders
-<span class="badge badge-danger bounceIn animation-delay1">4</span>
+                    <span class=" submenu-label">Pings
+                      <span class="badge badge-danger bounceIn animation-delay1">6</span>
 
-</span>
+                    </span>
 
-<span  class="pull-right menu-icon">
-<i class="fa fa-shopping-cart fa-lg"></i>
-</span>
+                    <span  class="pull-right menu-icon">
+                      <i class="fa fa-bell fa-lg"></i>
+                    </span>
 
-</a>
-
-
-</li>
-{% block tables_nav %}
-<li>
-  {%endblock %}<a href="/tables">
-
-  <span class=" submenu-label">Tables</span>
-<span class="pull-right menu-icon">
-<i class="fa fa-tablet fa-lg"></i>
-</span>
-
-</a>
+                  </a>
 
 
-</li>
-{% block guide_nav %}
-<li>
-  {%endblock %}<a href="/guide">
+                </li>
+                {% block orders_nav %}
+                <li>
+                  {%endblock %}<a href="/orders">
 
-  <span class=" submenu-label">Guide</span>
-<span  class="pull-right menu-icon">
-<i class="fa fa-question-circle fa-lg"></i>
-</span>
+                    <span class="submenu-label">Orders
+                      <span class="badge badge-danger bounceIn animation-delay1">4</span>
 
-</a>
+                    </span>
+
+                    <span  class="pull-right menu-icon">
+                      <i class="fa fa-shopping-cart fa-lg"></i>
+                    </span>
+
+                  </a>
 
 
-</li>
+                </li>
+                {% block tables_nav %}
+                <li>
+                  {%endblock %}<a href="/tables">
 
-						</ul>
-						</li>
+                    <span class=" submenu-label">Tables</span>
+                    <span class="pull-right menu-icon">
+                      <i class="fa fa-tablet fa-lg"></i>
+                    </span>
 
-					</ul>
+                  </a>
 
-					<div class="alert alert-info">
-						Welcome to Lobsters & Nachos Admin. Click on options to expand.
-					</div>
-				</div><!-- /main-menu -->
-			</div><!-- /sidebar-inner scrollable-sidebar -->
-		</aside>
 
-		<div id="main-container">
-			<div id="breadcrumb">
-				<ul class="breadcrumb">
-					 <li><i class="fa fa-home"></i><a href="/"> Home</a></li>
-					 {% block breadcrumb %}
-           <li class="active">Blank page</li>
-           {% endblock %}
-				</ul>
-			</div><!-- breadcrumb -->
-{%block content%}
-{%endblock%}
-		</div><!-- /main-container -->
+                </li>
+                {% block guide_nav %}
+                <li>
+                  {%endblock %}<a href="/guide">
+
+                    <span class=" submenu-label">Guide</span>
+                    <span  class="pull-right menu-icon">
+                      <i class="fa fa-question-circle fa-lg"></i>
+                    </span>
+
+                  </a>
+
+
+                </li>
+
+              </ul>
+            </li>
+
+          </ul>
+
+          <div class="alert alert-info">
+            Welcome to Lobsters & Nachos Admin. Click on options to expand.
+          </div>
+        </div><!-- /main-menu -->
+      </div><!-- /sidebar-inner scrollable-sidebar -->
+    </aside>
+
+    <div id="main-container">
+      <div id="breadcrumb">
+        <ul class="breadcrumb">
+          <li><i class="fa fa-home"></i><a href="/"> Home</a></li>
+          {% block breadcrumb %}
+          <li class="active">Blank page</li>
+          {% endblock %}
+        </ul>
+      </div><!-- breadcrumb -->
+      {%block content%}
+      {%endblock%}
+    </div><!-- /main-container -->
 
     {%block modal%}{%endblock%}
-	</div><!-- /wrapper -->
+  </div><!-- /wrapper -->
 
-	<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+  <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
 
-	<!-- Logout confirmation -->
-	<div class="custom-popup width-100" id="logoutConfirm">
-		<div class="padding-md">
-			<h4 class="m-top-none"> Do you want to logout?</h4>
-		</div>
+  <!-- Logout confirmation -->
+  <div class="custom-popup width-100" id="logoutConfirm">
+    <div class="padding-md">
+      <h4 class="m-top-none"> Do you want to logout?</h4>
+    </div>
 
-		<div class="text-center">
-			<a class="btn btn-success m-right-sm" href="login.html">Logout</a>
-			<a class="btn btn-danger logoutConfirm_close">Cancel</a>
-		</div>
-	</div>
+    <div class="text-center">
+      <a class="btn btn-success m-right-sm" href="login.html">Logout</a>
+      <a class="btn btn-danger logoutConfirm_close">Cancel</a>
+    </div>
+  </div>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
 
-	<!-- Jquery -->
-	<script src="/static/js/jquery-1.10.2.min.js"></script>
+  <!-- Jquery -->
+  <script src="/static/js/jquery-1.10.2.min.js"></script>
 
-	<!-- Bootstrap -->
-	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
-{%block javascript%}
-{%endblock%}
+  <!-- Bootstrap -->
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+  {%block javascript%}
+  {%endblock%}
 
-	<!-- Modernizr -->
-	<script src='/static/js/modernizr.min.js'></script>
+  <!-- Modernizr -->
+  <script src='/static/js/modernizr.min.js'></script>
 
-    <!-- Pace -->
-	<script src='/static/js/pace.min.js'></script>
+  <!-- Pace -->
+  <script src='/static/js/pace.min.js'></script>
 
-	<!-- Popup Overlay -->
-	<script src='/static/js/jquery.popupoverlay.min.js'></script>
+  <!-- Popup Overlay -->
+  <script src='/static/js/jquery.popupoverlay.min.js'></script>
 
-    <!-- Slimscroll -->
-	<script src='/static/js/jquery.slimscroll.min.js'></script>
+  <!-- Slimscroll -->
+  <script src='/static/js/jquery.slimscroll.min.js'></script>
 
-	<!-- Cookie -->
-	<script src='/static/js/jquery.cookie.min.js'></script>
-
-
-{%block extrajs %}
-{%endblock%}
-
-<!-- Endless -->
-<script src="/static/js/endless/endless.js"></script>
+  <!-- Cookie -->
+  <script src='/static/js/jquery.cookie.min.js'></script>
 
 
-  </body>
+  {%block extrajs %}
+  {%endblock%}
+
+  <!-- Endless -->
+  <script src="/static/js/endless/endless.js"></script>
+
+
+</body>
 </html>

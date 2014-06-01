@@ -41,18 +41,9 @@ class Item(ndb.Model):
 
 class Table(ndb.Model):
   TableName = ndb.StringProperty(required=True)
-  PairingCode = ndb.ComputedProperty(lambda self: self.get_unique_pairing_code)
+  PairingCode = ndb.IntegerProperty(required=True)
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
   LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
-
-  @classmethod
-  def get__unique_pairing_code(cls):
-      ''' Generate initial pairing code '''
-      pairingCode = randint(1000,9999)
-      ''' While it already exists within a table, generate another one '''
-      while Table.query(PairingCode=pairingCode) is not NONE:
-        pairingCode = randint(1000,9999)
-      return pairingCode
 
 class Ping(ndb.Model):
   TableID =  ndb.KeyProperty(kind=Table,required=True)
@@ -79,14 +70,3 @@ class OrderDetail(ndb.Model):
   Created = ndb.DateTimeProperty(auto_now_add=True,required=True)
   LastUpdated = ndb.DateTimeProperty(auto_now=True,required=True)
   Quantity = ndb.IntegerProperty(required=True)
-
-class MessageType:
-  ADDED = 1
-  REMOVED = 2
-  UPDATED = 3
-  UNDEFINED = 0
-
-class Message():
-  def __init__(self, text = "", messageType = MessageType.UNDEFINED):
-    self.Text = x
-    self.MessageType = y

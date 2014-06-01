@@ -39,10 +39,7 @@ urlpatterns += patterns('lobsternachos.controllers.menu',
     url(r'^menu$','index'),
     (r'^menu/new$', 'new'),
     (r'^menu/create$', 'create'),
-    (r'^menu/create/uploadImage$', 'uploadImage'),
-    (r'^menu/index$','get'),
-    (r'^menu/upload$','upload'),
-    (r'^menu/serve$','serve'),
+    (r'^menu/delete$', 'delete'),
 )
 
 # Accounts
@@ -56,6 +53,14 @@ urlpatterns += patterns('lobsternachos.controllers.categories',
   (r'^categories/delete$', 'delete'),
   (r'^categories/update$', 'update'),
 
+)
+
+# Tables
+urlpatterns += patterns('lobsternachos.controllers.tables',
+  (r'^tables$', 'index'),
+  (r'^tables/create$', 'create'),
+  (r'^tables/delete$', 'delete'),
+  (r'^tables/update$', 'update'),
 )
 
 # Web API
@@ -75,5 +80,5 @@ urlpatterns += patterns('lobsternachos.controllers.webapi.pings',
     (r'^webapi/pings$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.tables',
-    (r'^webapi/tables$','get_all'),
+    (r'^webapi/tables$','get_by_pairing_code'),
 )

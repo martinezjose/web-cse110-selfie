@@ -1,0 +1,324 @@
+{%extends 'lobsternachos/blank.html'%}
+{%block title%} - Tables{%endblock%}
+{%block css%}
+
+<!-- Datatable -->
+<link href="/static/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+
+
+<!-- Gritter -->
+<link href="/static/css/gritter/jquery.gritter.css" rel="stylesheet">
+
+<!-- Google Code Prettify -->
+<link href="/static/css/prettify.css" rel="stylesheet">
+{%endblock%}
+
+
+{% block options_nav %}
+<li class="active openable open">
+	{% endblock %}
+
+	{% block tables_nav %}
+	<li class="active" >
+		{%endblock %}
+
+		{%block breadcrumb%}
+		<li class="active">Tables</li>
+		{%endblock%}
+
+		{%block content%}
+
+{% if not tablesList %}
+
+		<ul class="tab-bar grey-tab">
+
+
+						<li class="active">
+							<a href="#noTables" data-toggle="tab">
+								<span class="block text-center">
+									<i class="fa fa-tablet fa-2x"></i>
+								</span>
+								Tables
+							</a>
+						</li>
+
+
+								<div style="margin-top:13px;margin-left:13px;margin-bottom:13px" class=" btn-group">
+									<a  role="button" href="#formNewTable"  data-toggle="modal"  class="btn btn-success btn-small"><i class="fa fa-plus-circle"></i>
+										New Table
+									</a>
+
+
+									</div>
+							</ul>
+{%endif%}
+							<div class="padding-md">
+								<div class="row">
+									<div class="col-md-12 col-sm-12">
+										<div class="tab-content">
+
+
+
+	<!--
+			<form  id="deleteTableForm" action="/tables/delete" method="post">
+
+					<input id="deleteTableInput"  type="hidden" name="tableID" value="{{tablesList.0.key.integer_id}}"/>
+
+
+									<a href="javascript:{}" onclick="document.getElementById('deleteTableForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete selected table</a>
+
+-->
+
+
+								{% if not tablesList %}
+<div class="tab-pane fade in active" id="noTables">
+
+									<h3 class="headline m-top-md">
+										No tables
+										<span class="line"></span>
+									</h3>
+
+									<p>
+										There doesn't exist any tables yet. To create a table, press the "New Table" button.
+									</p>
+
+								{%else%}
+
+
+<form  id="deleteTableForm" action="/tables/delete" method="post">
+{% csrf_token %}
+
+									<div class="panel panel-default table-responsive ">
+
+
+
+
+										<div class="panel-heading">
+											Tables
+
+											<span class="label label-info pull-right">
+												{{tablesList|length}} table{{ tablesList|pluralize:",s" }}</span>
+											</div>
+
+											<div class="padding-md clearfix">
+												<table class="table table-striped" id="dataTable">
+													<thead>
+														<tr>
+															<th class="no-sort">
+																<label class="label-checkbox">
+																	<input type="checkbox" id="chk-all">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</th>
+															<th>Table Name</th>
+															<th>Pairing Code</th>
+															<th>Created</th>
+															<th>Last Updated</th>
+															<th>Orders Generated</th>
+															<th>Sales</th>
+															<th class="no-sort"></th>
+
+														</tr>
+													</thead>
+													<tbody>
+
+														{% for table in tablesList %}
+
+
+														<tr>
+
+
+															<td>
+																<label class="label-checkbox">
+																	<input type="checkbox" name="table" value="{{table.key.integer_id}}" class="chk-row">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</td>
+
+															<td class="text-center">
+																{{table.TableName}}
+															</td>
+															<td >
+																{{table.PairingCode}}
+															</td>
+															<td class="text-center">
+																{{table.Created}}
+															</td>
+															<td class="text-center">
+																{{table.LastUpdated}}
+															</td>
+															<td class="text-center">
+																130
+															</td><td class="text-center">
+																$712.00
+															</td>
+															<td class="text-center">
+																<a  data-toggle="modal" href="#formEditTable{{table.key.integer_id}}" class="btn btn-sm btn-info">Edit</a>
+															</td>
+
+
+															<!--	$("#deleteTableInput").attr("value","{{table.key.integer_id}}");
+
+														-->
+
+
+													</tr>
+
+													{%endfor%}
+
+
+												</tbody>
+											</table>
+
+										</div><!-- /.padding-md -->
+
+
+
+
+										<div class="panel-footer text-right">
+
+											<a role="button"   data-toggle="modal" href="#formNewTable" href="/menu/new?tableID={{table.key.integer_id}}"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Table</a>
+
+											<a  class="btn btn-sm btn-danger" href="javascript:{}" onclick="document.getElementById('deleteTableForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete Selected Tables</a>
+
+										</div>
+
+									</div><!-- /panel -->
+								</form>
+
+								{%endif%}
+							</div><!-- /tab-content -->
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.padding-md -->
+
+
+
+
+
+				{% endblock %}
+				{%block modal%}
+				<div class="modal fade" id="formNewTable">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4>New Table</h4>
+							</div>
+
+
+							<div class="modal-body">
+								<form action="/tables/create" method="post">
+									{% csrf_token %}
+									<div class="form-group">
+										<label >Name</label>
+
+
+											<input name="tableName" type="text" class="form-control input-sm" placeholder="Name">
+
+									</div><!-- /form-group -->
+
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-success btn-sm">
+											Create</button>
+
+											<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+										</div>
+									</form>
+								</div>
+
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					{%for table in tablesList%}
+					<div class="modal fade" id="formEditTable{{table.key.integer_id}}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4>Edit Table</h4>
+								</div>
+
+
+								<div class="modal-body">
+									<form action="/tables/update" method="post">
+										{% csrf_token %}
+
+										<input type="hidden" name="tableID" value="{{table.key.integer_id}}"/>
+
+										<div class="form-group">
+											<label>Name</label>
+
+											<input name="tableName" value="{{table.TableName}}" type="text" class="form-control input-sm" placeholder="Name">
+										</div><!-- /form-group -->
+
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-info btn-sm">Save Changes</button>
+
+											<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+										</div>
+									</form>
+								</div>
+
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					{%endfor%}
+					{%endblock%}
+					{%block javascript%}
+
+					<!-- Datatable -->
+					<script src='/static/js/jquery.dataTables.min.js'></script>
+
+					<!-- holder -->
+					<script src='/static/js/uncompressed/holder.js'></script>
+
+					<!-- Gritter -->
+					<script src="/static/js/jquery.gritter.min.js"></script>
+
+					<!-- Google Code Prettify -->
+					<script src='/static/js/uncompressed/run_prettify.js'></script>
+					{%endblock%}
+
+					{%block extrajs%}<script>
+
+					{% if tablesList %}
+
+					$(function	()	{
+
+
+						var oTable = $('#dataTable').dataTable( {
+							"bSortClasses" : false,
+
+							"bJQueryUI": true,
+							"sPaginationType": "full_numbers"
+							,"aoColumnDefs" : [ {
+								"bSortable" : false,
+								"aTargets" : [ "no-sort" ]
+							} ]
+						});
+
+
+						$('#chk-all').click(function()	{
+							if($(this).is(':checked'))	{
+								$('#dataTable').find('.chk-row').each(function()	{
+									$(this).prop('checked', true);
+									$(this).parent().parent().parent().addClass('selected');
+								});
+							}
+							else	{
+								$('#dataTable').find('.chk-row').each(function()	{
+									$(this).prop('checked' , false);
+									$(this).parent().parent().parent().removeClass('selected');
+								});
+							}
+						});
+
+
+					});
+
+
+					{%endif%}
+
+
+					</script>{%endblock%}

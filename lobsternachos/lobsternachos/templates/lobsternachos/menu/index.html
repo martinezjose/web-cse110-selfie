@@ -95,8 +95,6 @@
 											<a    data-toggle="modal" id="editCategoryLink" href="#formEditCategory{{categoryID}}">
 
 												{%else%}
-												<!--<a >submit</a>
-												<input type="submit" value="Sign Guestbook"/>-->
 												<a     data-toggle="modal" id="editCategoryLink" href="#formEditCategory{{categoriesList.0.key.integer_id}}">
 													{%endif%}
 													<i class="fa fa-edit"></i> Edit selected category
@@ -138,281 +136,295 @@
 											{% for category in categoriesList %}
 
 
+<form  id="deleteItemForm" action="/menu/delete" method="post">
+{% csrf_token %}
+<input type="hidden" name="categoryID" value="{{category.key.integer_id}}"/>
+
 
 											{%if categoryID %}
 
 											{%if categoryID == category.key.integer_id %}
-<div  class="tab-pane fade in active" id="tab{{category.key.integer_id}}">
+											<div  class="tab-pane fade in active" id="tab{{category.key.integer_id}}">
 												{% else %}
-<div class="tab-pane fade" id="tab{{category.key.integer_id}}">
+												<div class="tab-pane fade" id="tab{{category.key.integer_id}}">
 													{%endif%}
+
+
 
 													{%else%}
 													{% if forloop.first %}
-<div
- class="tab-pane fade in active" id="tab{{category.key.integer_id}}">
-														{% else %}
-<div class="tab-pane fade" id="tab{{category.key.integer_id}}">
-															{%endif%}
-															{%endif%}
+													<div
+													class="tab-pane fade in active" id="tab{{category.key.integer_id}}">
+													{% else %}
+													<div class="tab-pane fade" id="tab{{category.key.integer_id}}">
+														{%endif%}
+														{%endif%}
 
 
 
 
 
-													<div class="panel panel-default table-responsive ">
-														<div class="panel-heading">
-															Menu Items
+														<div class="panel panel-default table-responsive ">
+															<div class="panel-heading">
+																Menu Items for {{category.CategoryName}}
 
-															<span class="label label-info pull-right">
-																{%load lists %}
-																{{itemLists|get_at_position:forloop.counter|length}} item{{ itemLists|get_at_position:forloop.counter|length|pluralize:",s" }}</span>
-															</div>
+																<span class="label label-info pull-right">
+																	{%load lists %}
+																	{{itemLists|get_at_position:forloop.counter|length}} item{{ itemLists|get_at_position:forloop.counter|length|pluralize:",s" }}</span>
+																</div>
 
-															<div class="padding-md clearfix">
-																<table class="table table-striped" id="dataTable{{category.key.integer_id}}">
-																	<thead>
-																		<tr>
-																			<th class="no-sort">
-																				<label class="label-checkbox">
-																					<input type="checkbox" id="chk-all{{category.key.integer_id}}">
-																					<span class="custom-checkbox"></span>
-																				</label>
-																			</th>
-																			<th class="no-sort">Image</th>
-																			<th>ID</th>
-																			<th>Product</th>
-																			<th>Price</th>
-																			<th>Quantity</th>
-																			<th>Sales</th>
-																			<th>Last Updated</th>
-																			<th>Status</th>
-																			<th class="no-sort"></th>
+																<div class="padding-md clearfix">
+																	<table class="table table-striped" id="dataTable{{category.key.integer_id}}">
+																		<thead>
+																			<tr>
+																				<th class="no-sort">
+																					<label class="label-checkbox">
+																						<input type="checkbox" id="chk-all{{category.key.integer_id}}">
+																						<span class="custom-checkbox"></span>
+																					</label>
+																				</th>
+																				<th class="no-sort hidden-xs" >Image</th>
+																				<th>ID</th>
+																				<th>Product</th>
+																				<th>Price</th>
+																				<th>Quantity</th>
+																				<th>Sold</th>
+																				<th>Last Updated</th>
+																				<th>Status</th>
+																				<th class="no-sort"></th>
 
-																		</tr>
-																	</thead>
-																	<tbody>
-
-
-																		{% for item in itemLists|get_at_position:forloop.counter %}
-
-																		<tr>
+																			</tr>
+																		</thead>
+																		<tbody>
 
 
-																			<td>
-																				<label class="label-checkbox">
-																					<input type="checkbox" class="chk-row">
-																					<span class="custom-checkbox"></span>
-																				</label>
-																			</td>
+																			{% for item in itemLists|get_at_position:forloop.counter %}
 
-																			<td class="text-center hidden-xs">
-																				<img width="60px" height="60px" src="/blobstore/serve/{{item.ImagePath.0}}" alt="Product Image" src=".">
-																			</td>
-																			<td >
-																				{{item.key.integer_id}}
-																			</td>
-																			<td class="text-center">
-																				{{item.ItemName}}
-																			</td>
-																			<td class="text-center">
-																				${{item.Price}}
-																			</td>
-																			<td class="text-center">
-																				130
-																			</td><td class="text-center">
-																				712
-																			</td><td class="text-center">
-																				{{item.LastUpdate}}
-
-																			</td>
-																			<td class="text-center">
-																				<span class="label label-success">In Stock</span>
-																			</td>
-
-																			<td class="text-center">
-																				<button class="btn btn-sm btn-success">View</button>
-																			</td>
+																			<tr>
 
 
+																				<td>
+																					<label class="label-checkbox">
 
 
-																		</tr>
+																						<input type="checkbox" name="item" value="{{item.key.integer_id}}" class="chk-row">
+																						<span class="custom-checkbox"></span>
+																					</label>
+																				</td>
+
+																				<td class="text-center hidden-xs">
+																					<img width="60px" height="60px" src="/blobstore/serve/{{item.ImagePath.0}}" alt="Product Image" src=".">
+																				</td>
+																				<td >
+																					{{item.key.integer_id}}
+																				</td>
+																				<td class="text-center">
+																					{{item.ItemName}}
+																				</td>
+																				<td class="text-center">
+																					${{item.Price}}
+																				</td>
+																				<td class="text-center">
+																					130
+																				</td><td class="text-center">
+																					712
+																				</td><td class="text-center">
+																					{{item.LastUpdate}}
+
+																				</td>
+																				<td class="text-center">
+																					<span class="label label-success">In Stock</span>
+																				</td>
+
+																				<td class="text-center">
+																					<button class="btn btn-sm btn-success">View</button>
+																				</td>
 
 
 
 
-																		{%endfor%}
+																			</tr>
 
 
 
 
-
-
-
-
-
-																	</tbody>
-																</table>
-
-															</div><!-- /.padding-md -->
+																			{%endfor%}
 
 
 
 
 
 
-															<div class="panel-footer text-right">
+
+
+
+																		</tbody>
+																	</table>
+
+																</div><!-- /.padding-md -->
 
 
 
 
 
-																<a href="/menu/new?categoryID={{category.key.integer_id}}"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Menu Item</a>
-																<a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-															</div>
-														</div><!-- /panel -->
-													</div><!-- /tab1 -->
-													{%endfor%}
-												</div><!-- /tab-content -->
-											</div><!-- /.col -->
-										</div><!-- /.row -->
-									</div><!-- /.padding-md -->
+
+																<div class="panel-footer text-right">
 
 
 
 
 
-									{% endblock %}
-									{%block modal%}
-									<div class="modal fade" id="formNewCategory">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4>New Category</h4>
-												</div>
+																	<a href="/menu/new?categoryID={{category.key.integer_id}}"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Menu Item</a>
+
+																	<a  class="btn btn-sm btn-danger" href="javascript:{}" onclick="document.getElementById('deleteItemForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete Selected Items</a>
+
+																</div>
+
+															</div><!-- /panel -->
+														</div><!-- /tab1 -->
+													</form>
+
+														{%endfor%}
+													</div><!-- /tab-content -->
+												</div><!-- /.col -->
+											</div><!-- /.row -->
+										</div><!-- /.padding-md -->
 
 
-												<div class="modal-body">
-													<form action="/categories/create" method="post">
-														{% csrf_token %}
-														<div class="form-group">
-															<label>Name</label>
-															<input name="categoryName" type="text" class="form-control input-sm" placeholder="Name">
-														</div><!-- /form-group -->
 
-														<div class="modal-footer">
-															<button type="submit" class="btn btn-success btn-sm">
-																Create</button>
 
-																<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
-															</div>
-														</form>
-													</div>
 
-												</div><!-- /.modal-content -->
-											</div><!-- /.modal-dialog -->
-										</div><!-- /.modal -->
-										{%for category in categoriesList%}
-										<div class="modal fade" id="formEditCategory{{category.key.integer_id}}">
+										{% endblock %}
+										{%block modal%}
+										<div class="modal fade" id="formNewCategory">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-														<h4>Edit Category</h4>
+														<h4>New Category</h4>
 													</div>
 
 
 													<div class="modal-body">
-														<form action="/categories/update" method="post">
-															<input type="hidden" name="categoryID" value="{{category.key.integer_id}}"/>
-
+														<form action="/categories/create" method="post">
 															{% csrf_token %}
 															<div class="form-group">
 																<label>Name</label>
-
-																<input name="categoryName" value="{{category.CategoryName}}" type="text" class="form-control input-sm" placeholder="Name">
+																<input name="categoryName" type="text" class="form-control input-sm" placeholder="Name">
 															</div><!-- /form-group -->
 
 															<div class="modal-footer">
-																<button type="submit" class="btn btn-info btn-sm">Save Changes</button>
+																<button type="submit" class="btn btn-success btn-sm">
+																	Create</button>
 
-																<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
-															</div>
-														</form>
-													</div>
+																	<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+																</div>
+															</form>
+														</div>
 
-												</div><!-- /.modal-content -->
-											</div><!-- /.modal-dialog -->
-										</div><!-- /.modal -->
-										{%endfor%}
-										{%endblock%}
-										{%block javascript%}
-
-										<!-- Datatable -->
-										<script src='/static/js/jquery.dataTables.min.js'></script>
-
-										<!-- holder -->
-										<script src='/static/js/uncompressed/holder.js'></script>
-
-										<!-- Gritter -->
-										<script src="/static/js/jquery.gritter.min.js"></script>
-
-										<!-- Google Code Prettify -->
-										<script src='/static/js/uncompressed/run_prettify.js'></script>
-										{%endblock%}
-
-										{%block extrajs%}<script>
-										$(function	()	{
+													</div><!-- /.modal-content -->
+												</div><!-- /.modal-dialog -->
+											</div><!-- /.modal -->
+											{%for category in categoriesList%}
+											<div class="modal fade" id="formEditCategory{{category.key.integer_id}}">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h4>Edit Category</h4>
+														</div>
 
 
+														<div class="modal-body">
+															<form action="/categories/update" method="post">
+																{% csrf_token %}
 
+																<input type="hidden" name="categoryID" value="{{category.key.integer_id}}"/>
 
-											{% for category in categoriesList %}
+																<div class="form-group">
+																	<label>Name</label>
 
+																	<input name="categoryName" value="{{category.CategoryName}}" type="text" class="form-control input-sm" placeholder="Name">
+																</div><!-- /form-group -->
 
+																<div class="modal-footer">
+																	<button type="submit" class="btn btn-info btn-sm">Save Changes</button>
 
+																	<button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+																</div>
+															</form>
+														</div>
 
-											$("#link{{category.key.integer_id}}").click(function(){
-
-
-												$("#editCategoryLink").attr("href","#formEditCategory{{category.key.integer_id}}");
-												$("#deleteCategoryInput").attr("value","{{category.key.integer_id}}");
-
-											});
-
-
-											$('#dataTable{{category.key.integer_id}}').dataTable( {
-												"bSortClasses" : false,
-
-												"bJQueryUI": true,
-												"sPaginationType": "full_numbers"
-												,"aoColumnDefs" : [ {
-													"bSortable" : false,
-													"aTargets" : [ "no-sort" ]
-												} ]
-											});
-
-
-
-											$('#chk-all{{category.key.integer_id}}').click(function()	{
-												if($(this).is(':checked'))	{
-													$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
-														$(this).prop('checked', true);
-														$(this).parent().parent().parent().addClass('selected');
-													});
-												}
-												else	{
-													$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
-														$(this).prop('checked' , false);
-														$(this).parent().parent().parent().removeClass('selected');
-													});
-												}
-											});
-
-
+													</div><!-- /.modal-content -->
+												</div><!-- /.modal-dialog -->
+											</div><!-- /.modal -->
 											{%endfor%}
-										});
+											{%endblock%}
+											{%block javascript%}
 
-										</script>{%endblock%}
+											<!-- Datatable -->
+											<script src='/static/js/jquery.dataTables.min.js'></script>
+
+											<!-- holder -->
+											<script src='/static/js/uncompressed/holder.js'></script>
+
+											<!-- Gritter -->
+											<script src="/static/js/jquery.gritter.min.js"></script>
+
+											<!-- Google Code Prettify -->
+											<script src='/static/js/uncompressed/run_prettify.js'></script>
+											{%endblock%}
+
+											{%block extrajs%}<script>
+											$(function	()	{
+
+
+
+
+												{% for category in categoriesList %}
+
+
+
+
+												$("#link{{category.key.integer_id}}").click(function(){
+
+
+													$("#editCategoryLink").attr("href","#formEditCategory{{category.key.integer_id}}");
+													$("#deleteCategoryInput").attr("value","{{category.key.integer_id}}");
+
+												});
+
+
+												$('#dataTable{{category.key.integer_id}}').dataTable( {
+													"bSortClasses" : false,
+
+													"bJQueryUI": true,
+													"sPaginationType": "full_numbers"
+													,"aoColumnDefs" : [ {
+														"bSortable" : false,
+														"aTargets" : [ "no-sort" ]
+													} ]
+												});
+
+
+
+												$('#chk-all{{category.key.integer_id}}').click(function()	{
+													if($(this).is(':checked'))	{
+														$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
+															$(this).prop('checked', true);
+															$(this).parent().parent().parent().addClass('selected');
+														});
+													}
+													else	{
+														$('#dataTable{{category.key.integer_id}}').find('.chk-row').each(function()	{
+															$(this).prop('checked' , false);
+															$(this).parent().parent().parent().removeClass('selected');
+														});
+													}
+												});
+
+
+												{%endfor%}
+											});
+
+											</script>{%endblock%}
