@@ -2,29 +2,48 @@ from django.http import HttpResponseRedirect
 from lobsternachos.models import *
 from google.appengine.ext import ndb
 import urllib
+from lobsternachos.helpers import *
 
 def create(request):
   if request.method == 'POST':
+    # Create empty category
     category = Category(parent=GetAncestor())
+
+    # If there exist a name parameter
     if request.POST.get('categoryName'):
+      # Assign and include
       category.CategoryName=request.POST.get('categoryName')
       categoryID = category.put().integer_id()
+
+      # Redirect with category id
       return HttpResponseRedirect('/menu?' +  urllib.urlencode({'categoryID':categoryID}))
   return HttpResponseRedirect('/menu')
 
 def delete(request):
   if request.method == 'POST':
-    category = Category.get_by_id(int(request.POST.get('categoryID')),
-    parent = GetAncestor())
-    category.key.delete()
+    # Check if category id is long
+    if isLong( request.POST.get('categoryID') ):
+      # Try to get category
+      category = Category.get_by_id(long(request.POST.get('categoryID')),
+      parent = GetAncestor())
+      # Check if exist
+      if category:
+        category.key.delete()
   return HttpResponseRedirect('/menu')
 
 def update(request):
   if request.method == 'POST':
-    category = Category.get_by_id(int(request.POST.get('categoryID')),
-    parent = GetAncestor())
-    if category and request.POST.get('categoryName'):
-      category.CategoryName = request.POST.get('categoryName')
-      categoryID = category.put().integer_id()
-      return HttpResponseRedirect('/menu?' +  urllib.urlencode({'categoryID':categoryID}))
+    # Check if category id is long
+    if isLong( request.POST.get('categoryID') ):
+      # Try to get category
+      category = Category.get_by_id(long(request.POST.get('categoryID')),
+      parent = GetAncestor())
+      # If exist and category name is present
+      if category and request.POST.get('categoryName'):
+        # Update
+        category.CategoryName = request.POST.get('categoryName')
+        categoryID = category.put().integer_id()
+
+        #Redirect with category id
+        return HttpResponseRedirect('/menu?' +  urllib.urlencode({'categoryID':categoryID}))
   return HttpResponseRedirect('/menu')

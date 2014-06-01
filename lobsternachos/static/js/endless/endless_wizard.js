@@ -27,7 +27,7 @@ $(function	()	{
 			}
         }
     }});
-	 
+
 	$('#formValidate1').parsley( { listeners: {
         onFormSubmit: function ( isFormValid, event ) {
             if(isFormValid)	{
@@ -49,7 +49,8 @@ $(function	()	{
 	$('#formWizard1').parsley( { listeners: {
 		onFieldValidate: function ( elem ) {
 			// if field is not visible, do not apply Parsley validation!
-			if ( !$( elem ).is( ':visible' ) ) {
+
+			if ( !$( elem ).is( ':visible' ) && currentStep_1 == 1 ) {
 				return true;
 			}
 
@@ -73,9 +74,18 @@ $(function	()	{
 
 					$('#nextStep1').attr('disabled',true);
 					$('#nextStep1').addClass('disabled');
+
+					$('#submit1').attr('disabled',false);
+					$('#submit1').removeClass('disabled');
+				}
+				else if(currentStep_1 == 4)	{
+
+					currentStep_1--;
+					$('form#formWizard1').submit();
 				}
 
 				return false;
+
 			}
         }
     }});
@@ -136,6 +146,9 @@ $(function	()	{
 
 			$('#nextStep1').attr('disabled',false);
 			$('#nextStep1').removeClass('disabled');
+
+			$('#submit1').attr('disabled',true);
+			$('#submit1').addClass('disabled');
 
 			$('#wizardProgress').css("width","66%");
 		}

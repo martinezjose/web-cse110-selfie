@@ -9,6 +9,9 @@ handlers:
 - url: /static
   static_dir: static
 
+- url: /blobstore/.*
+  script: lobsternachos.controllers.blobstorehandler.application
+
 - url: /.*
   script: main.application
 

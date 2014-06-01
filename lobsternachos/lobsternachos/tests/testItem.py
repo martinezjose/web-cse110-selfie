@@ -91,7 +91,7 @@ class ItemTestCase(unittest.TestCase):
         # Get by cat name
         nachos = Item.query(Item.ItemName=='Nachos').fetch()[0]
         # Get id based on appetizer object
-        nachos2 = Item.get_by_id( nachos.key.id())
+        nachos2 = Item.get_by_id(nachos.key.id())
 
         self.assertEqual(nachos.key.id, nachos2.key.id)
         self.assertEqual(nachos2.ItemName, 'Nachos')

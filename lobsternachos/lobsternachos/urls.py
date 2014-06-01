@@ -36,8 +36,13 @@ urlpatterns = patterns('lobsternachos.controllers.home',
 
 # Menu
 urlpatterns += patterns('lobsternachos.controllers.menu',
-    url(r'^menu$','index',name='menuIndex'),
+    url(r'^menu$','index'),
     (r'^menu/new$', 'new'),
+    (r'^menu/create$', 'create'),
+    (r'^menu/create/uploadImage$', 'uploadImage'),
+    (r'^menu/index$','get'),
+    (r'^menu/upload$','upload'),
+    (r'^menu/serve$','serve'),
 )
 
 # Accounts
