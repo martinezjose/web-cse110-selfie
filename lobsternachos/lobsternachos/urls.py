@@ -40,6 +40,9 @@ urlpatterns += patterns('lobsternachos.controllers.menu',
     (r'^menu/new$', 'new'),
     (r'^menu/create$', 'create'),
     (r'^menu/delete$', 'delete'),
+    (r'^menu/edit$', 'edit'),
+    (r'^menu/update$', 'update'),
+
 )
 
 # Accounts

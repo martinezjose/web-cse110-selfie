@@ -136,9 +136,6 @@
 											{% for category in categoriesList %}
 
 
-<form  id="deleteItemForm" action="/menu/delete" method="post">
-{% csrf_token %}
-<input type="hidden" name="categoryID" value="{{category.key.integer_id}}"/>
 
 
 											{%if categoryID %}
@@ -161,128 +158,137 @@
 														{%endif%}
 
 
+														<form  id="deleteItemForm" action="/menu/delete" method="post">
+															{% csrf_token %}
+															<input type="hidden" name="categoryID" value="{{category.key.integer_id}}"/>
 
 
+															<div class="panel panel-default table-responsive ">
+																<div class="panel-heading">
+																	Menu Items
 
-														<div class="panel panel-default table-responsive ">
-															<div class="panel-heading">
-																Menu Items for {{category.CategoryName}}
+																	<span class="label label-info pull-right">
+																		{%load lists %}
+																		{{itemLists|get_at_position:forloop.counter|length}} item{{ itemLists|get_at_position:forloop.counter|length|pluralize:",s" }}</span>
+																	</div>
 
-																<span class="label label-info pull-right">
-																	{%load lists %}
-																	{{itemLists|get_at_position:forloop.counter|length}} item{{ itemLists|get_at_position:forloop.counter|length|pluralize:",s" }}</span>
-																</div>
+																	<div class="padding-md clearfix">
+																		<table class="table table-striped" id="dataTable{{category.key.integer_id}}">
+																			<thead>
+																				<tr>
+																					<th class="no-sort">
+																						<label class="label-checkbox">
+																							<input type="checkbox" id="chk-all{{category.key.integer_id}}">
+																							<span class="custom-checkbox"></span>
+																						</label>
+																					</th>
+																					<th class="no-sort hidden-xs" >Image</th>
+																					<th>Name</th>
+																					<th>Calories</th>
+																					<th>Price</th>
 
-																<div class="padding-md clearfix">
-																	<table class="table table-striped" id="dataTable{{category.key.integer_id}}">
-																		<thead>
-																			<tr>
-																				<th class="no-sort">
-																					<label class="label-checkbox">
-																						<input type="checkbox" id="chk-all{{category.key.integer_id}}">
-																						<span class="custom-checkbox"></span>
-																					</label>
-																				</th>
-																				<th class="no-sort hidden-xs" >Image</th>
-																				<th>ID</th>
-																				<th>Product</th>
-																				<th>Price</th>
-																				<th>Quantity</th>
-																				<th>Sold</th>
-																				<th>Last Updated</th>
-																				<th>Status</th>
-																				<th class="no-sort"></th>
-
-																			</tr>
-																		</thead>
-																		<tbody>
-
-
-																			{% for item in itemLists|get_at_position:forloop.counter %}
-
-																			<tr>
+																					<th>Daily Special</th>
+																					<th>Status</th>
+																					<th>Total Sold</th>
+																					<th>Created</th>
+																					<th>Last Updated</th>
+																					<th class="no-sort"></th>
+																				</tr>
+																			</thead>
+																			<tbody>
 
 
-																				<td>
-																					<label class="label-checkbox">
+																				{% for item in itemLists|get_at_position:forloop.counter %}
+
+																				<tr>
 
 
-																						<input type="checkbox" name="item" value="{{item.key.integer_id}}" class="chk-row">
-																						<span class="custom-checkbox"></span>
-																					</label>
-																				</td>
-
-																				<td class="text-center hidden-xs">
-																					<img width="60px" height="60px" src="/blobstore/serve/{{item.ImagePath.0}}" alt="Product Image" src=".">
-																				</td>
-																				<td >
-																					{{item.key.integer_id}}
-																				</td>
-																				<td class="text-center">
-																					{{item.ItemName}}
-																				</td>
-																				<td class="text-center">
-																					${{item.Price}}
-																				</td>
-																				<td class="text-center">
-																					130
-																				</td><td class="text-center">
-																					712
-																				</td><td class="text-center">
-																					{{item.LastUpdate}}
-
-																				</td>
-																				<td class="text-center">
-																					<span class="label label-success">In Stock</span>
-																				</td>
-
-																				<td class="text-center">
-																					<button class="btn btn-sm btn-success">View</button>
-																				</td>
+																					<td>
+																						<label class="label-checkbox">
 
 
+																							<input type="checkbox" name="item" value="{{item.key.integer_id}}" class="chk-row">
+																							<span class="custom-checkbox"></span>
+																						</label>
+																					</td>
+
+																					<td class="text-center hidden-xs">
+																						<img width="60px" height="60px" src="/blobstore/serve/{{item.ImagePath.0}}" alt="Product Image" src=".">
+																					</td>
+																					<td >
+{{item.ItemName}}
+																					</td>
+																					<td class="text-center">
+																						{{item.Calories}}
+																					</td>
+																					<td class="text-center">
+																						${{item.Price}}
+																					</td>
+																					<td class="text-center">
+																						{% if item.DailySpecial %}
+																						<span class="label label-success">Yes</span>
+																						{%else %}
+																						<span class="label label-primary">No</span>
+
+																						{%endif%}
+																					</td>
+																					<td class="text-center">
+																						{% if item.Active %}
+																						<span class="label label-success">Active</span>
+																						{%else %}
+																						<span class="label label-primary">Inactive</span>
+
+																						{%endif%}
+																					</td>
+																					<td class="text-center">
+																						130
+																					</td><td class="text-center">
+{{item.Created}}
+																					</td><td class="text-center">
+																						{{item.LastUpdated}}
+
+																					</td>
 
 
-																			</tr>
+																					<td class="text-center">
+																						<a href='/menu/edit?categoryID={{category.key.integer_id}}&itemID={{item.key.integer_id}}' class="btn btn-sm btn-info">Edit</a>
+																					</td>
 
 
-
-
-																			{%endfor%}
-
-
-
-
-
-
-
-
-
-																		</tbody>
-																	</table>
-
-																</div><!-- /.padding-md -->
-
+																				</tr>
 
 
 
 
-
-																<div class="panel-footer text-right">
+																				{%endfor%}
 
 
 
 
 
-																	<a href="/menu/new?categoryID={{category.key.integer_id}}"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Menu Item</a>
 
-																	<a  class="btn btn-sm btn-danger" href="javascript:{}" onclick="document.getElementById('deleteItemForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete Selected Items</a>
 
-																</div>
 
-															</div><!-- /panel -->
+
+																			</tbody>
+																		</table>
+
+																	</div><!-- /.padding-md -->
+
+
+
+																	<div class="panel-footer text-right">
+
+																		<a href="/menu/new?categoryID={{category.key.integer_id}}"  class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Menu Item</a>
+
+																		<a  class="btn btn-sm btn-danger" href="javascript:{}" onclick="document.getElementById('deleteItemForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete Selected Items</a>
+
+																	</div>
+
+																</div><!-- /panel -->
+															</form>
+
 														</div><!-- /tab1 -->
-													</form>
 
 														{%endfor%}
 													</div><!-- /tab-content -->

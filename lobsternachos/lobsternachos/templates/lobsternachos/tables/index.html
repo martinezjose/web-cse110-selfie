@@ -85,11 +85,11 @@
 								{%else%}
 
 
-<form  id="deleteTableForm" action="/tables/delete" method="post">
-{% csrf_token %}
+
 
 									<div class="panel panel-default table-responsive ">
-
+<form  id="deleteTableForm" action="/tables/delete" method="post">
+{% csrf_token %}
 
 
 
@@ -182,9 +182,9 @@
 											<a  class="btn btn-sm btn-danger" href="javascript:{}" onclick="document.getElementById('deleteTableForm').submit(); return false;"><i class="fa fa-trash-o"></i> Delete Selected Tables</a>
 
 										</div>
+</form>
 
 									</div><!-- /panel -->
-								</form>
 
 								{%endif%}
 							</div><!-- /tab-content -->

@@ -8,7 +8,9 @@ from django.http import HttpResponse
 def get_all(request):
 	if request.method == 'GET':
 		data = json.dumps([{
+		'Thumbnail':"http://lobster-nachos.appspot.com/blobstore/serve/"+str(p.ImagePath[0]),
 		'ItemID':p.key.integer_id(),
+		'RemoteID':p.key.integer_id(),
 		'ItemName':p.ItemName,
 		'Price':p.Price,
 		'CategoryID':p.CategoryID.integer_id(),
@@ -19,8 +21,8 @@ def get_all(request):
 		'LastUpdated':p.LastUpdated,
 		'DailySpecial':p.DailySpecial,
 		'Description':p.Description,
-		'ImagePath':["lobster-nachos.appspot.com/blobstore/serve/"+str(p.ImagePath[0]),"lobster-nachos.appspot.com/blobstore/serve/"+str(p.ImagePath[1])]
+		'ImagePath':["http://lobster-nachos.appspot.com/blobstore/serve/"+str(p.ImagePath[0]),"http://lobster-nachos.appspot.com/blobstore/serve/"+str(p.ImagePath[1])]
 		}
-	  for p in Item.query(ancestor=GetAncestor()).fetch()], cls = Encoder)
+	  for p in Item.query(Item.Active == True,ancestor=GetAncestor()).fetch()], cls = Encoder)
 
 		return HttpResponse(data, content_type="application/json")

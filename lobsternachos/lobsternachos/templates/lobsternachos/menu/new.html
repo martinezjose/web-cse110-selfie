@@ -55,7 +55,7 @@
 
 
 							<div class="panel-heading">
-								Add Menu Item
+								Add Menu Item {%if categoryName%}in {{categoryName}}{%endif%}
 							</div>
 							<div class="panel-tab">
 								<ul class="wizard-steps wizard-demo" id="wizardDemo1">
@@ -149,10 +149,10 @@
 											<label class="control-label col-lg-2">Dropzone</label>
 											<div class="col-lg-10">
 												<div class="alert alert-info">
-													<i class="fa fa-info"></i><span class="m-left-xs">This is just a demo dropzone. Uploaded files are not stored.</span>
+													<i class="fa fa-info"></i><span class="m-left-xs">The first image will be used as thumbnail.</span>
 												</div>
 												<input id="image1" type="hidden" name="image1" />
-												<input id="image2" type="hidden" name="image2" data-required="true"  data-required-message="Two images are required"/>
+												<input id="image2" type="hidden" name="image2" data-required="true"  data-required-message="Two images are required."/>
 
 												<div id="uploadDiv" class="dropzone">
 													<div class="fallback">
@@ -173,25 +173,25 @@
 
 										<div class="form-group">
 
-											{%if not categoriesList%}
+											{%if not itemLists%}
 											<label class="col-lg-5 control-label">There doesn't exist menu items yet, please create one first.</label>
 
-{%else%}
+											{%else%}
 
 											<label class="col-lg-2 control-label">Choose the recommended items for this menu item</label>
 											<div class="col-lg-10">
-												<select multiple class="form-control chzn-select">
-{%load lists %}
+												<select name="recommendedItemIDs" multiple class="form-control chzn-select">
 
 													{% for category in categoriesList %}
-													<optgroup label="{{category.CategoryName}}">
+													<optgroup  label="{{category.CategoryName}}">
 
+														{%load lists %}
 
 														{% for item in itemLists|get_at_position:forloop.counter %}
 
 
-														<option>{{item.ItemName}}</option>
-{%endfor%}
+														<option  value="{{item.key.integer_id}}" name="recommendedItemIDs">{{item.ItemName}}</option>
+														{%endfor%}
 													</optgroup>
 													{%endfor%}
 
@@ -273,11 +273,21 @@
 			$('#image1').removeAttr('value');
 			$('#image2').removeAttr('value');
 
+
+
+
+
+
 			$("#uploadDiv").dropzone({ /* options */
+
 
 				acceptedFiles: "image/*",
 				url: 'http://dummy.com',
-
+/*init: function () {
+		var mockFile = { name: "myimage.jpg", size: 12345, type: 'image/jpeg' };
+		this.addFile.call(this, mockFile);
+		this.options.thumbnail.call(this, mockFile, "http://someserver.com/myimage.jpg");
+}*/
 				init : function() {
 					myDropzone = this;
 

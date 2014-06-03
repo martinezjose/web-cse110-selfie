@@ -18,10 +18,6 @@ def index(request):
         'tablesList': tablesList,
     }
 
-    # If table id is long, add to template
-    if isLong(request.GET.get('tableID') ):
-      template_values.update({'tableID': long(request.GET.get('tableID'))})
-
     return render(request, 'lobsternachos/tables/index.html',template_values)
   return render(request, 'lobsternachos/tables/index.html')
 
