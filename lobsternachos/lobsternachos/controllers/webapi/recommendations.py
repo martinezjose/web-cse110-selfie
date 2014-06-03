@@ -19,8 +19,8 @@ def get_all(request):
 			# Check if exist
 			if item and itemR:
 				if item.Active and itemR.Active:
-					validRecommendations.append(rec
-					
+					validRecommendations.append(rec)
+
 		data = json.dumps([{
 		'ItemID':p.ItemID.integer_id(),
 		'RecommendedItemID':p.RecommendedItemID.integer_id(),
