@@ -1,296 +1,312 @@
 {%extends 'lobsternachos/blank.html'%}
 
 {%block css%}
-	<!-- Morris -->
-	<link href="/static/css/morris.css" rel="stylesheet"/>
+<!-- Morris -->
+<link href="/static/css/morris.css" rel="stylesheet"/>
 {%endblock%}
 
 {%block title%}
- - Dashboard
+- Dashboard
 {%endblock%}
 
 {% block nav %}
 
 <li class="active">
-{% endblock %}
-{%block breadcrumb%}
-					 <li class="active">Dashboard</li>
-{%endblock%}
+	{% endblock %}
+	{%block breadcrumb%}
+	<li class="active">Dashboard</li>
+	{%endblock%}
 
-      {%block content%}
-      <div class="main-header clearfix">
-				<div class="page-title">
-					<h3 class="no-margin">Dashboard</h3>
-					<span>Welcome back to Lobsters & Nachos</span>
-				</div><!-- /page-title -->
+	{%block content%}
+	<div class="main-header clearfix">
+		<div class="page-title">
+			<h3 class="no-margin">Dashboard</h3>
+			<span>Welcome back to Lobsters & Nachos</span>
+		</div><!-- /page-title -->
 
-				<ul class="page-stats">
-			    	<li>
-			    		<div class="value">
-			    			<span>Weekly Orders</span>
-			    			<h4 id="currentVisitor">4256</h4>
-			    		</div>
-						<span id="visits" class="sparkline"></span>
-			    	</li>
-			    	<li>
-			    		<div class="value">
-			    			<span>Weekly Revenue</span>
-			    			<h4>$<strong id="currentBalance">32153</strong></h4>
-			    		</div>
-			    		<span id="balances" class="sparkline"></span>
-			    	</li>
-			    </ul><!-- /page-stats -->
-			</div><!-- /main-header -->
-
-			<div class="grey-container shortcut-wrapper">
-				<a href="/menu" class="shortcut-link">
-					<span class="shortcut-icon">
-						<i class="fa fa-cutlery"></i>
-					</span>
-					<span class="text">Menu</span>
-				</a>
-				<a href="/pings" class="shortcut-link">
-					<span class="shortcut-icon">
-						<i class="fa fa-bell-o"></i>
-						<span class="shortcut-alert">
-							6
-						</span>
-					</span>
-					<span class="text">Pings</span>
-				</a>
-				<a href="/orders" class="shortcut-link">
-					<span class="shortcut-icon">
-						<i class="fa fa-shopping-cart"></i>
-            <span class="shortcut-alert">
-              4
-            </span>
-					</span>
-					<span class="text">Orders</span>
-				</a>
-				<a href="/tables" class="shortcut-link">
-					<span class="shortcut-icon">
-						<i class="fa fa-tablet"></i>
-
-					</span>
-					<span class="text">Tables</span>
-				</a>
-				<a href="/guide" class="shortcut-link">
-					<span class="shortcut-icon">
-						<i class="fa fa-question-circle"></i>
-					</span>
-					<span class="text">Guide</span>
-				</a>
-
-			</div><!-- /grey-container -->
-
-			<div class="padding-md">
-				<div class="row">
-					<div class="col-sm-6 col-md-3">
-						<div class="panel-stat3 bg-danger">
-							<h2 class="m-top-none" id="userCount">362</h2>
-							<h5>Customers Waiting</h5>
-							<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">5% Higher than average</span>
-							<div class="stat-icon">
-								<i class="fa fa-group fa-3x"></i>
-							</div>
-							<div class="refresh-button">
-								<i class="fa fa-refresh"></i>
-							</div>
-							<div class="loading-overlay">
-								<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
-							</div>
-						</div>
-					</div><!-- /.col -->
-					<div class="col-sm-6 col-md-3">
-						<div class="panel-stat3 bg-primary">
-							<h2 class="m-top-none"><span id="serverloadCount">15</span>%</h2>
-							<h5>Current Capacity</h5>
-							<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">Tables with customers</span>
-							<div class="stat-icon">
-								<i class="fa fa-dashboard fa-3x"></i>
-							</div>
-							<div class="refresh-button">
-								<i class="fa fa-refresh"></i>
-							</div>
-							<div class="loading-overlay">
-								<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
-							</div>
-						</div>
-					</div><!-- /.col -->
-					<div class="col-sm-6 col-md-3">
-						<div class="panel-stat3 bg-warning">
-							<h2 class="m-top-none" id="orderCount">593</h2>
-							<h5>Current Orders</h5>
-							<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">3% Higher than average</span>
-							<div class="stat-icon">
-								<i class="fa fa-shopping-cart fa-3x"></i>
-							</div>
-							<div class="refresh-button">
-								<i class="fa fa-refresh"></i>
-							</div>
-							<div class="loading-overlay">
-								<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
-							</div>
-						</div>
-					</div><!-- /.col -->
-					<div class="col-sm-6 col-md-3">
-						<div class="panel-stat3 bg-success">
-							<h2 class="m-top-none" style="float:left" >$</h2><h2 class="m-top-none" id="visitorCount">7214</h2>
-							<h5>Today's Revenue</h5>
-							<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">15% Higher than average</span>
-							<div class="stat-icon">
-								<i class="fa fa-money fa-3x"></i>
-							</div>
-							<div class="refresh-button">
-								<i class="fa fa-refresh"></i>
-							</div>
-							<div class="loading-overlay">
-								<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
-							</div>
-						</div>
-					</div><!-- /.col -->
+		<ul class="page-stats">
+			<li>
+				<div class="value">
+					<span>Weekly Orders</span>
+					<h4 id="currentVisitor">4256</h4>
 				</div>
+				<span id="visits" class="sparkline"></span>
+			</li>
+			<li>
+				<div class="value">
+					<span>Weekly Revenue</span>
+					<h4>$<strong id="currentBalance">32153</strong></h4>
+				</div>
+				<span id="balances" class="sparkline"></span>
+			</li>
+		</ul><!-- /page-stats -->
+	</div><!-- /main-header -->
+
+	<div class="grey-container shortcut-wrapper">
+		<a href="/menu" class="shortcut-link">
+			<span class="shortcut-icon">
+				<i class="fa fa-cutlery"></i>
+			</span>
+			<span class="text">Menu</span>
+		</a>
+		<a href="/pings" class="shortcut-link">
+			<span class="shortcut-icon">
+				<i class="fa fa-bell-o"></i>
+				<span class="shortcut-alert">
+					{{pingsList|length}}
+				</span>
+			</span>
+			<span class="text">Pings</span>
+		</a>
+		<a href="/orders" class="shortcut-link">
+			<span class="shortcut-icon">
+				<i class="fa fa-shopping-cart"></i>
+				<span class="shortcut-alert">
+{{fatOrdersList|length}}
+				</span>
+			</span>
+			<span class="text">Orders</span>
+		</a>
+		<a href="/tables" class="shortcut-link">
+			<span class="shortcut-icon">
+				<i class="fa fa-tablet"></i>
+
+			</span>
+			<span class="text">Tables</span>
+		</a>
+		<a href="/guide" class="shortcut-link">
+			<span class="shortcut-icon">
+				<i class="fa fa-question-circle"></i>
+			</span>
+			<span class="text">Guide</span>
+		</a>
+
+	</div><!-- /grey-container -->
+
+	<div class="padding-md">
+		<div class="row">
+			<div class="col-sm-6 col-md-3">
+				<div class="panel-stat3 bg-danger">
+					<h2 class="m-top-none" >{{pingsList|length}}
+</h2>
+					<h5>Customers Waiting</h5>
+					<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">5% Higher than average</span>
+					<div class="stat-icon">
+						<i class="fa fa-group fa-3x"></i>
+					</div>
+					<div class="refresh-button">
+						<i class="fa fa-refresh"></i>
+					</div>
+					<div class="loading-overlay">
+						<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+					</div>
+				</div>
+			</div><!-- /.col -->
+			<div class="col-sm-6 col-md-3">
+				<div class="panel-stat3 bg-primary">
+					<h2 class="m-top-none"><span id="serverloadCount">15</span>%</h2>
+					<h5>Current Capacity</h5>
+					<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">Tables with customers</span>
+					<div class="stat-icon">
+						<i class="fa fa-dashboard fa-3x"></i>
+					</div>
+					<div class="refresh-button">
+						<i class="fa fa-refresh"></i>
+					</div>
+					<div class="loading-overlay">
+						<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+					</div>
+				</div>
+			</div><!-- /.col -->
+			<div class="col-sm-6 col-md-3">
+				<div class="panel-stat3 bg-warning">
+					<h2 class="m-top-none" id="orderCount">{{fatOrdersList|length}}
+</h2>
+					<h5>Current Orders</h5>
+					<!--<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">3% Higher than average</span>-->
+					<div class="stat-icon">
+						<i class="fa fa-shopping-cart fa-3x"></i>
+					</div>
+					<div class="refresh-button">
+						<i class="fa fa-refresh"></i>
+					</div>
+					<div class="loading-overlay">
+						<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+					</div>
+				</div>
+			</div><!-- /.col -->
+			<div class="col-sm-6 col-md-3">
+				<div class="panel-stat3 bg-success">
+					<h2 class="m-top-none" style="float:left" >$</h2><h2 class="m-top-none" id="visitorCount">7214</h2>
+					<h5>Today's Revenue</h5>
+					<i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">15% Higher than average</span>
+					<div class="stat-icon">
+						<i class="fa fa-money fa-3x"></i>
+					</div>
+					<div class="refresh-button">
+						<i class="fa fa-refresh"></i>
+					</div>
+					<div class="loading-overlay">
+						<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+					</div>
+				</div>
+			</div><!-- /.col -->
+		</div>
+		<div class="row">
+			<div class="col-lg-8">
+
 				<div class="row">
-					<div class="col-lg-8">
+					<div class="col-lg-6">
+						<div class="panel panel-default">
+							<div class="panel-heading clearfix">
+								<span class="pull-left">
+									Pings <span class="text-success m-left-xs"><i class="fa fa-check"></i></span>
+								</span>
+								<ul class="tool-bar">
+									<li><a href="#" class="refresh-widget" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
+									<li><a href="#toDoListWidget" data-toggle="collapse"><i class="fa fa-arrows-v"></i></a></li>
+								</ul>
+							</div>
+							<div class="panel-body no-padding collapse in" id="toDoListWidget">
+								<ul id="pings" class="list-group task-list no-margin collapse in">
 
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="panel panel-default">
-                  <div class="panel-heading clearfix">
-                    <span class="pull-left">
-                      Pings <span class="text-success m-left-xs"><i class="fa fa-check"></i></span>
-                    </span>
-                    <ul class="tool-bar">
-                      <li><a href="#" class="refresh-widget" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
-                      <li><a href="#toDoListWidget" data-toggle="collapse"><i class="fa fa-arrows-v"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="panel-body no-padding collapse in" id="toDoListWidget">
-                    <ul class="list-group task-list no-margin collapse in">
-                      <li class="list-group-item selected">
-                        <label class="label-checkbox inline">
-                           <input type="checkbox" class="task-finish" checked>
-                           <span class="custom-checkbox"></span>
-                        </label>
-                        Table 1
-                        <span class="pull-right">
-                          <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                        </span>
-                        <span class="badge badge-danger m-right-xs">3m</span>
+									{%if not pingsList%}
 
-                      </li>
-                      <li class="list-group-item">
-                        <label class="label-checkbox inline">
-                           <input type="checkbox" class="task-finish">
-                           <span class="custom-checkbox"></span>
-                        </label>
-                        Table 4
-                        <span class="pull-right">
-                          <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                        </span>
-                        <span class="badge badge-danger m-right-xs">3m</span>
+									<li class="list-group-item">
+										<label class="label-checkbox inline">
+										</label>
+										No pings yet
 
-                      </li>
-                      <li class="list-group-item">
-                        <label class="label-checkbox inline">
-                           <input type="checkbox" class="task-finish">
-                           <span class="custom-checkbox"></span>
-                        </label>
-                        Table 8
-                        <span class="pull-right">
-                          <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                        </span>
-                        <span class="badge badge-warning m-right-xs">2m</span>
+									</span>
 
-                      </li>
-                      <li class="list-group-item">
-                        <label class="label-checkbox inline">
-                           <input type="checkbox" class="task-finish">
-                           <span class="custom-checkbox"></span>
-                        </label>
-                        Table 7
-                        <span class="pull-right">
-                          <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                        </span>
-                        <span class="badge badge-success m-right-xs">1m</span>
+								</li>
+								{%else%}
+								{%for ping in pingsList%}
+								<li style="width:100%" class="list-group-item pull-left">
+									<label class="label-checkbox inline">
+										{% if ping.StatusID == 3 or ping.StatusID == 1%}
 
-                      </li>
-                      <li class="list-group-item">
-                        <label class="label-checkbox inline">
-                           <input type="checkbox" class="task-finish">
-                           <span class="custom-checkbox"></span>
-                        </label>
-                        Table 13
-                        <span class="pull-right">
-                          <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                        </span>
-                        <span class="badge badge-success m-right-xs">1m</span>
+										<input id="chk{{ping.key.integer_id}}" type="checkbox" class="task-finish" checked>
+										{%else%}
+										<input id="chk{{ping.key.integer_id}}" type="checkbox" class="task-finish">
 
-                      </li>
-                      <li class="list-group-item">
-                        <label class="label-checkbox inline">
-                           <input type="checkbox" class="task-finish">
-                           <span class="custom-checkbox"></span>
-                        </label>
-                        Table 2
-                        <span class="pull-right">
-                          <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                        </span>
+										{%endif%}
+										<span class="custom-checkbox"></span>
+									</label>
+									{% if ping.StatusID == 2 or ping.StatusID == 3%}
+									Order ready for table
+									{%else%}
+									Service request from table
+									{%endif%}
 
-                      </li>
-                    </ul><!-- /list-group -->
-                  </div>
-                  <div class="loading-overlay">
-                    <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
-                  </div>
-                </div><!-- /panel -->
-              </div><!-- /.col -->
-              <div class="col-lg-6">
-                <div class="panel panel-default">
-                  <div class="panel-heading clearfix">
-                    <span class="pull-left">Orders</span>
-                    <ul class="tool-bar">
-                      <li><a href="#" class="refresh-widget" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
-                      <li><a href="#feedList" data-toggle="collapse"><i class="fa fa-arrows-v"></i></a></li>
-                    </ul>
-                  </div>
-                  <ul class="list-group collapse in" id="feedList">
-                    <li class="list-group-item clearfix">
+									{%for table in tablesList%}
+									{%if table.key.integer_id == ping.TableID.integer_id%}
 
-                      <div class="pull-left m-left-sm">
-                        <span><a href="#">3 items order</a></span><br/>
-                        <small class="text-muted"><i class="fa fa-clock-o"></i> 7m ago</small>
-                      </div>
-                    </li>
-                    <li class="list-group-item clearfix">
+									{{table.TableName}}
+									{%endif%}
+									{%endfor%}
+									<span class="pull-right">
+										<form id="delete{{ping.key.integer_id}}" action="/pings/delete?pingID={{ping.key.integer_id}}" method="post">
+										{% csrf_token %}
 
-                      <div class="pull-left m-left-sm">
-<span><a href="#">4 items order</a></span><br/>
-                        <small class="text-muted"><i class="fa fa-clock-o"></i> 3m ago</small>
-                      </div>
-                    </li>
-                    <li class="list-group-item clearfix">
+											<a  class="task-del" href="javascript:{}" onclick="document.getElementById('delete{{ping.key.integer_id}}').submit(); return false;"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
 
-                      <div class="pull-left m-left-sm">
-<span><a href="#">7 items order</a></span><br/>
-                        <small class="text-muted"><i class="fa fa-clock-o"></i> 1m ago</small>
-                      </div>
-                    </li>
 
-                    <li class="list-group-item clearfix">
+									</form>
+									</span>
 
-                      <div class="pull-left m-left-sm">
-<span><a href="#">1 item order</a></span><br/>
+									{%load templatehelpers %}
 
-                      </div>
-                    </li>
-                  </ul><!-- /list-group -->
-                  <div class="loading-overlay">
-                    <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
-                  </div>
-                </div><!-- /panel -->
-              </div><!-- /.col -->
-            </div><!-- ./row -->
+
+
+									{% if ping.Created|getMinutesDifference == 0 %}
+									<span class="badge badge-success m-right-xs">
+
+										{%elif ping.Created|getMinutesDifference == 1%}
+										<span class="badge badge-success m-right-xs">
+											{%elif ping.Created|getMinutesDifference == 2%}
+											<span class="badge badge-warning m-right-xs">
+												{%else%}
+												<span class="badge badge-danger m-right-xs">
+													{%endif%}
+
+
+													<small><i class="fa fa-clock-o"></i>
+														{% if ping.Created|getMinutesDifference < 1 %}
+														just now{%else%}
+														{{ping.Created|getMinutesDifference }}m ago
+														{%endif%}
+													</small>
+
+												</span>
+
+											</li>
+											{%endfor%}
+											{%endif%}
+										</ul><!-- /list-group -->
+									</div>
+									<div class="loading-overlay">
+										<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+									</div>
+								</div><!-- /panel -->
+							</div><!-- /.col -->
+							<div class="col-lg-6">
+								<div class="panel panel-default">
+									<div class="panel-heading clearfix">
+										<span class="pull-left">Orders</span>
+										<ul class="tool-bar">
+											<li><a href="#" class="refresh-widget" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
+											<li><a href="#feedList" data-toggle="collapse"><i class="fa fa-arrows-v"></i></a></li>
+										</ul>
+									</div>
+									<ul class="list-group collapse in" id="feedList">
+
+										{%if not fatOrdersList%}
+
+										<li class="list-group-item clearfix">
+
+											<div class="pull-left m-left-sm">
+												<span><a href="#">No orders yet</a></span><br/>
+											</div>
+										</li>
+									{%else%}
+									{%for orderO in fatOrdersList%}
+
+									<li class="list-group-item clearfix">
+
+										<div class="pull-left m-left-sm">
+											<span><a href="/orders/details?orderID={{orderO.order.key.integer_id}}">{{orderO.items}} items order for table
+																					{%for table in tablesList%}
+																					{%if table.key.integer_id == orderO.order.TableID.integer_id%}
+
+																					{{table.TableName}}
+																					{%endif%}
+																					{%endfor%}</a></span><strong class="text-danger">(${{orderO.total|floatformat:2}})</strong></br>
+
+																					{%load templatehelpers %}
+											<small class="text-muted"><i class="fa fa-clock-o"></i> {% if orderO.order.Created|getMinutesDifference < 1 %}
+											just now{%else%}
+											{{orderO.order.Created|getMinutesDifference }}m ago
+											{%endif%}</small>
+										</div>
+									</li>
+
+
+												{%endfor%}
+												{%endif%}
+
+
+
+
+
+
+									</ul><!-- /list-group -->
+									<div class="loading-overlay">
+										<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+									</div>
+								</div><!-- /panel -->
+							</div><!-- /.col -->
+						</div><!-- ./row -->
 						<div class="panel panel-default">
 							<div class="panel-heading clearfix">
 								<span class="pull-left"><i class="fa fa-bar-chart-o fa-lg"></i> This Month's Orders</span>
@@ -309,7 +325,7 @@
 									</div>
 									<div class=" text-center">
 										<h4 class="no-margin">Lobsters & Nachos</h4>
-                    <small class="text-muted">"Més que un restaurante"</small>
+										<small class="text-muted">"Més que un restaurante"</small>
 									</div>
 								</div><!-- ./row -->
 							</div>
@@ -323,17 +339,17 @@
 					</div><!-- /.col -->
 					<div class="col-lg-4">
 
-            <div class="panel bg-danger">
-              <div class="panel-body">
-                <h4>Orders Attended</h4>
-                <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
-                  <div class="progress-bar progress-bar-danger" style="width: 65%">
-                    <span class="sr-only">65%</span>
-                  </div>
-                </div>
-                <strong class="pull-left m-top-xs">65%</strong>
-              </div>
-            </div><!-- /panel -->
+						<div class="panel bg-danger">
+							<div class="panel-body">
+								<h4>Orders Attended</h4>
+								<div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+									<div class="progress-bar progress-bar-danger" style="width: 65%">
+										<span class="sr-only">65%</span>
+									</div>
+								</div>
+								<strong class="pull-left m-top-xs">65%</strong>
+							</div>
+						</div><!-- /panel -->
 
 						<div class="panel bg-info fadeInDown animation-delay4">
 							<div class="panel-body">
@@ -434,69 +450,107 @@
 				</div><!-- /.row -->
 			</div><!-- /.padding-md -->
 
-{%endblock%}
-		<!-- Footer
-		================================================== -->
+			{%endblock%}
+			<!-- Footer
+			================================================== -->
 
-    {%block modal%}
-        <footer>
-          <div class="row">
-            <div class="col-sm-6">
-              <span class="footer-brand">
-                <strong class="text-danger">Lobsters</strong> & Nachos
-              </span>
-              <p class="no-margin">
-                &copy; 2013 <strong>Lobsters & Nachos Admin</strong>. All Rights Reserved.
-              </p>
-            </div><!-- /.col -->
-          </div><!-- /.row-->
-        </footer>
+			{%block modal%}
+			<footer>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="footer-brand">
+							<strong class="text-danger">Lobsters</strong> & Nachos
+						</span>
+						<p class="no-margin">
+							&copy; 2013 <strong>Lobsters & Nachos Admin</strong>. All Rights Reserved.
+						</p>
+					</div><!-- /.col -->
+				</div><!-- /.row-->
+			</footer>
 
 
-        <!--Modal-->
-        <div class="modal fade" id="newFolder">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Create new folder</h4>
-                  </div>
-                <div class="modal-body">
-                    <form>
-                  <div class="form-group">
-                    <label for="folderName">Folder Name</label>
-                    <input type="text" class="form-control input-sm" id="folderName" placeholder="Folder name here...">
-                  </div>
-                </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-sm btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
-                <a href="#" class="btn btn-danger btn-sm">Save changes</a>
-                </div>
-              </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->{%endblock%}
+			<!--Modal-->
+			<div class="modal fade" id="newFolder">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4>Create new folder</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="folderName">Folder Name</label>
+									<input type="text" class="form-control input-sm" id="folderName" placeholder="Folder name here...">
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-sm btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
+							<a href="#" class="btn btn-danger btn-sm">Save changes</a>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->{%endblock%}
 
-	</div><!-- /wrapper -->
+		</div><!-- /wrapper -->
 
-{%block javascript%}
+		{%block javascript%}
 
-	<!-- Flot -->
-	<script src='/static/js/jquery.flot.min.js'></script>
+		<!-- Flot -->
+		<script src='/static/js/jquery.flot.min.js'></script>
 
-	<!-- Morris -->
-	<script src='/static/js/rapheal.min.js'></script>
-	<script src='/static/js/morris.min.js'></script>
+		<!-- Morris -->
+		<script src='/static/js/rapheal.min.js'></script>
+		<script src='/static/js/morris.min.js'></script>
 
-	<!-- Colorbox -->
-	<script src='/static/js/jquery.colorbox.min.js'></script>
+		<!-- Colorbox -->
+		<script src='/static/js/jquery.colorbox.min.js'></script>
 
-	<!-- Sparkline -->
-	<script src='/static/js/jquery.sparkline.min.js'></script>
+		<!-- Sparkline -->
+		<script src='/static/js/jquery.sparkline.min.js'></script>
 
-{%endblock%}
+		{%endblock%}
 
-{%block extrajs%}
-	<!-- Endless -->
-	<script src="/static/js/endless/endless_dashboard.js"></script>
-  {%endblock%}
+		{%block extrajs%}
+		<!-- Endless -->
+		<script src="/static/js/endless/endless_dashboard.js"></script>
+
+
+		<script>
+			{%for ping in pingsList%}
+				$('#chk{{ping.key.integer_id}}').click(function () {
+
+				 var check = $('#chk{{ping.key.integer_id}}')[0].checked;
+				if(check)
+				{
+
+
+						$.ajax({url:"/pings/update",
+						type:"POST",
+						data: {csrfmiddlewaretoken:'{{csrf_token}}',
+						pingID:'{{ping.key.integer_id}}',
+						statusID:'{%if ping.StatusID == 0%}1{%else%}3{%endif%}'
+
+					}});
+				}
+				else
+				{
+					$.ajax({url:"/pings/update",
+					type:"POST",
+					data: {csrfmiddlewaretoken:'{{csrf_token}}',
+					pingID:'{{ping.key.integer_id}}',
+					statusID:'{%if ping.StatusID == 1%}0{%else%}2{%endif%}'
+
+
+		 }});
+				}
+
+				});
+
+			{%endfor%}
+
+
+		</script>
+
+		{%endblock%}

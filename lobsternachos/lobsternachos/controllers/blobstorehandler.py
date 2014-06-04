@@ -2,10 +2,13 @@ import os
 import urllib
 import webapp2
 import json
-
+from google.appengine.ext import ndb
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
-
+from google.appengine.ext import db
+from google.appengine.api import images
+from google.appengine.api.images import Image
+from google.appengine.ext import db
 
 class MainHandler(webapp2.RequestHandler):
   def get(self):
@@ -26,6 +29,8 @@ class ServeHandler(blobstore_handlers.BlobstoreDownloadHandler):
     resource = str(urllib.unquote(resource))
     blob_info = blobstore.BlobInfo.get(resource)
     self.send_blob(blob_info)
+
+
 
 class DeleteHandler(webapp2.RequestHandler):
   def post(self,resource):

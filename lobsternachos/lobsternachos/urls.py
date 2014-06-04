@@ -45,6 +45,11 @@ urlpatterns += patterns('lobsternachos.controllers.menu',
 
 )
 
+# Menu
+urlpatterns += patterns('lobsternachos.controllers.orders',
+    url(r'^orders/details$','details'),
+)
+
 # Accounts
 urlpatterns += patterns('lobsternachos.controllers.accounts',
   (r'^accounts/login$', 'login'),
@@ -66,6 +71,13 @@ urlpatterns += patterns('lobsternachos.controllers.tables',
   (r'^tables/update$', 'update'),
 )
 
+# Pings
+urlpatterns += patterns('lobsternachos.controllers.pings',
+  (r'^pings$', 'index'),
+  (r'^pings/delete$', 'delete'),
+  (r'^pings/update$', 'update'),
+)
+
 # Web API
 urlpatterns += patterns('lobsternachos.controllers.webapi.categories',
     (r'^webapi/categories$','get_all'),
@@ -77,10 +89,12 @@ urlpatterns += patterns('lobsternachos.controllers.webapi.recommendations',
     (r'^webapi/recommendations$','get_all'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.orders',
-    (r'^webapi/orders$','get_all'),
+    (r'^webapi/orders/create$','post_by_table_id'),
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.pings',
     (r'^webapi/pings$','get_all'),
+    (r'^webapi/pings/create$','post_by_table_id'),
+
 )
 urlpatterns += patterns('lobsternachos.controllers.webapi.tables',
     (r'^webapi/tables$','get_by_pairing_code'),

@@ -5,6 +5,14 @@ import urllib
 from lobsternachos.helpers import *
 
 def create(request):
+
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'POST':
     # Create empty category
     category = Category(parent=GetAncestor())
@@ -20,6 +28,14 @@ def create(request):
   return HttpResponseRedirect('/menu')
 
 def delete(request):
+
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'POST':
     # Check if category id is long
     if isLong( request.POST.get('categoryID') ):
@@ -32,6 +48,13 @@ def delete(request):
   return HttpResponseRedirect('/menu')
 
 def update(request):
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'POST':
     # Check if category id is long
     if isLong( request.POST.get('categoryID') ):

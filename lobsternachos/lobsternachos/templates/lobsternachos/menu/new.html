@@ -173,8 +173,10 @@
 
 										<div class="form-group">
 
-											{%if not itemLists%}
-											<label class="col-lg-5 control-label">There doesn't exist menu items yet, please create one first.</label>
+											{%if not itemLists  %}
+
+
+											<label class="col-lg-5 control-label">There doesn't exist menu items that can be added yet, please create one first.</label>
 
 											{%else%}
 
@@ -185,7 +187,7 @@
 													{% for category in categoriesList %}
 													<optgroup  label="{{category.CategoryName}}">
 
-														{%load lists %}
+														{%load templatehelpers %}
 
 														{% for item in itemLists|get_at_position:forloop.counter %}
 

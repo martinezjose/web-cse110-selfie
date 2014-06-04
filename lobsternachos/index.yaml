@@ -26,3 +26,25 @@ indexes:
   properties:
   - name: date
     direction: desc
+
+- kind: Order
+  ancestor: yes
+  properties:
+  - name: Created
+
+- kind: Order
+  ancestor: yes
+  properties:
+  - name: StatusID
+  - name: Created
+
+- kind: Ping
+  ancestor: yes
+  properties:
+  - name: Created
+
+- kind: Ping
+  ancestor: yes
+  properties:
+  - name: Created
+    direction: desc

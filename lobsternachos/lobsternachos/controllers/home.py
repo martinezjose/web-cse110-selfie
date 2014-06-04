@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from lobsternachos.models import *
 
-
+from lobsternachos.helpers import *
 import urllib
 
 import os
@@ -95,27 +95,51 @@ def landing(request):
 #@login_required(login_url='/accounts/login')
 def index(request):
 
+    if  users.get_current_user():
+      if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+        return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+    else:
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
 
-  if users.get_current_user():
-      url = users.create_logout_url(request.get_full_path())
-      url_linktext = 'Logout'
-  else:
-      url = users.create_login_url(request.get_full_path())
-      url_linktext = 'Login'
 
-  template_values = {
-      'user': users.get_current_user(),
-      'url': url,
-      'url_linktext': url_linktext,
-  }
-  return render(request, 'lobsternachos/home/index.html', template_values)
+    if request.method == 'GET':
+
+      # Get pings and add to template
+      pingsList = Ping.query(ancestor=GetAncestor()).order(Ping.Created).fetch()
+      tablesList = Table.query(ancestor=GetAncestor()).fetch()
+      ordersList = Order.query(Order.StatusID == 0,ancestor=GetAncestor()).order(Order.Created).fetch()
+      fatOrdersList = []
+      for order in ordersList:
+
+        details = OrderDetail.query(OrderDetail.OrderID == order.key,ancestor=GetAncestor()).fetch()
+        sumSub = 0.0
+        for orderItem in details:
+          item = Item.get_by_id(orderItem.ItemID.integer_id(),parent = GetAncestor())
+          sumSub += item.Price * orderItem.Quantity
+
+        tax = getTax(sumSub)
+        total = tax+sumSub
+        fatOrdersList.append({ 'order':order, "items":len(details),"total":total })
+
+
+      template_values = {
+          'pingsList': pingsList,
+          'tablesList': tablesList,
+          'fatOrdersList': fatOrdersList,
+          'logoutURL':users.create_logout_url(request.get_full_path())
+      }
+
+      return render(request, 'lobsternachos/home/index.html',template_values)
+    return render(request, 'lobsternachos/home/index.html')
+
+
+
 
 def contact(request):
   return render(request, 'lobsternachos/home/contact.html')
+
 def faq(request):
     return render(request, 'lobsternachos/home/faq.html')
-
-
 
 
 # Accounts
@@ -125,16 +149,3 @@ def login(request):
     return render(request, 'lobsternachos/accounts/login.html')
 def lock_screen(request):
     return render(request, 'lobsternachos/accounts/lock_screen.html')
-
-
-
-# Orders
-def invoice(request):
-    return render(request, 'lobsternachos/orders/invoice.html')
-
-
-# Errors
-def error500(request):
-    return render(request, 'customErrors/error500.html')
-def error404(request):
-    return render(request, 'customErrors/error404.html')

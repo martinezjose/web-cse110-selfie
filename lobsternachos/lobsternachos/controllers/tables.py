@@ -10,18 +10,42 @@ from google.appengine.ext.blobstore import BlobKey
 
 
 def index(request):
+
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'GET':
+
+
+
+    pingsList = Ping.query(ancestor=GetAncestor()).order(Ping.Created).fetch()
+    ordersG = Order.query(Order.StatusID == 0,ancestor=GetAncestor()).order(Order.Created).fetch()
+
 
     # Get tables and add to template
     tablesList = Table.query(ancestor=GetAncestor()).fetch()
     template_values = {
         'tablesList': tablesList,
+        'pingsList':pingsList,
+        'ordersG':ordersG
     }
 
     return render(request, 'lobsternachos/tables/index.html',template_values)
   return render(request, 'lobsternachos/tables/index.html')
 
 def create(request):
+
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'POST':
     # Create empty table
     table = Table(parent=GetAncestor())
@@ -45,6 +69,14 @@ def create(request):
   return HttpResponseRedirect('/tables')
 
 def delete(request):
+
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'POST':
     tablesList = request.POST.getlist('table')
     for tableID in tablesList:
@@ -59,6 +91,14 @@ def delete(request):
   return HttpResponseRedirect('/tables')
 
 def update(request):
+
+  if  users.get_current_user():
+    if  users.get_current_user().email() <> "martinez.jose.armando@gmail.com":
+      return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+  else:
+    return HttpResponseRedirect(users.create_login_url(request.get_full_path()))
+
+
   if request.method == 'POST':
     # Check if table id is long
     if isLong( request.POST.get('tableID') ):

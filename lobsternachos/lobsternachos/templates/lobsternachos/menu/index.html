@@ -168,7 +168,8 @@
 																	Menu Items
 
 																	<span class="label label-info pull-right">
-																		{%load lists %}
+																		
+																		{%load templatehelpers %}
 																		{{itemLists|get_at_position:forloop.counter|length}} item{{ itemLists|get_at_position:forloop.counter|length|pluralize:",s" }}</span>
 																	</div>
 

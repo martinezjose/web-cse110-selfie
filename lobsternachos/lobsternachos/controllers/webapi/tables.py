@@ -30,5 +30,20 @@ def get_by_pairing_code(request):
             , cls = Encoder)
 
           return HttpResponse(data, content_type="application/json")
+    else:
+      # Try to get category
+      tableList = Table.query(ancestor = GetAncestor()).fetch()
+
+
+      data = json.dumps([{
+        'TableID':p.key.integer_id(),
+        'TableName':p.TableName,
+        'Created':p.Created,
+        'LastUpdated':p.LastUpdated,
+        'PairingCode':p.PairingCode
+        } for p in tableList]
+        , cls = Encoder)
+
+      return HttpResponse(data, content_type="application/json")
 
     return HttpResponse(json.dumps([]), content_type="application/json")

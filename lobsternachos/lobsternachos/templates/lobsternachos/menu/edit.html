@@ -194,15 +194,16 @@
                           {% for category in categoriesList %}
                           <optgroup  label="{{category.CategoryName}}">
 
-                            {%load lists %}
+                            {%load templatehelpers %}
 
                             {% for item in itemLists|get_at_position:forloop.counter %}
 
-
+      {%if item.key.integer_id != itemObj.key.integer_id%}
                               {%if item|isRecommended:recommendedItems %}
                             <option  value="{{item.key.integer_id}}" name="recommendedItemIDs" selected>{{item.ItemName}}</option>
                               {%else%}
                             <option  value="{{item.key.integer_id}}" name="recommendedItemIDs">{{item.ItemName}}</option>
+                            {%endif%}
                             {%endif%}
                             {%endfor%}
 
